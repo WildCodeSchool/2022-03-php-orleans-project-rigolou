@@ -2,6 +2,7 @@
 
 :root {
     --bs-primary-rgb: 218, 234, 129;
+    --bs-primary: #daea81;
     --primary: #daea81;
     --primary-light: #f8fbe1;
     --secondary: #5bb3e4;
