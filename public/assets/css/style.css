@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Comfortaa:wght@300;400;500&family=League+Gothic&family=Ubuntu:wght@300;400;500&display=swap");
 
 :root {
-    --bs-primary-rgb: 218, 234, 129;
-    --bs-primary: #daea81;
-    --primary: #daea81;
+    --primary: 218, 234, 129;
+    --bs-primary-rgb: var(--primary);
+    --bs-primary: rgb(var(--bs-primary-rgb));
     --primary-light: #f8fbe1;
     --secondary: #5bb3e4;
     --dark: #181b17;
