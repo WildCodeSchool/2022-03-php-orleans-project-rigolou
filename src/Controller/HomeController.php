@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\AmusementManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -9,6 +11,8 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
+        $amusementManager = new AmusementManager();
+        $amusements = $amusementManager->selectFourRandom();
+        return $this->twig->render('Home/index.html.twig', ['amusements' => $amusements]);
     }
 }
