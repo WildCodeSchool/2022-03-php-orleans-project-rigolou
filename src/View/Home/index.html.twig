@@ -1,9 +1,29 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ parent() }} - Accueil{% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Accueil
+{% endblock %}
 
 {% block content %}
-    <main class="container-fluid">
-        <h1>Rigolou</h1>
-    </main>
+	<main
+		class="container-fluid px-0">
+		<!-- amusement section -->
+		<section class="amusement-home container-fluid m-0 text-center">
+			<h1 class="section-title mx-auto text-center mt-2 mb-5 px-3 bg-primary rounded-3">Attractions</h1>
+			<div class="container mb-3">
+				<div class="row justify-content-center">
+					{% for amusement in amusements %}
+						<article class="col-lg-3 col-md-6 mb-2">
+							<div class="card shadow">
+								<div class="card-title align-self-center my-2">{{ amusement.name }}</div>
+								<img src="{{ amusement.image }}" alt="{{ amusement.name }}" class="card-img-bottom rounded-0">
+							</div>
+						</article>
+					{% endfor %}
+				</div>
+			</div>
+			<a class="btn btn-primary mx-auto px-4 mb-5 rounded-3" href="/attractions" role="button">En savoir plus</a>
+		</section>
+	</main>
 {% endblock %}
