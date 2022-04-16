@@ -63,6 +63,7 @@ h3 {
 }
 
 .card {
+    height: 100%;
     background-color: var(--intermediate);
     border-top-left-radius: var(--rounded);
     border-top-right-radius: var(--rounded);

@@ -15,7 +15,7 @@
 				<div class="row justify-content-center">
 					{% for amusement in amusements %}
 						<article class="col-lg-3 col-md-6 mb-2">
-							<div class="card shadow">
+							<div class="card d-flex justify-content-between shadow">
 								<div class="card-title align-self-center my-2">{{ amusement.name }}</div>
 								<img src="{{ amusement.image }}" alt="{{ amusement.name }}" class="card-img-bottom rounded-0">
 							</div>
