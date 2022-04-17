@@ -52,7 +52,17 @@
 							{% for rate in rates %}
 								<tr>
 									<td class="py-3">{{ rate.description }}</td>
-									<td class="text-end">{{ rate.price }}</td>
+									{% if rate.price == 'Nous contacter' %}
+										<td class="text-end">
+											<a href="#">{{ rate.price }}</a>
+										</td>
+									{% elseif rate.price == 'Voir la page dédiée' %}
+										<td class="text-end">
+											<a href="/anniversaire">{{ rate.price }}</a>
+										</td>
+									{% else %}
+										<td class="text-end">{{ rate.price }}</td>
+									{% endif %}
 								</tr>
 							{% endfor %}
 						</table>
