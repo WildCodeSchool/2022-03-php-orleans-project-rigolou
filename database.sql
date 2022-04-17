@@ -36,7 +36,7 @@ ENGINE = InnoDB;
 -- Contenu de la table `rate_category`
 --
 
-INSERT INTO `rate_category` (`name`) VALUES
+INSERT INTO `rate_category` (`category`) VALUES
 ('Classique'),
 ('Anniversaire'),
 ('Autre');
