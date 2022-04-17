@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\RateManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -9,6 +11,11 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
+        $rateManager = new RateManager();
+        $rates = $rateManager->selectAll('category != \'Anniversaire\'');
+
+        $rates[] = ['description' => 'Formules anniversaire', 'price' => 'Voir la page dédiée'];
+
+        return $this->twig->render('Home/index.html.twig', ['rates' => $rates]);
     }
 }
