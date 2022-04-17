@@ -70,4 +70,5 @@ INSERT INTO `rate` (`description`, `price`, `rate_category_id`) VALUES
 ('Parents', 'GRATUIT', 1),
 ('Comité d''entreprise: Carnet de tickets à revendre aux employés', 'Nous contacter', 1),
 ('Tarifs de groupes', 'Nous contacter', 1),
-('Formule anniversaire', 'Voir page dédiée', 2);
+('Triceratops', '16,50 euros / Enfants ( 8 Enfants minimum + Présence d’un adulte Obligatoire )', 2),
+('Diplodocys', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
