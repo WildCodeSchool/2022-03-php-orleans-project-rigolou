@@ -13,6 +13,8 @@
     --text-font: "Ubuntu", sans-serif;
     --text-size: 1.2rem;
     --line-height: 1.3;
+
+    --map-height: 400px;
 }
 
 body {
@@ -29,8 +31,24 @@ h3 {
     color: var(--dark);
 }
 
-footer > iframe {
+.map-itinerary {
+    position: relative;
     width: 100%;
-    height: 300px;
+    height: var(--map-height);
+    color: var(--light);
+}
+
+.map-itinerary > iframe {
+    width: 100%;
+    height: 100%;
     border: 0;
+}
+
+.map-itinerary > div {
+    --offset: 1rem;
+    position: absolute;
+    width: 20%;
+    top: var(--offset);
+    left: var(--offset);
+    height: calc(100% - calc(var(--offset) * 2));
 }
