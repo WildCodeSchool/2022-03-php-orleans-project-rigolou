@@ -28,3 +28,9 @@ h3 {
     font-family: var(--title-font);
     color: var(--dark);
 }
+
+footer > iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+}
