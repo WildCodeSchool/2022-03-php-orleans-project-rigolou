@@ -39,8 +39,8 @@ h3 {
 
 /* Change to bootstrap defaults */
 
-.rounded-3 {
-    border-radius: var(--rounded) !important;
+.rounded-4 {
+    border-radius: var(--rounded);
 }
 
 .btn.btn-primary {
