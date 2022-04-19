@@ -15,6 +15,9 @@ class HomeController extends AbstractController
         $amusements = $amusementManager->selectAll();
         $amusementsRandKey = array_rand($amusements, 4);
         $amusementsFourRandom = array_intersect_key($amusements, array_flip($amusementsRandKey));
-        return $this->twig->render('Home/index.html.twig', ['amusements' => $amusementsFourRandom]);
+        return $this->twig->render('Home/index.html.twig', [
+        'uploadDir' => APP_UPLOAD_PATH,
+        'amusements' => $amusementsFourRandom
+        ]);
     }
 }
