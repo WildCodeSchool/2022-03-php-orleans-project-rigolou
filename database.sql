@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `rate_category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `category` VARCHAR(100) NOT NULL,
+  `constant_category` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -36,10 +37,10 @@ ENGINE = InnoDB;
 -- Contenu de la table `rate_category`
 --
 
-INSERT INTO `rate_category` (`category`) VALUES
-('Classique'),
-('Anniversaire'),
-('Autre');
+INSERT INTO `rate_category` (`category`, `constant_category`) VALUES
+('Classique', 'standard'),
+('Anniversaire', 'anniversary'),
+('Autre', 'other');
 
 --
 -- Structure de la table `rate`
