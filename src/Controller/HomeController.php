@@ -12,7 +12,7 @@ class HomeController extends AbstractController
     public function index(): string
     {
         $rateManager = new RateManager();
-        $rates = $rateManager->selectAll('category != \'Anniversaire\'');
+        $rates = $rateManager->selectAllNotAnniversaryRate();
 
         $rates[] = ['description' => 'Formules anniversaire', 'price' => 'Voir la page dédiée'];
 

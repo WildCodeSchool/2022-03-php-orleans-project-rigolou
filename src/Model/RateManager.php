@@ -5,17 +5,14 @@ namespace App\Model;
 class RateManager extends AbstractManager
 {
     public const TABLE = 'rate';
+    public const CATEGORY_TABLE = 'rate_category';
+    public const ANNIVERSARY_RATE_CATEGORY = 'anniversary';
 
-    public function selectAll(string $filter = '', string $orderBy = '', string $direction = 'ASC'): array
+    public function selectAllNotAnniversaryRate(): array
     {
-        $query = 'SELECT * FROM ' . static::TABLE . ' r INNER JOIN rate_category rc ON r.rate_category_id = rc.id';
-        if ($filter) {
-            $query .= ' WHERE ' . $filter;
-        }
-        if ($orderBy) {
-            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
-        }
-
+        $query = 'SELECT * FROM ' . static::TABLE . ' AS r';
+        $query .= ' JOIN ' . static::CATEGORY_TABLE . ' AS rc ON r.rate_category_id = rc.id';
+        $query .= ' WHERE rc.constant_category != \'' . static::ANNIVERSARY_RATE_CATEGORY . '\';';
         return $this->pdo->query($query)->fetchAll();
     }
 }
