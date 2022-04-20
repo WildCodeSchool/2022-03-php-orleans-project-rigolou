@@ -15,8 +15,6 @@ class HomeController extends AbstractController
         $rateManager = new RateManager();
         $rates = $rateManager->selectAllNotAnniversaryRate();
 
-        $rates[] = ['description' => 'Formules anniversaire', 'price' => 'Voir la page dédiée'];
-
         $amusementManager = new AmusementManager();
         $amusements = $amusementManager->selectAll();
         $amusementsRandKey = array_rand($amusements, 4);

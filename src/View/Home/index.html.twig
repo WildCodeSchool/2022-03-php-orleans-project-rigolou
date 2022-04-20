@@ -73,15 +73,17 @@
 										<td class="text-end">
 											<a href="#">{{ rate.price }}</a>
 										</td>
-									{% elseif rate.price == 'Voir la page dédiée' %}
-										<td class="text-end">
-											<a href="/anniversaire">{{ rate.price }}</a>
-										</td>
 									{% else %}
 										<td class="text-end">{{ rate.price }}</td>
 									{% endif %}
 								</tr>
 							{% endfor %}
+							<tr>
+								<td>Formules anniversaire</td>
+								<td>
+									<a href="/anniversaire">Voir la page dédiée</a>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
