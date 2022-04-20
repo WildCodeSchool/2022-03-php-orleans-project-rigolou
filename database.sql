@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
+
 -- Structure de la table `rate_category`
 --
 
@@ -33,7 +33,6 @@ CREATE TABLE `rate_category` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
---
 -- Contenu de la table `rate_category`
 --
 
@@ -73,3 +72,35 @@ INSERT INTO `rate` (`description`, `price`, `rate_category_id`) VALUES
 ('Tarifs de groupes', 'Nous contacter', 1),
 ('Triceratops', '16,50 euros / Enfants ( 8 Enfants minimum + Présence d’un adulte Obligatoire )', 2),
 ('Diplodocys', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
+
+  
+-- Contenu de la table `amusement`
+--
+  
+CREATE TABLE IF NOT EXISTS `amusement` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `description` TEXT NOT NULL,
+  `image` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
+('Châteaux gonflable',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_chateau_gonflable.jpg'),
+('Toboggans',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_toboggan.jpg'),
+('Flipper et baby foot',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_baby_foot_flipper.jpg'),
+('Auto-tamponneuses',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_auto_tamponneuse.jpg'),
+('Salle d''arcade',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_arcade.jpg'),
+('Motos',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_moto.jpg');
