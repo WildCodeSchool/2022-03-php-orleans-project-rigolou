@@ -1,13 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Comfortaa:wght@300;400;500&family=League+Gothic&family=Ubuntu:wght@300;400;500&display=swap");
 
 :root {
-    --primary: 218, 234, 129;
+    --primary: 88, 156, 82;
     --bs-primary-rgb: var(--primary);
     --bs-primary: rgb(var(--bs-primary-rgb));
     --primary-light: #f8fbe1;
-    --secondary: #5bb3e4;
+    --intermediate: #6ac162;
+    --secondary: #f29b30;
     --dark: #181b17;
     --light: #fffff9;
+    --section-background: #fffaf3;
+    --section-background-alternate: #d9ccbc;
 
     --title-font: "Comfortaa", cursive;
     --text-font: "Ubuntu", sans-serif;
@@ -15,6 +18,8 @@
     --line-height: 1.3;
 
     --map-height: 350px;
+  
+    --rounded: 0.6rem;
 }
 
 body {
@@ -24,11 +29,65 @@ body {
     line-height: var(--line-height);
 }
 
+h1 {
+    color: var(--light);
+}
+
 h1,
 h2,
 h3 {
     font-family: var(--title-font);
-    color: var(--dark);
+}
+
+/* Change to bootstrap defaults */
+
+.rounded-4 {
+    border-radius: var(--rounded);
+}
+
+.btn.btn-primary {
+    font-size: calc(var(--text-size) * 1.2);
+    font-weight: bold;
+    background-color: var(--secondary);
+    border-color: var(--light);
+}
+
+.btn.btn-primary:hover {
+    background-color: var(--secondary);
+    border-color: var(--light);
+    filter: brightness(1.2);
+}
+
+.btn.btn-primary:active,
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+    box-shadow: none;
+}
+
+.card {
+    height: 100%;
+    background-color: var(--intermediate);
+    border-top-left-radius: var(--rounded);
+    border-top-right-radius: var(--rounded);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.card-title {
+    color: var(--light);
+    font-size: calc(var(--text-size) * 1.2);
+    font-weight: bold;
+}
+
+/* End change to bootstrap defaults */
+
+.section-title {
+    width: fit-content;
+}
+
+.amusement-home {
+    background-color: var(--section-background);
+    background-image: url("../images/inspiration-geometry.png");
 }
 
 .map-itinerary {
