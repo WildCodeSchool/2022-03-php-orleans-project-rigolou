@@ -92,3 +92,8 @@ h3 {
     height: fit-content;
     background-color: var(--light);
 }
+
+.amusement-home {
+    background-color: var(--section-background);
+    background-image: url("../images/inspiration-geometry.png");
+}
