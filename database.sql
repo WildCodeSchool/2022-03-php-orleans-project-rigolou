@@ -23,41 +23,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `item`
+-- Structure de la table `amusement`
 --
 
-CREATE TABLE `item` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `amusement` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `description` TEXT NOT NULL,
+  `image` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 --
--- Contenu de la table `item`
+-- Contenu de la table `amusement`
 --
 
-INSERT INTO `item` (`id`, `title`) VALUES
-(1, 'Stuff'),
-(2, 'Doodads');
-
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `item`
---
-ALTER TABLE `item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
+('Châteaux gonflable',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_chateau_gonflable.jpg'),
+('Toboggans',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_toboggan.jpg'),
+('Flipper et baby foot',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_baby_foot_flipper.jpg'),
+('Auto-tamponneuses',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_auto_tamponneuse.jpg'),
+('Salle d''arcade',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_arcade.jpg'),
+('Motos',
+'Attraction phare qui permet aux enfant de jouer en toute sécurité',
+'airedejeux_moto.jpg');
