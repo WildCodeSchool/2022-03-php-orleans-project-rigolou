@@ -29,11 +29,3 @@ h3 {
     color: var(--dark);
 }
 
-p{
-    font-family: var(--text-font);
-}
-
-.header {
-    max-height: 400px;
-}
-

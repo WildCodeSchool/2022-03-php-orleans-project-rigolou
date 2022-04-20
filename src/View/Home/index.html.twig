@@ -1,12 +1,15 @@
 {% extends 'layout.html.twig' %}
 
+
 {% block title %}
 	{{ parent() }}
 	- Accueil
 {% endblock %}
 
-{% block content %}
+{% block stylesheet %}<link rel="stylesheet" href="assets/css/header.css">
+{% endblock %}
 
+{% block content %}
 
 	<header class="header container-fluid ">
 		<div class="row">
@@ -21,9 +24,10 @@
 				</p>
 			</div>
 		</div>
+		<div class="row">
+			<img class="img_header img-fluid" src="assets/images/8.jpeg" alt="img_header">
+		</div>
 	</header>
 
-	<main
-		class="container-fluid">{# <h1>Rigolou</h1> #}
-	</main>
+	<main class="container-fluid"></main>
 {% endblock %}
