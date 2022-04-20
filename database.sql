@@ -22,7 +22,11 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+<<<<<<< HEAD
 --
+=======
+
+>>>>>>> a4cb1e6153df808847e2a5e316351b7ed4faa9a8
 -- Structure de la table `rate_category`
 --
 
@@ -33,7 +37,10 @@ CREATE TABLE `rate_category` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+<<<<<<< HEAD
 --
+=======
+>>>>>>> a4cb1e6153df808847e2a5e316351b7ed4faa9a8
 -- Contenu de la table `rate_category`
 --
 
@@ -74,6 +81,7 @@ INSERT INTO `rate` (`description`, `price`, `rate_category_id`) VALUES
 ('Triceratops', '16,50 euros / Enfants ( 8 Enfants minimum + Présence d’un adulte Obligatoire )', 2),
 ('Diplodocys', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
 
+<<<<<<< HEAD
 --
 -- Structure de la table `amusement`
 --
@@ -87,8 +95,19 @@ CREATE TABLE IF NOT EXISTS `amusement` (
 ENGINE = InnoDB;
 
 --
+=======
+  
+>>>>>>> a4cb1e6153df808847e2a5e316351b7ed4faa9a8
 -- Contenu de la table `amusement`
 --
+  
+CREATE TABLE IF NOT EXISTS `amusement` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `description` TEXT NOT NULL,
+  `image` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
 ('Châteaux gonflable',
