@@ -9,7 +9,8 @@ p{
 }
 
 .img_header {
-    max-height: 300px;
+    max-height: 400px;
     object-fit: cover;
+    object-position: top;
 }
 
