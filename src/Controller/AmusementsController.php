@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Model\AmusementManager;
 
-class AmusementsController extends AbstractController
+class AmusementController extends AbstractController
 {
     public function index(): string
     {
