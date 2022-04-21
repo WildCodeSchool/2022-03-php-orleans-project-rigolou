@@ -7,42 +7,25 @@
 
 
 {% block content %}
-<main class="container-fluid ">
+
+<main class="container-fluid amusement-home pt-5">
 
     
-    <h1 class="bg-primary section-title mx-auto my-5 px-3 rounded-4">Attractions</h1>
-    <div class="container rounded-4 bg-secondary my-4">
-        <div class="row amusement-card  ">
-            <div class="col-lg-9 d-flex flex-column justify-content-between">
-                <h2 class="text-center mt-3">Titre de l'attraction</h2>
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing Lorem ipsum dolor sit amet
-                    consectetur adipisicing Lorem ipsum dolor sit amet consectetur adipisicing Lorem ipsum dolor sit
-                    amet consectetur adipisicing
-                </p>
+    <h1 class="bg-primary section-title mx-auto mb-5 px-3 rounded-4">Attractions</h1>
+    {% for amusement in amusements %}
+        <div class="container rounded-4 bg-secondary my-4">
+            <div class="row amusement-card  ">
+                <div class="col-lg-9 d-flex flex-column justify-content-between {% if loop.index % 2 == 0 %} order-lg-2 {% endif %}">
+                    <h2 class="text-center mt-3"> {{amusement.name}} </h2>
+                    <p class="mb-4 text-md-center {% if loop.index % 2 == 0 %} text-lg-end {% else %} text-lg-start{% endif %} "> {{amusement.description}}
+                    </p>
 
+                </div>
+                <div class="col-lg-3 {% if loop.index % 2 == 0 %} order-lg-1 {% endif %}">
+                    <img class="img-size rounded-4" src="{{constant('APP_UPLOAD_PATH') ~ amusement.image}}" onerror="this.src='assets/images/1200x900_placeholder.png';" alt="attraction">
+                </div>
             </div>
-            <div class="col-lg-3">
-                <img class="img-size rounded-4" src="assets/images/test.jpeg" alt="attraction">
-            </div>
-
         </div>
-    </div>
-    <div class="container rounded-4 bg-secondary my-4">
-        <div class="row amusement-card  ">
-            <div class="col-lg-9 d-flex flex-column justify-content-between order-lg-2">
-                <h2 class="text-center mt-3">Titre de l'attraction</h2>
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing Lorem ipsum dolor sit amet
-                    consectetur adipisicing Lorem ipsum dolor sit amet consectetur adipisicing Lorem ipsum dolor sit
-                    amet consectetur adipisicing Lorem ipsum dolor sit amet consectetur adipisicing
-                </p>
-
-            </div>
-            <div class="col-lg-3 order-lg-1">
-                <img class="img-size rounded-4" src="assets/images/test.jpeg" alt="attraction">
-            </div>
-
-        </div>
-    </div>
-
+    {% endfor %}
 </main>
 {% endblock %}
