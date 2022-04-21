@@ -35,7 +35,7 @@ body {
 }
 
 h1 {
-    color: var(--light);
+    color: var(--bs-light);
 }
 
 h1,
@@ -54,12 +54,12 @@ h3 {
     font-size: calc(var(--text-size) * 1.2);
     font-weight: bold;
     background-color: var(--secondary);
-    border-color: var(--light);
+    border-color: var(--bs-light);
 }
 
 .btn.btn-primary:hover {
     background-color: var(--secondary);
-    border-color: var(--light);
+    border-color: var(--bs-light);
     filter: brightness(1.2);
 }
 
@@ -79,7 +79,7 @@ h3 {
 }
 
 .card-title {
-    color: var(--light);
+    color: var(--bs-light);
     font-size: calc(var(--text-size) * 1.2);
     font-weight: bold;
 }
@@ -97,7 +97,7 @@ h3 {
 
 .rate-background {
     height: fit-content;
-    background-color: var(--light);
+    background-color: var(--bs-light);
 }
 
 .amusement-home {
@@ -109,7 +109,7 @@ h3 {
     position: relative;
     width: 100%;
     height: var(--map-height);
-    color: var(--light);
+    color: var(--bs-light);
 }
 
 .map-itinerary > iframe {
