@@ -8,6 +8,7 @@
 			<form action="" method="post" class="w-100">
 				<div class="modal-body w-100">
 					<input type="hidden" name="contactForm" value="1">
+					<input type="hidden" name="pageYOffset" id="pageYOffset">
 					<label for="firstname">Prénom:</label>
 					{% if contactForm.errors.firstname is defined %}
 						<span class="text-danger">{{ contactForm.errors.firstname }}</span>
@@ -49,3 +50,8 @@
 		</div>
 	</div>
 </div>
+<script>
+	window.onscroll = function () {
+    document.getElementById("pageYOffset").value = window.pageYOffset;
+    };
+</script>
