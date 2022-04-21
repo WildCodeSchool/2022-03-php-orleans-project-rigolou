@@ -5,7 +5,28 @@
 	- Accueil
 {% endblock %}
 
+{% block stylesheet %}<link rel="stylesheet" href="assets/css/header.css">
+{% endblock %}
+
 {% block content %}
+	<header class="header container-fluid ">
+		<div class="row">
+			<div class="logo col-lg-6 flex-column d-flex align-items-center ">
+				<img class="w-50" src="assets/images/Logo.png" alt="Logo">
+				<img class="w-50" src="assets/images/Title.png" alt="Title">
+			</div>
+			<div class="col-lg-6 my-sm-4 flex-column d-flex align-items-center justify-content-center">
+				<h1>Bienvenue chez Rigolou !</h1>
+				<p>
+					La plaine de jeux et de loisirs  de 1800 m² à Saran pour les enfants jusqu’a 12 ans. Sous la responsabilité des parents ou d’un adulte accompagnant, les enfants peuvent jouer dans de nombreuses attractions.Venez passer un agréable moment en famille et en toute sécurité !
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<img class="img_header img-fluid" src="assets/images/Family_happy.jpeg" alt="Les enfants jouent">
+		</div>
+	</header>
+  
 	<main class="container-fluid">
 		<!-- amusement section -->
 		<section class="amusement-home container-fluid m-0 text-center">
@@ -116,3 +137,5 @@
 		</div>
 	</footer>
 {% endblock %}
+
+
