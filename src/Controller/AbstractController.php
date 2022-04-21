@@ -32,7 +32,7 @@ abstract class AbstractController
         $contactChecks = ['buttonClicked' => false, 'inputs' => [], 'errors' => []];
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['contactForm'] === '1') {
             $contactChecks['buttonClicked'] = true;
-            $contactInputs = $contactChecks['inputs'][] = array_map('trim', $_POST);
+            $contactInputs = $contactChecks['inputs'] = array_map('trim', $_POST);
 
             if (empty($contactInputs['firstname'])) {
                 $contactChecks['errors']['firstname'] = 'Le prénom est obligatoire';
