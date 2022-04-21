@@ -91,7 +91,7 @@
 									<td class="py-3">{{ rate.description }}</td>
 									{% if rate.price == 'Nous contacter' %}
 										<td class="text-end">
-											<a href="#">{{ rate.price }}</a>
+											<a href="#contactModal" data-bs-toggle="modal">{{ rate.price }}</a>
 										</td>
 									{% else %}
 										<td class="text-end">{{ rate.price }}</td>

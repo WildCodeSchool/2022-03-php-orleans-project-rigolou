@@ -1,0 +1,31 @@
+<div class="modal fade" id="contactModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content modal-dialog-centered">
+			<div class="modal-header w-100">
+				<h5 class="modal-title" id="staticBackdropLabel">Nous contacter</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form action="" method="post" class="w-100">
+				<div class="modal-body w-100">
+					<input type="hidden" name="contact" value="1">
+					<label for="firstname">Prénom:</label><br>
+					<input type="text" name="firstname" id="firstname"><br>
+					<label for="lastname">Nom:</label><br>
+					<input type="text" name="lastname" id="lastname"><br>
+					<label for="email">E-mail:</label><br>
+					<input type="text" name="email" id="email"><br>
+					<label for="telephone">Téléphone:</label><br>
+					<input type="text" name="telephone" id="telephone"><br>
+					<label for="object">Objet:</label><br>
+					<input type="text" name="object" id="object"><br>
+					<label for="message">Message:</label><br>
+					<textarea name="message" id="message" rows="6" class="w-100"></textarea>
+				</div>
+				<div class="modal-footer w-100">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+					<button class="btn btn-primary">Envoyer</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
