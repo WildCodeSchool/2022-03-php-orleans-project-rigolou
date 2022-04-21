@@ -1,5 +1,4 @@
-
-.img{
+.img {
     max-height: 400px;
 }
 
@@ -10,12 +9,6 @@
 
 }
 
-.textPadding{
-    padding-left: 16rem;
-    padding-right: 16rem;
-    padding-top: 2rem;
-}
-
-p{
+p {
     line-height: 2rem;
 }
