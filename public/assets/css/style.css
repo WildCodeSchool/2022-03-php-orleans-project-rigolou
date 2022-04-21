@@ -4,13 +4,17 @@
     --primary: 88, 156, 82;
     --bs-primary-rgb: var(--primary);
     --bs-primary: rgb(var(--bs-primary-rgb));
+    --light:255, 255, 249;
+    --bs-light-rgb: var(--light);
+    --bs-light: rgb(var(--bs-light-rgb));
     --primary-light: #f8fbe1;
     --intermediate: #6ac162;
     --secondary: #f29b30;
     --dark: #181b17;
-    --light: #fffff9;
+  
     --section-background: #fffaf3;
     --section-background-alternate: #d9ccbc;
+
 
     --title-font: "Comfortaa", cursive;
     --text-font: "Ubuntu", sans-serif;
@@ -21,6 +25,7 @@
   
     --rounded: 0.6rem;
 }
+
 
 body {
     color: var(--dark);
