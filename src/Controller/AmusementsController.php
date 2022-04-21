@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class AmusementsController extends AbstractController
+class AmusementController extends AbstractController
 {
     public function index(): string
     {
