@@ -1,5 +1,9 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+	<link rel="stylesheet" href="assets/css/cafeteria.css">
+{% endblock %}
+
 {% block title %}
 	{{ parent() }}
 	- Cafétéria
@@ -7,7 +11,10 @@
 
 {% block content %}
 
-
+	<header class="img">
+		<div class="row">
+			<img class="img_cafet" src="assets/images/Cafet.jpeg" alt=""></div>
+	</header>
 
 
 {% endblock %}

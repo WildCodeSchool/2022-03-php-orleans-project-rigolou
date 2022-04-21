@@ -1,0 +1,11 @@
+
+.img{
+    max-height: 400px;
+}
+
+.img_cafet {
+    max-height: 500px;
+    object-fit: cover;
+    object-position: center;
+
+}
