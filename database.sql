@@ -23,6 +23,59 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `rate_category`
+--
+
+CREATE TABLE `rate_category` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `category` VARCHAR(100) NOT NULL,
+  `constant_category` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+--
+-- Contenu de la table `rate_category`
+--
+
+INSERT INTO `rate_category` (`category`, `constant_category`) VALUES
+('Classique', 'standard'),
+('Anniversaire', 'anniversary'),
+('Autre', 'other');
+
+--
+-- Structure de la table `rate`
+--
+
+CREATE TABLE `rate` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(255) NOT NULL,
+  `price` VARCHAR(100) NOT NULL,
+  `rate_category_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_rate_rate_category`
+    FOREIGN KEY (`rate_category_id`)
+    REFERENCES `rate_category` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+--
+-- Contenu de la table `rate`
+--
+
+INSERT INTO `rate` (`description`, `price`, `rate_category_id`) VALUES
+('Mercredi, Samedi et Dimanche', '9€/pers', 1),
+('Vendredi', '5,50€/pers', 1),
+('Vacances scolaires', '9€/pers', 1),
+('Jours fèriées', '9€/pers', 1),
+('Parents', 'GRATUIT', 1),
+('Comité d''entreprise: Carnet de tickets à revendre aux employés', 'Nous contacter', 1),
+('Tarifs de groupes', 'Nous contacter', 1),
+('Triceratops', '16,50 euros / Enfants ( 8 Enfants minimum + Présence d’un adulte Obligatoire )', 2),
+('Diplodocys', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
+
+
+--
 -- Structure de la table `amusement`
 --
 
@@ -37,6 +90,14 @@ ENGINE = InnoDB;
 --
 -- Contenu de la table `amusement`
 --
+  
+CREATE TABLE IF NOT EXISTS `amusement` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `description` TEXT NOT NULL,
+  `image` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
 ('Châteaux gonflable',
