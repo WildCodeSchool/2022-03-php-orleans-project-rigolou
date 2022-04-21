@@ -10,9 +10,11 @@
     --light: #fffff9;
 
     --title-font: "Comfortaa", cursive;
+    --title-size: 2.5rem;
     --text-font: "Ubuntu", sans-serif;
     --text-size: 1.2rem;
     --line-height: 1.3;
+
 }
 
 body {
@@ -24,7 +26,20 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     font-family: var(--title-font);
     color: var(--dark);
+}
+
+h2 {
+    font-size: calc(var(--title-size)*4);
+}
+
+h3 {
+    font-size: calc(var(--title-size)*2);
+}
+
+h4 {
+    font-size: var(--title-size);
 }

@@ -9,3 +9,13 @@
     object-position: center;
 
 }
+
+.textPadding{
+    padding-left: 16rem;
+    padding-right: 16rem;
+    padding-top: 2rem;
+}
+
+p{
+    line-height: 2rem;
+}
