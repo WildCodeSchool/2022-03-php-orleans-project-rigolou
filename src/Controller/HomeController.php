@@ -12,6 +12,8 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
+        $contactForm = $this->checkContactPost();
+
         $rateManager = new RateManager();
         $rates = $rateManager->selectAllNotAnniversaryRate();
 
@@ -23,6 +25,7 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig', [
             'amusements' => $amusementsFourRandom,
             'rates' => $rates,
+            'contactForm' => $contactForm,
         ]);
     }
 }
