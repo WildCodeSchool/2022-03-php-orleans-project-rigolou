@@ -23,7 +23,6 @@
                 </div>
                 <div class="col-lg-3 {% if loop.index is even %} order-lg-1 {% endif %}">
                     <img class="img-size rounded-4" src="{% if amusement.image is empty %}assets/images/1200x900_placeholder.png{% else %}{{constant('APP_UPLOAD_PATH') ~ amusement.image}}{% endif %}"  alt="Nom de l'attraction">
-                {# {{ dump(constant('APP_UPLOAD_PATH') ~ amusement.image) }} #}
                 </div>
             </div>
         </div>  
