@@ -1,0 +1,16 @@
+
+
+p{
+    font-family: var(--text-font);
+}
+
+.header {
+    max-height: 400px;
+}
+
+.img_header {
+    max-height: 400px;
+    object-fit: cover;
+    object-position: top;
+}
+
