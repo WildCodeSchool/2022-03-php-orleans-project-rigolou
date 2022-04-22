@@ -15,17 +15,18 @@
     {% for amusement in amusements %}
         <div class="container rounded-4 bg-secondary my-4">
             <div class="row amusement-card  ">
-                <div class="col-lg-9 d-flex flex-column justify-content-between {% if loop.index % 2 == 0 %} order-lg-2 {% endif %}">
+                <div class="col-lg-9 d-flex flex-column justify-content-between {% if loop.index is even %} order-lg-2 {% endif %}">
                     <h2 class="text-center mt-3"> {{amusement.name}} </h2>
-                    <p class="mb-4 text-md-center {% if loop.index % 2 == 0 %} text-lg-end {% else %} text-lg-start{% endif %} "> {{amusement.description}}
+                    <p class="mb-4 text-md-center {% if loop.index is even %} text-lg-end {% else %} text-lg-start{% endif %} "> {{amusement.description}}
                     </p>
 
                 </div>
-                <div class="col-lg-3 {% if loop.index % 2 == 0 %} order-lg-1 {% endif %}">
-                    <img class="img-size rounded-4" src="{{constant('APP_UPLOAD_PATH') ~ amusement.image}}" onerror="this.src='assets/images/1200x900_placeholder.png';" alt="attraction">
+                <div class="col-lg-3 {% if loop.index is even %} order-lg-1 {% endif %}">
+                    <img class="img-size rounded-4" src="{% if amusement.image is empty %}assets/images/1200x900_placeholder.png{% else %}{{constant('APP_UPLOAD_PATH') ~ amusement.image}}{% endif %}"  alt="Nom de l'attraction">
+                {# {{ dump(constant('APP_UPLOAD_PATH') ~ amusement.image) }} #}
                 </div>
             </div>
-        </div>
+        </div>  
     {% endfor %}
 </main>
 {% endblock %}
