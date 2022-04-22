@@ -46,19 +46,6 @@ h4 {
     font-family: var(--title-font);
 }
 
-
-h2 {
-    font-size: calc(var(--title-size)*4);
-}
-
-h3 {
-    font-size: calc(var(--title-size)*2);
-}
-
-h4 {
-    font-size: var(--title-size);
-}
-
 /* Change to bootstrap defaults */
 
 .rounded-4 {
