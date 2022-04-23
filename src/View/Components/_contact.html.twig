@@ -15,19 +15,19 @@
 						<span class="text-danger">{{ contactForm.errors.firstname }}</span>
 					{% endif %}
 					<br>
-					<input type="text" name="firstname" id="firstname" {% if contactForm.inputs.firstname is defined %} value="{{ contactForm.inputs.firstname }}" {% endif %}><br>
+					<input type="text" name="firstname" id="firstname" {% if contactForm.inputs.firstname is defined %} value="{{ contactForm.inputs.firstname }}" {% endif %} required><br>
 					<label for="lastname" class="fw-bold mt-2">Nom:</label><span class="text-danger">*</span>
 					{% if contactForm.errors.lastname is defined %}
 						<span class="text-danger">{{ contactForm.errors.lastname }}</span>
 					{% endif %}
 					<br>
-					<input type="text" name="lastname" id="lastname" {% if contactForm.inputs.lastname is defined %} value="{{ contactForm.inputs.lastname }}" {% endif %}><br>
+					<input type="text" name="lastname" id="lastname" {% if contactForm.inputs.lastname is defined %} value="{{ contactForm.inputs.lastname }}" {% endif %} required><br>
 					<label for="email" class="fw-bold mt-2">E-mail:</label><span class="text-danger">*</span>
 					{% if contactForm.errors.email is defined %}
 						<span class="text-danger">{{ contactForm.errors.email }}</span>
 					{% endif %}
 					<br>
-					<input type="text" name="email" id="email" {% if contactForm.inputs.email is defined %} value="{{ contactForm.inputs.email }}" {% endif %}><br>
+					<input type="text" name="email" id="email" {% if contactForm.inputs.email is defined %} value="{{ contactForm.inputs.email }}" {% endif %} required><br>
 					<label for="telephone" class="fw-bold mt-2">Téléphone:</label><br>
 					<input type="text" name="telephone" id="telephone" {% if contactForm.inputs.telephone is defined %} value="{{ contactForm.inputs.telephone }}" {% endif %}><br>
 					<label for="object" class="fw-bold mt-2">Objet:</label><span class="text-danger">*</span>
@@ -35,13 +35,13 @@
 						<span class="text-danger">{{ contactForm.errors.object }}</span>
 					{% endif %}
 					<br>
-					<input type="text" name="object" id="object" {% if contactForm.inputs.object is defined %} value="{{ contactForm.inputs.object }}" {% endif %}><br>
+					<input type="text" name="object" id="object" {% if contactForm.inputs.object is defined %} value="{{ contactForm.inputs.object }}" {% endif %} required><br>
 					<label for="message" class="fw-bold mt-2">Message:</label><span class="text-danger">*</span>
 					{% if contactForm.errors.message is defined %}
 						<span class="text-danger">{{ contactForm.errors.message }}</span>
 					{% endif %}
 					<br>
-					<textarea name="message" id="message" rows="6" class="w-100">{% if contactForm.inputs.message is defined %}{{ contactForm.inputs.message }}{% endif %}</textarea>
+					<textarea name="message" id="message" rows="6" class="w-100" required>{% if contactForm.inputs.message is defined %}{{ contactForm.inputs.message }}{% endif %}</textarea>
 				</div>
 				<div class="modal-footer w-100">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
