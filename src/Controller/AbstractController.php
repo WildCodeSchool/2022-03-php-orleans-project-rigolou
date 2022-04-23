@@ -44,6 +44,8 @@ abstract class AbstractController
 
             if (empty($contactInputs['email'])) {
                 $contactChecks['errors']['email'] = 'L\'e-mail est obligatoire';
+            } elseif (!filter_var($contactInputs['email'], FILTER_VALIDATE_EMAIL)) {
+                $contactChecks['errors']['email'] = 'L\'e-mail n\'a pas le bon format';
             }
 
             if (empty($contactInputs['object'])) {
