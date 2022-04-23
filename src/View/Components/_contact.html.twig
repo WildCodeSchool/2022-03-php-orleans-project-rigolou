@@ -8,7 +8,7 @@
 			<form action="" method="post" class="w-100">
 				<div class="modal-body w-100">
 					<input type="hidden" name="contactForm" value="1">
-					<input type="hidden" name="pageYOffset" id="pageYOffset">
+					<input type="hidden" name="pageYOffset" id="pageYOffset" value="0">
 					<label for="firstname">Prénom:</label>
 					{% if contactForm.errors.firstname is defined %}
 						<span class="text-danger">{{ contactForm.errors.firstname }}</span>
@@ -50,8 +50,23 @@
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="contactModalConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelConfirm" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content modal-dialog-centered">
+			<div class="modal-header w-100">
+				<h5 class="modal-title" id="staticBackdropLabelConfirm">Message envoyé</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body w-100">
+				<p>Votre message a été envoyé.</p>
+				<p>Nous vous recontacterons dans les plus brefs délais.</p>
+			</div>
+			<div class="modal-footer w-100">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
-	window.onscroll = function () {
-    document.getElementById("pageYOffset").value = window.pageYOffset;
-    };
+	window.onscroll = function () {document.getElementById("pageYOffset").value = window.pageYOffset;};
 </script>

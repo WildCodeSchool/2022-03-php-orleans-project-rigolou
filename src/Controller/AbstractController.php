@@ -29,9 +29,9 @@ abstract class AbstractController
 
     protected function checkContactPost(): array
     {
-        $contactChecks = ['buttonClicked' => false, 'inputs' => [], 'errors' => []];
+        $contactChecks = ['sendMessageRequested' => false, 'inputs' => [], 'errors' => []];
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['contactForm'] === '1') {
-            $contactChecks['buttonClicked'] = true;
+            $contactChecks['sendMessageRequested'] = true;
             $contactInputs = $contactChecks['inputs'] = array_map('trim', $_POST);
 
             if (empty($contactInputs['firstname'])) {
