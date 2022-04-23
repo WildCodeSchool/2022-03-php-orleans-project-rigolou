@@ -46,6 +46,16 @@ h4 {
     font-family: var(--title-font);
 }
 
+a {
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+a:hover {
+    color: var(--secondary);
+    filter: brightness(1.2);
+}
+
 /* Change to bootstrap defaults */
 
 .rounded-4 {
