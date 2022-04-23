@@ -28,7 +28,11 @@
 				<script>
 					var contactForm = new bootstrap.Modal(document.getElementById('contactModal'), {});
 					contactForm.toggle();
-					window.scrollTo(0, {{ contactForm.inputs.pageYOffset }});
+					window.scrollTo({
+										top: {{ contactForm.inputs.pageYOffset }},
+										left: 0,
+										behavior: 'instant'
+									});
 				</script>
 			{% endif %}
 		{% endif %}
