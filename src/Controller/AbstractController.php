@@ -27,7 +27,7 @@ abstract class AbstractController
         $this->twig->addExtension(new DebugExtension());
     }
 
-    protected function checkContactPost(): array
+    protected function validateContactPost(): array
     {
         $contactChecks = ['sendMessageRequested' => false, 'inputs' => [], 'errors' => []];
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['contactForm'] === '1') {

@@ -12,7 +12,7 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        $contactForm = $this->checkContactPost();
+        $contactForm = $this->validateContactPost();
 
         $rateManager = new RateManager();
         $rates = $rateManager->selectAllNotAnniversaryRate();
