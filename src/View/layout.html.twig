@@ -23,17 +23,7 @@
 		{% include 'Components/_contact.html.twig' %}
 		<!-- Bootstrap JS -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-		{% if contactForm is defined %}
-			{% if contactForm.sendMessageRequested %}
-				<script>
-					{% if contactForm.errors is empty %}
-						var contactForm = new bootstrap.Modal(document.getElementById('contactModalConfirm'), {});
-					{% else %}
-						var contactForm = new bootstrap.Modal(document.getElementById('contactModal'), {});{% endif %}contactForm.toggle();
-						window.scrollTo({top: {{ contactForm.inputs.pageYOffset }}, left: 0, behavior: 'instant'});
-				</script>
-			{% endif %}
-		{% endif %}
+		{% include 'Components/_contact.script.twig' %}		
 		{% block javascript %}{% endblock %}
 	</body>
 </html>

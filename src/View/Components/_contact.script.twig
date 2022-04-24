@@ -1,0 +1,13 @@
+{% if contactForm is defined %}
+	{% if contactForm.sendMessageRequested %}
+		<script>
+			{% if contactForm.errors is empty %}
+                var contactForm = new bootstrap.Modal(document.getElementById('contactModalConfirm'), {});
+            {% else %}
+                var contactForm = new bootstrap.Modal(document.getElementById('contactModal'), {});
+            {% endif %}
+            contactForm.toggle();
+            window.scrollTo({top: {{ contactForm.inputs.pageYOffset }}, left: 0, behavior: 'instant'});
+		</script>
+	{% endif %}
+{% endif %}
