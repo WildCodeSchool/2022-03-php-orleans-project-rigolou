@@ -30,7 +30,7 @@ abstract class AbstractController
     protected function validateContactPost(): array
     {
         $contactChecks = ['sendMessageRequested' => false, 'inputs' => [], 'errors' => []];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['contactForm'] === '1') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contactForm'])) {
             $contactChecks['sendMessageRequested'] = true;
             $contactInputs = $contactChecks['inputs'] = array_map('trim', $_POST);
 
