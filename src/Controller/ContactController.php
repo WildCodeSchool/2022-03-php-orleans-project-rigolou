@@ -9,40 +9,40 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        $validation = $this->validateContactPost();
+        $validations = $this->validateContactPost();
 
-        return $this->twig->render('Contact/index.html.twig', ['validation' => $validation]);
+        return $this->twig->render('Contact/index.html.twig', ['validations' => $validations]);
     }
 
 
     private function validateContactPost(): array
     {
-        $contactChecks = ['inputs' => [], 'errors' => []];
+        $validations = ['inputs' => [], 'errors' => []];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $contactInputs = $contactChecks['inputs'] = array_map('trim', $_POST);
+            $validations['inputs'] = array_map('trim', $_POST);
 
-            if (empty($contactInputs['firstname'])) {
-                $contactChecks['errors']['firstname'] = 'Le prénom est obligatoire';
+            if (empty($validations['inputs']['firstname'])) {
+                $validations['errors']['firstname'] = 'Le prénom est obligatoire';
             }
 
-            if (empty($contactInputs['lastname'])) {
-                $contactChecks['errors']['lastname'] = 'Le nom est obligatoire';
+            if (empty($validations['inputs']['lastname'])) {
+                $validations['errors']['lastname'] = 'Le nom est obligatoire';
             }
 
-            if (empty($contactInputs['email'])) {
-                $contactChecks['errors']['email'] = 'L\'e-mail est obligatoire';
-            } elseif (!filter_var($contactInputs['email'], FILTER_VALIDATE_EMAIL)) {
-                $contactChecks['errors']['email'] = 'L\'e-mail n\'a pas le bon format';
+            if (empty($validations['inputs']['email'])) {
+                $validations['errors']['email'] = 'L\'e-mail est obligatoire';
+            } elseif (!filter_var($validations['inputs']['email'], FILTER_VALIDATE_EMAIL)) {
+                $validations['errors']['email'] = 'L\'e-mail n\'a pas le bon format';
             }
 
-            if (empty($contactInputs['object'])) {
-                $contactChecks['errors']['object'] = 'L\'objet est obligatoire';
+            if (empty($validations['inputs']['object'])) {
+                $validations['errors']['object'] = 'L\'objet est obligatoire';
             }
 
-            if (empty($contactInputs['message'])) {
-                $contactChecks['errors']['message'] = 'Le message est obligatoire';
+            if (empty($validations['inputs']['message'])) {
+                $validations['errors']['message'] = 'Le message est obligatoire';
             }
         }
-        return $contactChecks;
+        return $validations;
     }
 }
