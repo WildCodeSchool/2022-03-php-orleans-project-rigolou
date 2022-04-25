@@ -9,9 +9,11 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
+        $validation = $this->validateContactPost();
 
-        return $this->twig->render('Contact/index.html.twig');
+        return $this->twig->render('Contact/index.html.twig', ['validation' => $validation]);
     }
+
 
     private function validateContactPost(): array
     {
@@ -43,5 +45,4 @@ class HomeController extends AbstractController
         }
         return $contactChecks;
     }
-
 }
