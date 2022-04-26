@@ -12,9 +12,10 @@
 
     
     <h1 class="bg-primary section-title mx-auto mb-5 px-3 rounded-4">Attractions</h1>
+
     {% for amusement in amusements %}
-        <div class="container rounded-4 bg-secondary my-4">
-            <div class="row amusement-card  ">
+        <div class="container shadow rounded-4 bg-primary my-4">
+            <div class="row  amusement-card  ">
                 <div class="col-lg-9 d-flex flex-column justify-content-between {% if loop.index is even %} order-lg-2 {% endif %}">
                     <h2 class="text-center mt-3"> {{amusement.name}} </h2>
                     <p class="mb-4 text-md-center {% if loop.index is even %} text-lg-end {% else %} text-lg-start{% endif %} "> {{amusement.description}}
