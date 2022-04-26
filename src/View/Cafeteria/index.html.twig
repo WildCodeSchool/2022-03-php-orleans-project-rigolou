@@ -24,6 +24,9 @@
 			</div>
 		</div>
 	</header>
-
-
+	<ul>
+	{% for snack in snacks %}
+		<li>{{ snack.name }}</li>
+	{% endfor %}
+	</ul>
 {% endblock %}
