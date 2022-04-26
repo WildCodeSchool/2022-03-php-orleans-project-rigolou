@@ -31,14 +31,14 @@
 				<span class="text-danger">{{ validations.errors.email }}</span>
 			{% endif %}
 			<input type="text" class="form-control" name="email" id="email" {% if validations.inputs.email is defined %} value="{{ validations.inputs.email }}" {% endif %} required><br>
-			<label for="telephone" class="fw-bold form-label mt-2">Téléphone:</label><br>
-			<input type="text" class="form-control" name="telephone" id="telephone" {% if validations.inputs.telephone is defined %} value="{{ validations.inputs.telephone }}" {% endif %}><br>
-			<label for="object" class="fw-bold form-label mt-2">Objet:</label>
+			<label for="phone" class="fw-bold form-label mt-2">Téléphone:</label><br>
+			<input type="text" class="form-control" name="phone" id="phone" {% if validations.inputs.telephone is defined %} value="{{ validations.inputs.telephone }}" {% endif %}><br>
+			<label for="subject" class="fw-bold form-label mt-2">Objet:</label>
 			<span class="text-danger">*</span>
-			{% if validations.errors.object is defined %}
-				<span class="text-danger">{{ validations.errors.object }}</span>
+			{% if validations.errors.subject is defined %}
+				<span class="text-danger">{{ validations.errors.subject }}</span>
 			{% endif %}
-			<input type="text" class="form-control" name="object" id="object" {% if validations.inputs.object is defined %} value="{{ validations.inputs.object }}" {% endif %} required><br>
+			<input type="text" class="form-control" name="subject" id="subject" {% if validations.inputs.subject is defined %} value="{{ validations.inputs.subject }}" {% endif %} required><br>
 			<label for="message" class="fw-bold form-label mt-2">Message:</label>
 			<span class="text-danger">*</span>
 			{% if validations.errors.message is defined %}
