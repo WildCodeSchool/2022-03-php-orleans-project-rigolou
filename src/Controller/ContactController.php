@@ -13,7 +13,13 @@ class ContactController extends AbstractController
         if ($send !== '' && trim($send) === 'success') {
             $messageSend = true;
         }
+
         $validations = $this->validateContactPost();
+
+        if (isset($validations['errors']) && empty($validations['errors'])) {
+            //envoi mail
+            header('Location: /contact?send=success');
+        }
 
         return $this->twig->render('Contact/index.html.twig', ['
             validations' => $validations,
@@ -24,8 +30,9 @@ class ContactController extends AbstractController
 
     private function validateContactPost(): array
     {
-        $validations = ['inputs' => [], 'errors' => []];
+        $validations = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $validations['errors'] = [];
             $validations['inputs'] = array_map('trim', $_POST);
 
             if (empty($validations['inputs']['firstname'])) {
