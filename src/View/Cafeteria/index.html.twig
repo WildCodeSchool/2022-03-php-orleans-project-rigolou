@@ -24,9 +24,16 @@
 			</div>
 		</div>
 	</header>
+	<h2>Boissons</h2>
 	<ul>
-	{% for snack in snacks %}
-		<li>{{ snack.name }}</li>
-	{% endfor %}
+		{% for boisson in boissons %}
+			<li>{{ boisson.name }}</li>
+		{% endfor %}
+	</ul>
+	<h2>Snacks</h2>
+	<ul>
+		{% for snack in snacks %}
+			<li>{{ snack.name }}</li>
+		{% endfor %}
 	</ul>
 {% endblock %}
