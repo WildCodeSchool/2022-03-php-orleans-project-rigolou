@@ -34,9 +34,9 @@
 				<div class="row justify-content-center">
 					{% for amusement in amusements %}
 						<article class="col-lg-3 col-md-6 mb-2">
-							<div class="card d-flex justify-content-between shadow">
+							<div class="card d-flex justify-content-between shadow border-0">
 								<div class="card-title align-self-center my-2">{{ amusement.name }}</div>
-								<img src="{{ constant('APP_UPLOAD_PATH') ~ amusement.image }}" alt="{{ amusement.name }}" onerror="this.src='assets/images/1200x900_placeholder.png';" class="card-img-bottom rounded-0">
+								<img src="{% if amusement.image is empty %}assets/images/attraction_placeholder.jpg{% else %}{{ constant('APP_UPLOAD_PATH') ~ amusement.image }}{% endif %}" alt="{{ amusement.name }}"class="card-img-bottom rounded-0">
 							</div>
 						</article>
 					{% endfor %}
