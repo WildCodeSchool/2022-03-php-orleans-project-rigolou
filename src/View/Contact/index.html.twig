@@ -7,6 +7,9 @@
 
 {% block content %}
 	<h1 class="section-title mx-auto my-5 px-3 bg-primary rounded-4">Nous contacter</h1>
+	{% if messageSend %}
+		<h2 class="w-100 text-center">Message envoyé, nous vous recontacterons dans les plus brefs délais.</h2>
+	{% endif %}
 	<form action="" method="post" class="container">
 		<div class="w-100">
 			<p class="text-danger">* champs obligatoires</p>

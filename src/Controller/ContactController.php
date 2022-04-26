@@ -7,11 +7,18 @@ class ContactController extends AbstractController
     /**
      * Display contact page
      */
-    public function index(): string
+    public function index(string $send = ''): string
     {
+        $messageSend = false;
+        if ($send !== '' && trim($send) === 'success') {
+            $messageSend = true;
+        }
         $validations = $this->validateContactPost();
 
-        return $this->twig->render('Contact/index.html.twig', ['validations' => $validations]);
+        return $this->twig->render('Contact/index.html.twig', ['
+            validations' => $validations,
+            'messageSend' => $messageSend
+        ]);
     }
 
 
