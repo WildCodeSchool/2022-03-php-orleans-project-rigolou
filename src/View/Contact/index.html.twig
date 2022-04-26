@@ -6,53 +6,48 @@
 {% endblock %}
 
 {% block content %}
-	<form action="" method="post" class="w-100">
+	<h1 class="section-title mx-auto my-5 px-3 bg-primary rounded-4">Nous contacter</h1>
+	<form action="" method="post" class="container">
 		<div class="w-100">
 			<p class="text-danger">* champs obligatoires</p>
-			<label for="firstname" class="fw-bold">Prénom:</label>
+			<label for="firstname" class="fw-bold form-label">Prénom:</label>
 			<span class="text-danger">*</span>
 			{% if validations.errors.firstname is defined %}
 				<span class="text-danger">{{ validations.errors.firstname }}</span>
 			{% endif %}
-			<br>
-			<input type="text" name="firstname" id="firstname" {% if validations.inputs.firstname is defined %} value="{{ validations.inputs.firstname }}" {% endif %} required><br>
-			<label for="lastname" class="fw-bold mt-2">Nom:</label>
+			<input type="text" class="form-control" name="firstname" id="firstname" {% if validations.inputs.firstname is defined %} value="{{ validations.inputs.firstname }}" {% endif %} required><br>
+			<label for="lastname" class="fw-bold form-label mt-2">Nom:</label>
 			<span class="text-danger">*</span>
 			{% if validations.errors.lastname is defined %}
 				<span class="text-danger">{{ validations.errors.lastname }}</span>
 			{% endif %}
-			<br>
-			<input type="text" name="lastname" id="lastname" {% if validations.inputs.lastname is defined %} value="{{ validations.inputs.lastname }}" {% endif %} required><br>
-			<label for="email" class="fw-bold mt-2">E-mail:</label>
+			<input type="text" class="form-control" name="lastname" id="lastname" {% if validations.inputs.lastname is defined %} value="{{ validations.inputs.lastname }}" {% endif %} required><br>
+			<label for="email" class="fw-bold form-label mt-2">E-mail:</label>
 			<span class="text-danger">*</span>
 			{% if validations.errors.email is defined %}
 				<span class="text-danger">{{ validations.errors.email }}</span>
 			{% endif %}
-			<br>
-			<input type="text" name="email" id="email" {% if validations.inputs.email is defined %} value="{{ validations.inputs.email }}" {% endif %} required><br>
-			<label for="telephone" class="fw-bold mt-2">Téléphone:</label><br>
-			<input type="text" name="telephone" id="telephone" {% if validations.inputs.telephone is defined %} value="{{ validations.inputs.telephone }}" {% endif %}><br>
-			<label for="object" class="fw-bold mt-2">Objet:</label>
+			<input type="text" class="form-control" name="email" id="email" {% if validations.inputs.email is defined %} value="{{ validations.inputs.email }}" {% endif %} required><br>
+			<label for="telephone" class="fw-bold form-label mt-2">Téléphone:</label><br>
+			<input type="text" class="form-control" name="telephone" id="telephone" {% if validations.inputs.telephone is defined %} value="{{ validations.inputs.telephone }}" {% endif %}><br>
+			<label for="object" class="fw-bold form-label mt-2">Objet:</label>
 			<span class="text-danger">*</span>
 			{% if validations.errors.object is defined %}
 				<span class="text-danger">{{ validations.errors.object }}</span>
 			{% endif %}
-			<br>
-			<input type="text" name="object" id="object" {% if validations.inputs.object is defined %} value="{{ validations.inputs.object }}" {% endif %} required><br>
-			<label for="message" class="fw-bold mt-2">Message:</label>
+			<input type="text" class="form-control" name="object" id="object" {% if validations.inputs.object is defined %} value="{{ validations.inputs.object }}" {% endif %} required><br>
+			<label for="message" class="fw-bold form-label mt-2">Message:</label>
 			<span class="text-danger">*</span>
 			{% if validations.errors.message is defined %}
 				<span class="text-danger">{{ validations.errors.message }}</span>
 			{% endif %}
-			<br>
-			<textarea name="message" id="message" rows="6" class="w-100" required>
-				{% if validations.inputs.message is defined %}
+			<textarea class="form-control" name="message" id="message" rows="10" required>
+				{%- if validations.inputs.message is defined -%}
 					{{ validations.inputs.message }}
-				{% endif %}
+				{%- endif -%}
 			</textarea>
 		</div>
-		<div class="w-100">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+		<div class="w-100 text-end mt-3">
 			<button class="btn btn-primary">Envoyer</button>
 		</div>
 	</form>

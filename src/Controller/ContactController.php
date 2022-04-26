@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class HomeController extends AbstractController
+class ContactController extends AbstractController
 {
     /**
      * Display contact page
