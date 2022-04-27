@@ -140,4 +140,8 @@ VALUES
   ('coca', 2.5, 'drink'),
   ('biere', 3.5, 'drink'),
   ('sandwich', 5, 'snack'),
-  ('crepes', 3.5, 'snack');
+  ('crepes', 3.5, 'snack'),
+  ('pop-corn', 2.5, 'snack'),
+  ('fanta', 2, 'drink'),
+  ('Panache', 3, 'drink'),
+  ('Brownie', 1.7, 'snack');
