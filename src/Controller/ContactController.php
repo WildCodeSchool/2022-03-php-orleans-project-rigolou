@@ -8,8 +8,6 @@ use Symfony\Component\Mime\Email;
 
 class ContactController extends AbstractController
 {
-    public const GOOGLE_DSN = 'gmail+smtp://projetrigolou@gmail.com:FJX6GaDzEGVHfS7E6zIV@default';
-
     /**
      * Display contact page
      */
@@ -68,21 +66,22 @@ class ContactController extends AbstractController
 
     private function sendMail(array $inputs): void
     {
-        $message = '<p>Message de:</p>
-        <p>' . $inputs['firstname'] . ' ' . $inputs['lastname'] . '</p>';
+        $message = '<p>Message de:<br>'
+        . $inputs['firstname'] . ' ' . $inputs['lastname'] . '<br>';
         if ($inputs['phone'] !== '') {
-            $message .= '<p>Tel: ' . $inputs['phone'] . '</p>';
+            $message .= 'Tel: ' . $inputs['phone'] . '<br>';
         }
+        $message .= 'Email: ' . $inputs['email'];
         $message .= '<p>'  . $inputs['message'] . '</p>';
 
         $mail = (new Email())
          ->from($inputs['email'])
-         ->to('projetrigolou@gmail.com')
+         ->to(MAIL_INBOX)
          ->subject($inputs['subject'])
          ->html($message)
         ;
 
-        $transport = Transport::fromDsn(self::GOOGLE_DSN);
+        $transport = Transport::fromDsn(MAILER_DSN);
         $mailer = new Mailer($transport);
         $mailer->send($mail);
     }
