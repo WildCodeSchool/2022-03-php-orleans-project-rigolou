@@ -12,88 +12,98 @@
 
 {% block content %}
 
-	<h2>Evènements a venir :</h2>
+	<h2 class="text-center m-5">Evènements a venir :</h2>
 
-	{% for upcomingEvent in upcomingEvents %}
+	<section class="container">
+		<div class="row">
+			{% for upcomingEvent in upcomingEvents %}
+				<div class="col-lg-4 mb-4">
+					<div class="card text-center">
+						<img src="assets/images/{{ upcomingEvent.image }}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h3 class="card-title">{{ upcomingEvent.title|upper }}</h3>
+							<button type="button" class="btn btn-primary align-center" data-bs-toggle="modal" data-bs-target="#{{ upcomingEvent.title }}">
+								En savoir plus !
+							</button>
 
-
-		<div class="card" style="width: 18rem;">
-			<img src="assets/images/{{ upcomingEvent.image }}" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">{{ upcomingEvent.title }}</h5>
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ upcomingEvent.title }}">
-					En savoir plus !
-				</button>
-
-			</div>
-		</div>
-		<!-- Button trigger modal -->
-
-
-		<!-- Modal -->
-		<div class="modal fade" id="{{ upcomingEvent.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">{{ upcomingEvent.title }}</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<p>{{ upcomingEvent.description }}</p>
-						<p>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-event-fill" viewbox="0 0 16 16">
-								<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2h16a2 2 0 0 0-2-2H2zM0 14V3h16v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm12-8a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
-							</svg> 
-							 {{ upcomingEvent.date }}</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	{% endfor %}
-
-	<h2>Evènements terminée :</h2>
+				<!-- Button trigger modal -->
 
 
-	{% for pastEvent in pastEvents %}
-
-
-		<div class="card" style="width: 18rem;">
-			<img src="assets/images/{{ pastEvent.image }}" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">{{ pastEvent.title }}</h5>
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ pastEvent.title }}">
-					En savoir plus !
-				</button>
-
-			</div>
-		</div>
-		<!-- Button trigger modal -->
-
-
-		<!-- Modal -->
-		<div class="modal fade" id="{{ pastEvent.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">{{ pastEvent.title }}</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<p>{{ pastEvent.description }}</p>
-						<p>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-event-fill" viewbox="0 0 16 16">
-								<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2h16a2 2 0 0 0-2-2H2zM0 14V3h16v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm12-8a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
-							</svg> 
-							 {{ pastEvent.date }}</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<!-- Modal -->
+				<div class="modal fade text-center" id="{{ upcomingEvent.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">{{ upcomingEvent.title|upper }}</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<p>{{ upcomingEvent.description }}</p>
+								<p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewbox="0 0 16 16">
+										<path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+										<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+									</svg>
+									{{ upcomingEvent.date }}</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
+			{% endfor %}
 		</div>
-	{% endfor %}
+	</section>
+
+	<h2 class="text-center m-5">Evènements terminée :</h2>
+
+	<section class="container">
+		<div class="row">
+			{% for pastEvent in pastEvents %}
+				<div class="col-lg-4 mb-4">
+					<div class="card text-center">
+						<img src="assets/images/{{ pastEvent.image }}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h3 class="card-title">{{ pastEvent.title|upper }}</h3>
+							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ pastEvent.title }}">
+								En savoir plus !
+							</button>
+
+						</div>
+					</div>
+				</div>
+				<!-- Button trigger modal -->
+
+
+				<!-- Modal -->
+				<div class="modal fade text-center" id="{{ pastEvent.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">{{ pastEvent.title|upper }}</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<p>{{ pastEvent.description }}</p>
+								<p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-calendar-event" viewbox="0 0 16 16">
+										<path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+										<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+									</svg>
+									{{ pastEvent.date }}</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
 {% endblock %}
