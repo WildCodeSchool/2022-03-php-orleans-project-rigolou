@@ -118,3 +118,16 @@ INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
 ('Motos',
 'Attraction phare qui permet aux enfants de jouer en toute sécurité',
 '');
+
+CREATE TABLE IF NOT EXISTS `anniversary_reservation` (
+`id` INT NOT NULL AUTO_INCREMENT, 
+`reservation_date`DATE NOT NULL, 
+`firstname`VARCHAR(100) NOT NULL,
+`lastname`VARCHAR(100) NOT NULL,
+`email`VARCHAR(100) NOT NULL,
+`phone`VARCHAR(100) NOT NULL,
+`message` TEXT NOT NULL, 
+`status`VARCHAR(45) NOT NULL,
+`rate_id` INT, 
+PRIMARY KEY (`id`)
+)
