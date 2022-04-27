@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="assets/css/events.css">
+{% endblock %}
+
+{% block title %}
+	{{ parent() }}
+	- Evènements
+{% endblock %}
+
+
+{% block header %}
+	<h2>Evenements a venir :</h2>
+	<ul>
+		{% for upcomingEvent in upcomingEvents %}
+			<li>{{ upcomingEvent.title }}</li>
+			<li>{{ upcomingEvent.description }}</li>
+			<li><img src="assets/images/{{ upcomingEvent.image }}" alt="event"></li>
+			<li>{{ upcomingEvent.date }}</li>
+
+		{% endfor %}
+	</ul>
+	<h2>Evenements terminé :</h2>
+
+	<ul>
+		{% for pastEvent in pastEvents %}
+			<li>{{ pastEvent.title }}</li>
+			<li>{{ pastEvent.description }}</li>
+			<li><img src="assets/images/{{ pastEvent.image }}" alt="event"></li>
+			<li>{{ pastEvent.date }}</li>
+
+		{% endfor %}
+	</ul>
+{% endblock %}
+{% block content %}{% endblock %}

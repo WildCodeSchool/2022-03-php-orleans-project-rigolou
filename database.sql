@@ -118,3 +118,23 @@ INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
 ('Motos',
 'Attraction phare qui permet aux enfants de jouer en toute sécurité',
 '');
+
+
+
+CREATE TABLE IF NOT EXISTS `events` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(100) NOT NULL,
+  `image` VARCHAR(100) NOT NULL,
+  `description` TEXT NOT NULL,
+  `date` DATETIME NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+
+INSERT INTO `events` (`title`, `image`, `description`, `date`) VALUES 
+('noel', 'events.webp',
+ 'soirée de noel', '2025-12-31 23:59'),
+('halloween', 'events.webp',
+ 'soiréé halloween', '2020-12-31 23:59');
+
