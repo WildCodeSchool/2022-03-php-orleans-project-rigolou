@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\AnniversaryDetailsManager;
+
 class AnniversaryController extends AbstractController
 {
     /**
@@ -9,6 +11,9 @@ class AnniversaryController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Anniversary/index.html.twig');
+
+        $detailsManager = new AnniversaryDetailsManager();
+        $details = $detailsManager->selectAll();
+        return $this->twig->render('Anniversary/index.html.twig', ['details', $details]);
     }
 }
