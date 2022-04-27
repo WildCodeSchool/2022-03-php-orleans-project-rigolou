@@ -92,6 +92,10 @@ h4 {
     width: fit-content;
 }
 
+.w-fit {
+    width: fit-content;
+}
+
 .map-itinerary {
     position: relative;
     width: 100%;
