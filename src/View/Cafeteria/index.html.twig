@@ -27,30 +27,41 @@
 
 {% block content %}
 	<main class="container">
-		<div class="row m-0 p-0">
-			<div class="d-flex justify-content-around">
-				<div class="boissons">
+		<div class="row m-0 p-0 justify-content-around">
+			<div class="bg-primary-light col-lg-4 p-4 m-2 shadow rounded-4">
+				<table class="w-100">
+					<thead>
+						<tr>
+							<h4 class="text-center">Boissons</h4>
+						</tr>
+					</thead>
+					{% for boisson in boissons %}
+						<tr>
+							<td class="py-3">{{ boisson.name }}</td>
+							<td class="text-end">{{ boisson.price }}
+								€</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
 
-					<h4 class="title_boissons text-center py-4">Boissons</h4>
-					<ul class="list_boissons">
-						{% for boisson in boissons %}
-							<li class='mb-3'>{{ boisson.name }}..................{{ boisson.price}}
-								euros
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
-				<div class="snacks">
-					<h4 class="title_snacks text-center py-4">Snacks</h4>
-					<ul class="list_snacks">
-						{% for snack in snacks %}
-							<li class='mb-3'>{{ snack.name }}..................{{ snack.price }}
-								euros
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
+			<div class="bg-primary-light col-lg-4 p-4 m-2 shadow rounded-4">
+				<table class="w-100">
+					<thead>
+						<tr>
+							<h4 class="text-center">Snacks</h4>
+						</tr>
+					</thead>
+					{% for snack in snacks %}
+						<tr>
+							<td class="py-3">{{ snack.name }}</td>
+							<td class="text-end">{{ snack.price }}
+								€</td>
+						</tr>
+					{% endfor %}
+				</table>
 			</div>
 		</div>
 	</main>
+
 {% endblock %}
