@@ -23,5 +23,4 @@ class EventsManager extends AbstractManager
 
         return $statement->fetchAll();
     }
-
 }

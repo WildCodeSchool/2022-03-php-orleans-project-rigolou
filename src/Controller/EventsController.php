@@ -8,9 +8,6 @@ class EventsController extends AbstractController
 {
     public function index(): string
     {
-        
-
-
         $eventsManager = new EventsManager();
         $pastEvents = $eventsManager->selectAllPastEvents();
         $upcomingEvents = $eventsManager->selectAllUpcomingEvents();
