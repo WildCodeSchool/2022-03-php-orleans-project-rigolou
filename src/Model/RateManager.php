@@ -18,7 +18,7 @@ class RateManager extends AbstractManager
 
     public function selectAllAnniversary(): array
     {
-        $query = 'SELECT * FROM ' . self::TABLE . ' AS r';
+        $query = 'SELECT r.id, r.description, r.price FROM ' . self::TABLE . ' AS r';
         $query .= ' JOIN ' . self::CATEGORY_TABLE . ' AS rc ON r.rate_category_id = rc.id';
         $query .= ' WHERE rc.constant_category = \'' . self::ANNIVERSARY_RATE_CATEGORY . '\';';
         return $this->pdo->query($query)->fetchAll();

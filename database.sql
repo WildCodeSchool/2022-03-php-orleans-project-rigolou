@@ -123,12 +123,12 @@ INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
 --
 -- Structure de la table `anniversary_details`
 --
-CREATE TABLE IF NOT EXISTS `anniversary_details` (
+CREATE TABLE IF NOT EXISTS `anniversary_detail` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `details` VARCHAR(255) NOT NULL,
+  `detail` VARCHAR(255) NOT NULL,
   `rate_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_anniversary_details_1_idx` (`rate_id` ASC) VISIBLE,
+  INDEX `fk_anniversary_detail_1_idx` (`rate_id` ASC) VISIBLE,
   CONSTRAINT `fk_anniversary_details_1`
     FOREIGN KEY (`rate_id`)
     REFERENCES `rate` (`id`)
@@ -139,7 +139,7 @@ ENGINE = InnoDB;
 --
 -- Contenu de la table `amusement`
 --
-INSERT INTO `anniversary_details` (`details`, `rate_id`) VALUES
+INSERT INTO `anniversary_detail` (`detail`, `rate_id`) VALUES
 ('1 Gâteau',8),
 ('Des bonbons',8),
 ('1 Cadeau',8),
