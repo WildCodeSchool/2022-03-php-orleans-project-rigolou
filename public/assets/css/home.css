@@ -4,17 +4,7 @@
     object-position: top;
 }
 
-.rate-section {
-    background-color: var(--section-background-alternate);
-    background-image: url("../images/bright-squares.png");
-}
-
 .rate-background {
     height: fit-content;
     background-color: var(--bs-light);
-}
-
-.amusement-home {
-    background-color: var(--section-background);
-    background-image: url("../images/inspiration-geometry.png");
 }
