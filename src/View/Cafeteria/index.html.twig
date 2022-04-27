@@ -9,9 +9,8 @@
 	- Cafétéria
 {% endblock %}
 
-{% block content %}
-
-	<header class="img p-0">
+{% block header %}
+	<header class="p-0">
 		<div class="row m-0 p-0">
 			<img class="img_cafet p-0" src="assets/images/Cafet-1.webp" alt="">
 		</div>
@@ -24,16 +23,34 @@
 			</div>
 		</div>
 	</header>
-	<h2>Boissons</h2>
-	<ul>
-		{% for boisson in boissons %}
-			<li>{{ boisson.name }}</li>
-		{% endfor %}
-	</ul>
-	<h2>Snacks</h2>
-	<ul>
-		{% for snack in snacks %}
-			<li>{{ snack.name }}</li>
-		{% endfor %}
-	</ul>
+{% endblock %}
+
+{% block content %}
+	<main class="container">
+		<div class="row m-0 p-0">
+			<div class="d-flex justify-content-around">
+				<div class="boissons">
+
+					<h4 class="title_boissons text-center py-4">Boissons</h4>
+					<ul class="list_boissons">
+						{% for boisson in boissons %}
+							<li class='mb-3'>{{ boisson.name }}..................{{ boisson.price}}
+								euros
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="snacks">
+					<h4 class="title_snacks text-center py-4">Snacks</h4>
+					<ul class="list_snacks">
+						{% for snack in snacks %}
+							<li class='mb-3'>{{ snack.name }}..................{{ snack.price }}
+								euros
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</main>
 {% endblock %}

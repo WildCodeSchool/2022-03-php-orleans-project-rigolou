@@ -10,10 +10,6 @@ h4 {
     font-size: var(--title-size);
 }
 
-.img {
-    max-height: 400px;
-}
-
 .img_cafet {
     max-height: 500px;
     object-fit: cover;
@@ -22,4 +18,11 @@ h4 {
 
 p {
     line-height: 2rem;
+}
+
+.boissons, .snacks{
+    background-color: rgb(198, 189, 189);
+    height: 400px;
+    width: 500px;
+    border-radius: 0.6rem;
 }
