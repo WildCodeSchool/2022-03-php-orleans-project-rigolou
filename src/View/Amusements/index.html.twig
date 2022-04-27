@@ -8,36 +8,39 @@
 
 {% block content %}
 
-<main class="container-fluid amusement-home pt-5">
-        <div class="row mb-5">
+<main class="container-fluid amusement-home">
+        <div class="row  p-5 mb-5">
 			<div class="logo col-lg-6 flex-column d-flex align-items-center ">
 				<img class="w-50" src="assets/images/Logo.png" alt="Logo">
 				<img class="w-50" src="assets/images/Title.png" alt="Title">
 			</div>
 			<div class="col-lg-6 my-sm-4 flex-column d-flex align-items-center justify-content-center">
-				<h1 class="text-dark">Bienvenue chez Rigolou !</h1>
-				<p>
-					La plaine de jeux et de loisirs  de 1800 m² à Saran pour les enfants jusqu’a 12 ans. Sous la responsabilité des parents ou d’un adulte accompagnant, les enfants peuvent jouer dans de nombreuses attractions.Venez passer un agréable moment en famille et en toute sécurité !
-				</p>
+				<h1 class="text-dark">Voici toutes nos attractions  !</h1>
+				<p class=" mt-5">
+                Vous allez retrouver  toutes les attractions que notre air de jeux possède, avec une description de l'attraction et des images pour les représenter a vous de regardez  !!				
+                </p>
 			</div>
 		</div>
-    
-    <h1 class="bg-primary section-title mx-auto mb-5 px-3 rounded-4">Attractions</h1>
+    <section class ="">
 
-    {% for amusement in amusements %}
-        <div class="container shadow rounded-4 bg-primary my-4">
-            <div class="row  amusement-card  ">
-                <div class="col-lg-9 d-flex flex-column justify-content-between {% if loop.index is even %} order-lg-2 {% endif %}">
-                    <h2 class="text-center mt-3"> {{amusement.name}} </h2>
-                    <p class="mb-4 text-md-center {% if loop.index is even %} text-lg-end {% else %} text-lg-start{% endif %} "> {{amusement.description}}
-                    </p>
+        <h1 class="bg-primary section-title mx-auto mb-5 mt-5 px-3 rounded-4">Attractions</h1>
 
-                </div>
-                <div class="col-lg-3 {% if loop.index is even %} order-lg-1 {% endif %}">
-                    <img class="img-size rounded-4" src="{% if amusement.image is empty %}assets/images/1200x900_placeholder.png{% else %}{{constant('APP_UPLOAD_PATH') ~ amusement.image}}{% endif %}"  alt="Nom de l'attraction">
+        {% for amusement in amusements %}
+            <div class="container shadow rounded-4 bg-white mb-5 my-4">
+                <div class="row  amusement-card  ">
+                    <div class="col-lg-9 d-flex flex-column justify-content-between {% if loop.index is even %} order-lg-2 {% endif %}">
+                        <h2 class="text-center mt-3"> {{amusement.name}} </h2>
+                        <p class="mb-4 text-md-center {% if loop.index is even %} text-lg-center {% else %} text-lg-center{% endif %} "> {{amusement.description}}
+                        </p>
+
+                    </div>
+                    <div class="col-lg-3 {% if loop.index is even %} order-lg-1 {% endif %}">
+                        <img class="img-size rounded-4" src="{% if amusement.image is empty %}assets/images/placeholder.jpg{% else %}{{constant('APP_UPLOAD_PATH') ~ amusement.image}}{% endif %}"  alt="Nom de l'attraction">
+                    </div>
                 </div>
             </div>
-        </div>  
-    {% endfor %}
+     
+        {% endfor %}
+    </section> 
 </main>
 {% endblock %}
