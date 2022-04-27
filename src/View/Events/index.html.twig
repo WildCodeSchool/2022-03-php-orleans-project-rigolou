@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="assets/css/events.css">
+	{# <link rel="stylesheet" href="assets/css/events.css"> #}
 {% endblock %}
 
 {% block title %}
@@ -10,27 +10,90 @@
 {% endblock %}
 
 
-{% block header %}
-	<h2>Evenements a venir :</h2>
-	<ul>
-		{% for upcomingEvent in upcomingEvents %}
-			<li>{{ upcomingEvent.title }}</li>
-			<li>{{ upcomingEvent.description }}</li>
-			<li><img src="assets/images/{{ upcomingEvent.image }}" alt="event"></li>
-			<li>{{ upcomingEvent.date }}</li>
+{% block content %}
 
-		{% endfor %}
-	</ul>
-	<h2>Evenements terminé :</h2>
+	<h2>Evènements a venir :</h2>
 
-	<ul>
-		{% for pastEvent in pastEvents %}
-			<li>{{ pastEvent.title }}</li>
-			<li>{{ pastEvent.description }}</li>
-			<li><img src="assets/images/{{ pastEvent.image }}" alt="event"></li>
-			<li>{{ pastEvent.date }}</li>
+	{% for upcomingEvent in upcomingEvents %}
 
-		{% endfor %}
-	</ul>
+
+		<div class="card" style="width: 18rem;">
+			<img src="assets/images/{{ upcomingEvent.image }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">{{ upcomingEvent.title }}</h5>
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ upcomingEvent.title }}">
+					En savoir plus !
+				</button>
+
+			</div>
+		</div>
+		<!-- Button trigger modal -->
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="{{ upcomingEvent.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">{{ upcomingEvent.title }}</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p>{{ upcomingEvent.description }}</p>
+						<p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-event-fill" viewbox="0 0 16 16">
+								<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2h16a2 2 0 0 0-2-2H2zM0 14V3h16v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm12-8a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
+							</svg> 
+							 {{ upcomingEvent.date }}</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+
+	<h2>Evènements terminée :</h2>
+
+
+	{% for pastEvent in pastEvents %}
+
+
+		<div class="card" style="width: 18rem;">
+			<img src="assets/images/{{ pastEvent.image }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">{{ pastEvent.title }}</h5>
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ pastEvent.title }}">
+					En savoir plus !
+				</button>
+
+			</div>
+		</div>
+		<!-- Button trigger modal -->
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="{{ pastEvent.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">{{ pastEvent.title }}</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p>{{ pastEvent.description }}</p>
+						<p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-event-fill" viewbox="0 0 16 16">
+								<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2h16a2 2 0 0 0-2-2H2zM0 14V3h16v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm12-8a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
+							</svg> 
+							 {{ pastEvent.date }}</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
 {% endblock %}
-{% block content %}{% endblock %}
