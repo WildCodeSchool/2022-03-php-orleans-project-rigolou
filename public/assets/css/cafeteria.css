@@ -20,10 +20,3 @@ p {
     line-height: 2rem;
 }
 
-.boissons, .snacks{
-    background-color: rgb(198, 189, 189);
-    height: 400px;
-    width: 500px;
-    border-radius: 0.6rem;
-}
-
