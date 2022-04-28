@@ -9,7 +9,7 @@ class EventsManager extends AbstractManager
     public function selectAllPastEvents(): array|false
     {
         // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE SYSDATE( ) > date ");
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE SYSDATE( ) > date ");
         $statement->execute();
 
         return $statement->fetchAll();
@@ -18,7 +18,7 @@ class EventsManager extends AbstractManager
     public function selectAllUpcomingEvents(): array|false
     {
         // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE SYSDATE( ) < date ");
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE SYSDATE( ) < date ");
         $statement->execute();
 
         return $statement->fetchAll();
