@@ -5,3 +5,5 @@
 db.php
 .idea
 .vscode
+.Ds_Store
+/public/uploads/*

@@ -1,0 +1,10 @@
+.img_header {
+    max-height: 400px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.rate-background {
+    height: fit-content;
+    background-color: var(--bs-light);
+}

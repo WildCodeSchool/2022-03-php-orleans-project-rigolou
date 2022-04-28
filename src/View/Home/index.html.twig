@@ -1,9 +1,139 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ parent() }} - Accueil{% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Accueil
+{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="assets/css/home.css">
+{% endblock %}
 
 {% block content %}
-    <main class="container-fluid">
-        <h1>Rigolou</h1>
-    </main>
+	<header class="container-fluid pt-5">
+		<div class="row">
+			<div class="logo col-lg-6 flex-column d-flex align-items-center ">
+				<img class="w-50" src="assets/images/Logo.png" alt="Logo">
+				<img class="w-50" src="assets/images/Title.png" alt="Title">
+			</div>
+			<div class="col-lg-6 my-sm-4 flex-column d-flex align-items-center justify-content-center">
+				<h1 class="text-dark">Bienvenue chez Rigolou !</h1>
+				<p>
+					La plaine de jeux et de loisirs  de 1800 m² à Saran pour les enfants jusqu’a 12 ans. Sous la responsabilité des parents ou d’un adulte accompagnant, les enfants peuvent jouer dans de nombreuses attractions.Venez passer un agréable moment en famille et en toute sécurité !
+				</p>
+			</div>
+		</div>
+		<div class="w-100 pt-5">
+			<img class="img_header w-100 rounded-4" src="assets/images/Family_happy.jpeg" alt="Les enfants jouent">
+		</div>
+	</header>
+	<main class="w-100">
+		<!-- amusement section -->
+		<section class="bg-section pt-5 text-center">
+			<h1 class="section-title mx-auto mt-2 mb-4 px-3 bg-primary rounded-4">Attractions</h1>
+			<div class="container mb-3">
+				<div class="row justify-content-center">
+					{% for amusement in amusements %}
+						<article class="col-lg-3 col-md-6 mb-2">
+							<div class="card d-flex justify-content-between shadow border-0">
+								<div class="card-title align-self-center my-2">{{ amusement.name }}</div>
+								<img src="{% if amusement.image is empty %}assets/images/attraction_placeholder.jpg{% else %}{{ constant('APP_UPLOAD_PATH') ~ amusement.image }}{% endif %}" alt="{{ amusement.name }}"class="card-img-bottom rounded-0">
+							</div>
+						</article>
+					{% endfor %}
+				</div>
+			</div>
+			<a class="btn btn-primary mx-auto px-4 mb-5 rounded-4" href="/attractions" role="button">Découvrir plus d'attractions !</a>
+		</section>
+		<!--Section horaires et tarifs-->
+		<section class="bg-section-alternate container-fluid pt-3 pb-5">
+			<h1 class="section-title text-center px-3 mb-5 mx-auto bg-primary rounded-4" id="tarifs">Horaires et tarifs</h1>
+			<div class="container">
+				<div class="row justify-content-evenly">
+					<div class="rate-background col-lg-5 p-2 my-2 shadow rounded-4">
+						<table class="w-100">
+							<thead>
+								<tr>
+									<h3 class="text-center">Horaires</h3>
+								</tr>
+							</thead>
+							<tr>
+								<td class="py-3">Mercredi, Samedi et Dimanche</td>
+								<td class="text-end">14h - 19H</td>
+							</tr>
+							<tr>
+								<td class="py-3">Vendredi</td>
+								<td class="text-end">17h - 20H</td>
+							</tr>
+							<tr>
+								<td class="py-3">Fermé le Lundi, Mardi et Jeudi</td>
+								<td class="text-end">hors vacances scolaires</td>
+							</tr>
+							<tr>
+								<td class="py-3">Tous les jours Vacances scolaires + jours fèriées</td>
+								<td class="text-end">14h - 19H</td>
+							</tr>
+							<tr>
+								<td class="py-3">Tous les jours pour les groupes sur réservation</td>
+								<td class="text-end"></td>
+							</tr>
+						</table>
+					</div>
+					<div class="rate-background col-lg-5 p-2 my-2 shadow rounded-4">
+						<table class="w-100">
+							<thead>
+								<tr>
+									<h3 class="text-center">Tarifs</h3>
+								</tr>
+							</thead>
+							{% for rate in rates %}
+								<tr>
+									<td class="py-3">{{ rate.description }}</td>
+									{% if rate.price == 'Nous contacter' %}
+										<td class="text-end">
+											<a href="#">{{ rate.price }}</a>
+										</td>
+									{% else %}
+										<td class="text-end">{{ rate.price }}</td>
+									{% endif %}
+								</tr>
+							{% endfor %}
+							<tr>
+								<td>Formules anniversaire</td>
+								<td>
+									<a href="/anniversaire">Voir la page dédiée</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}
+
+{% block footer %}
+	<footer>
+		<div class="map-itinerary">
+			<div class="bg-primary shadow rounded-3">
+				<div class="d-flex flex-column justify-content-between h-100 py-3">
+					<div class="d-flex justify-content-center align-items-center">
+						<p class="my-auto me-3">NOUS SITUER</p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewbox="0 0 16 16">
+							<path d="M 3.204,11 8,9 12.796,11 8.1015625,3.73775 Z M 2.451,10.341 7.3485625,3.07975 C 7.5534588,2.8452787 7.8404919,2.7313777 8.1251885,2.7380472 8.3941369,2.7443478 8.6610002,2.8582487 8.8545625,3.07975 L 13.549,10.341 C 14.115,10.988 13.655,12 12.796,12 L 8,10 3.204,12 C 2.344126,12.000737 1.8843425,10.987748 2.451,10.341 Z"/>
+						</svg>
+					</div>
+					<address class="w-75 mx-auto">
+						<p>Eurl RIGOLOU<br>
+						Parc de l’orée de la fôret / rue de la tuilerie<br>
+						45770 Saran</p>
+						<p class="text-center">02 38 73 12 14</p>
+						<div class="text-center mt-4">
+							<a class="btn btn-primary px-4 rounded-3" href="https://www.openstreetmap.org/directions?from=&to=47.95938%2C1.89332" target="_blank" role="button">ITINERAIRE</a>
+						</div>
+					</address>
+				</div>
+			</div>
+			<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=1.8913489580154421%2C47.95860026090704%2C1.8948894739151003%2C47.96017908597855&amp;layer=mapnik&amp;marker=47.95939057755415%2C1.893119215965271"></iframe>
+		</div>
+	</footer>
 {% endblock %}

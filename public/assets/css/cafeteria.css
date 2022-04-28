@@ -1,0 +1,25 @@
+h2 {
+    font-size: calc(var(--title-size) * 4);
+}
+
+h3 {
+    font-size: calc(var(--title-size) * 2);
+}
+
+h4 {
+    font-size: var(--title-size);
+}
+
+.img {
+    max-height: 400px;
+}
+
+.img_cafet {
+    max-height: 500px;
+    object-fit: cover;
+    object-position: center;
+}
+
+p {
+    line-height: 2rem;
+}
