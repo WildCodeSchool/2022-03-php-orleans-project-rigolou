@@ -68,8 +68,8 @@ INSERT INTO `rate` (`description`, `price`, `rate_category_id`) VALUES
 ('Vacances scolaires', '9€/pers', 1),
 ('Jours fèriées', '9€/pers', 1),
 ('Parents', 'GRATUIT', 1),
-('Comité d''entreprise: Carnet de tickets à revendre aux employés', 'Contacter', 1),
-('Tarifs de groupes', 'Contacter', 1),
+('Comité d''entreprise: Carnet de tickets à revendre aux employés', 'Nous contacter', 1),
+('Tarifs de groupes', 'Nous contacter', 1),
 ('Triceratops', '16,50 euros / Enfants ( 8 Enfants minimum + Présence d’un adulte Obligatoire )', 2),
 ('Diplodocys', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
 
