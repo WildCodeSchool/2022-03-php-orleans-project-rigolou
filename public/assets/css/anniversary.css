@@ -1,3 +1,7 @@
 .alert:empty {
     display: none;
 }
+
+.error {
+    list-style: none;
+}
