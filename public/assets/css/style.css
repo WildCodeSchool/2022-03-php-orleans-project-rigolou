@@ -141,3 +141,11 @@ h4 {
         width: 100%;
     }
 }
+
+.nav-link:hover{
+    color: var(--secondary) !important;
+}
+
+.nav-item{
+    color: var(--primary-light) !important ;
+}
