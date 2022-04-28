@@ -15,38 +15,38 @@
 			<p class="text-danger">* champs obligatoires</p>
 			<label for="firstname" class="fw-bold form-label">Prénom:</label>
 			<span class="text-danger">*</span>
-			{% if validations.errors.firstname is defined %}
-				<span class="text-danger">{{ validations.errors.firstname }}</span>
+			{% if errors.firstname is defined %}
+				<span class="text-danger">{{ errors.firstname }}</span>
 			{% endif %}
-			<input type="text" class="form-control" name="firstname" id="firstname" {% if validations.inputs.firstname is defined %} value="{{ validations.inputs.firstname }}" {% endif %} required><br>
+			<input type="text" class="form-control" name="firstname" id="firstname" {% if inputs.firstname is defined %} value="{{ inputs.firstname }}" {% endif %} required><br>
 			<label for="lastname" class="fw-bold form-label mt-2">Nom:</label>
 			<span class="text-danger">*</span>
-			{% if validations.errors.lastname is defined %}
-				<span class="text-danger">{{ validations.errors.lastname }}</span>
+			{% if errors.lastname is defined %}
+				<span class="text-danger">{{ errors.lastname }}</span>
 			{% endif %}
-			<input type="text" class="form-control" name="lastname" id="lastname" {% if validations.inputs.lastname is defined %} value="{{ validations.inputs.lastname }}" {% endif %} required><br>
+			<input type="text" class="form-control" name="lastname" id="lastname" {% if inputs.lastname is defined %} value="{{ inputs.lastname }}" {% endif %} required><br>
 			<label for="email" class="fw-bold form-label mt-2">E-mail:</label>
 			<span class="text-danger">*</span>
-			{% if validations.errors.email is defined %}
-				<span class="text-danger">{{ validations.errors.email }}</span>
+			{% if errors.email is defined %}
+				<span class="text-danger">{{ errors.email }}</span>
 			{% endif %}
-			<input type="text" class="form-control" name="email" id="email" {% if validations.inputs.email is defined %} value="{{ validations.inputs.email }}" {% endif %} required><br>
+			<input type="text" class="form-control" name="email" id="email" {% if inputs.email is defined %} value="{{ inputs.email }}" {% endif %} required><br>
 			<label for="phone" class="fw-bold form-label mt-2">Téléphone:</label><br>
-			<input type="text" class="form-control" name="phone" id="phone" {% if validations.inputs.telephone is defined %} value="{{ validations.inputs.telephone }}" {% endif %}><br>
+			<input type="text" class="form-control" name="phone" id="phone" {% if inputs.telephone is defined %} value="{{ inputs.telephone }}" {% endif %}><br>
 			<label for="subject" class="fw-bold form-label mt-2">Objet:</label>
 			<span class="text-danger">*</span>
-			{% if validations.errors.subject is defined %}
-				<span class="text-danger">{{ validations.errors.subject }}</span>
+			{% if errors.subject is defined %}
+				<span class="text-danger">{{ errors.subject }}</span>
 			{% endif %}
-			<input type="text" class="form-control" name="subject" id="subject" {% if validations.inputs.subject is defined %} value="{{ validations.inputs.subject }}" {% endif %} required><br>
+			<input type="text" class="form-control" name="subject" id="subject" {% if inputs.subject is defined %} value="{{ inputs.subject }}" {% endif %} required><br>
 			<label for="message" class="fw-bold form-label mt-2">Message:</label>
 			<span class="text-danger">*</span>
-			{% if validations.errors.message is defined %}
-				<span class="text-danger">{{ validations.errors.message }}</span>
+			{% if errors.message is defined %}
+				<span class="text-danger">{{ errors.message }}</span>
 			{% endif %}
-			<textarea class="form-control" name="message" id="message" rows="10" required>
-				{%- if validations.inputs.message is defined -%}
-					{{ validations.inputs.message }}
+			<textarea class="form-control" name="message" id="message" rows="5" required>
+				{%- if inputs.message is defined -%}
+					{{ inputs.message }}
 				{%- endif -%}
 			</textarea>
 		</div>
