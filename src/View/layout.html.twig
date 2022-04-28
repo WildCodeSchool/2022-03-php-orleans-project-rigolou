@@ -17,7 +17,8 @@
 <body>
     {% block header %}{% endblock %}
     {% block content %}{% endblock %}
-    {% block footer %}{% include 'Components/_footer.html.twig' %}{% endblock %}
+    {% block footer %}{% endblock %}
+    {% include 'Components/_footer.html.twig' %}
     {% block javascript %}{% endblock %}
 </body>
 </html>
