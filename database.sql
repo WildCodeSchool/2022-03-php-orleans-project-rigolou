@@ -110,3 +110,32 @@ INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
 ('Motos',
 'Attraction phare qui permet aux enfants de jouer en toute sécurité',
 '');
+
+
+--
+-- Structure de la table `anniversary_details`
+--
+CREATE TABLE IF NOT EXISTS `anniversary_detail` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `detail` VARCHAR(255) NOT NULL,
+  `rate_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_anniversary_detail_1_idx` (`rate_id` ASC) VISIBLE,
+  CONSTRAINT `fk_anniversary_details_1`
+    FOREIGN KEY (`rate_id`)
+    REFERENCES `rate` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+--
+-- Contenu de la table `amusement`
+--
+INSERT INTO `anniversary_detail` (`detail`, `rate_id`) VALUES
+('1 Gâteau',8),
+('Des bonbons',8),
+('1 Cadeau',8),
+('1 Cartons d''invitation',8),
+('1 Animateur de 14h à 17h',9),
+('1 Tour de moto',9),
+('1 Gâteau',9);
