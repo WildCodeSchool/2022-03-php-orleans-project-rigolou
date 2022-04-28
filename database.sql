@@ -39,8 +39,7 @@ ENGINE = InnoDB;
 
 INSERT INTO `rate_category` (`category`, `constant_category`) VALUES
 ('Classique', 'standard'),
-('Anniversaire', 'anniversary'),
-('Autre', 'other');
+('Anniversaire', 'anniversary');
 
 --
 -- Structure de la table `rate`
@@ -90,14 +89,6 @@ ENGINE = InnoDB;
 --
 -- Contenu de la table `amusement`
 --
-  
-CREATE TABLE IF NOT EXISTS `amusement` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  `description` TEXT NOT NULL,
-  `image` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
 
 INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
 ('Châteaux gonflable',
