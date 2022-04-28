@@ -2,17 +2,22 @@
 
 namespace App\Controller;
 
-use App\Model\AnniversaryManager;
-
 class AnniversaryController extends AbstractController
 {
+    protected const NAME_LENGTH = 60;
+    protected const PHONE_LENGTH = 10;
+
     public function index()
     {
+        $errorsEmpty = null;
+        $errorsFormat = null;
         $errors = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $reservation = array_map('trim', $_POST);
-            $errors = $this->validate($reservation);
+            $errorsEmpty = $this->validate($reservation);
+            $errorsFormat = $this->validateFormat($reservation);
+            $errors = [...$errorsEmpty, ...$errorsFormat];
         }
         return $this->twig->render('Anniversary/index.html.twig', ['errors' => $errors]);
     }
@@ -20,32 +25,51 @@ class AnniversaryController extends AbstractController
     public function validate(array $reservation): array
     {
 
-        $errors = [];
+        $errorsEmpty = [];
         if (empty($reservation['firstname'])) {
-            $errors[] = 'Le prénom est obligatoire';
+            $errorsEmpty[] = 'Le prénom est obligatoire';
         }
 
         if (empty($reservation['lastname'])) {
-            $errors[] = 'Le nom est obligatoire';
+            $errorsEmpty[] = 'Le nom est obligatoire';
         }
 
         if (empty($reservation['email'])) {
-            $errors[] = 'L\'e-mail est obligatoire';
-        } elseif (!filter_var($reservation['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'L\'e-mail n\'a pas le bon format';
+            $errorsEmpty[] = 'L\'e-mail est obligatoire';
         }
-
-        if (empty($reservation['message'])) {
-            $errors[] = 'Le message est obligatoire';
+        if (empty($reservation['phone'])) {
+            $errorsEmpty[] = 'Le numéro de téléphone est obligatoire';
         }
 
         if (empty($reservation['date'])) {
-            $errors[] = 'La date est obligatoire';
+            $errorsEmpty[] = 'La date est obligatoire';
         }
 
-        if (empty($reservation['phone'])) {
-            $errors[] = 'Le numéro de téléphone est obligatoire';
+        if (empty($reservation['message'])) {
+            $errorsEmpty[] = 'Le message est obligatoire';
         }
-        return $errors;
+        return $errorsEmpty;
+    }
+    public function validateFormat(array $reservation): array
+    {
+        $errorsFormat = [];
+        if (strlen($reservation["firstname"]) > self::NAME_LENGTH) {
+            $errorsFormat[] = "Le prénom doit faire moins de " . self::NAME_LENGTH . " caractères";
+        }
+
+        if (strlen($reservation["lastname"]) > self::NAME_LENGTH) {
+            $errorsFormat[] = "Le nom doit faire moins de " . self::NAME_LENGTH . " caractères";
+        }
+
+        if (!filter_var($reservation['email'], FILTER_VALIDATE_EMAIL)) {
+            $errorsFormat[] = "Mauvais format pour l'email " . $reservation["email"];
+        }
+
+        if (strlen($reservation["phone"]) > self::PHONE_LENGTH) {
+            $errorsFormat[] = "Le numéro de téléphone ne doit pas dépasser " . self::PHONE_LENGTH . " caractères";
+        }
+
+
+        return $errorsFormat;
     }
 }

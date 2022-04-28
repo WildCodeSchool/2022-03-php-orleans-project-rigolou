@@ -20,17 +20,15 @@
 		
 			<div class="container-fluid col-4 ">
 			
-				<form class="m-2" method="post" accept-charset="UTF-8" >
-
+				<form class="m-2" method="post" accept-charset="UTF-8" novalidate >
 					{% if errors is not empty %}
-						<ul class="alert alert-danger m-4">
+						<ul class="alert alert-danger m-4 ">
 						{%- for error in errors -%}
-							<li>{{error}}</li>
+							<li class = "error mb-2" >{{error}}</li>
 						{%- endfor -%}
 						</ul>
 					{% elseif errors is not null %}
-						<p class="alert alert-success m-4">le message a bien été envoyé !</p>
-							
+						<p class="alert alert-success m-4">la réservation a bien été prise en compte !</p>
 					{% endif %}
 					<div class="m-4">
 						<label for="menu" class="form-label">Sélectionner une formule </label>
