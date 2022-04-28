@@ -8,11 +8,11 @@
 </head>
 <body>
     <p>Message de:<br>
-    {{ inputs.firstname }} {{ inputs.lastname }}<br>
-    {% if inputs.phone is not empty %}
-        {{- inputs.phone -}}
-    {% endif %}<br>
-    {{ inputs.email }}</p>
-    <p>{{ inputs.message }}</p>
+    {{ contact.firstname }} {{ contact.lastname }}<br>
+    {% if contact.phone is not empty %}
+        {{- contact.phone -}}<br>
+    {% endif %}
+    {{ contact.email }}</p>
+    <p>{{ contact.message }}</p>
 </body>
 </html>

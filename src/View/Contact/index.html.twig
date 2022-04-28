@@ -18,35 +18,35 @@
 			{% if errors.firstname is defined %}
 				<span class="text-danger">{{ errors.firstname }}</span>
 			{% endif %}
-			<input type="text" class="form-control" name="firstname" id="firstname" {% if inputs.firstname is defined %} value="{{ inputs.firstname }}" {% endif %} required><br>
+			<input type="text" class="form-control" name="firstname" id="firstname" {% if contact.firstname is defined %} value="{{ contact.firstname }}" {% endif %} required><br>
 			<label for="lastname" class="fw-bold form-label mt-2">Nom:</label>
 			<span class="text-danger">*</span>
 			{% if errors.lastname is defined %}
 				<span class="text-danger">{{ errors.lastname }}</span>
 			{% endif %}
-			<input type="text" class="form-control" name="lastname" id="lastname" {% if inputs.lastname is defined %} value="{{ inputs.lastname }}" {% endif %} required><br>
+			<input type="text" class="form-control" name="lastname" id="lastname" {% if contact.lastname is defined %} value="{{ contact.lastname }}" {% endif %} required><br>
 			<label for="email" class="fw-bold form-label mt-2">E-mail:</label>
 			<span class="text-danger">*</span>
 			{% if errors.email is defined %}
 				<span class="text-danger">{{ errors.email }}</span>
 			{% endif %}
-			<input type="text" class="form-control" name="email" id="email" {% if inputs.email is defined %} value="{{ inputs.email }}" {% endif %} required><br>
+			<input type="text" class="form-control" name="email" id="email" {% if contact.email is defined %} value="{{ contact.email }}" {% endif %} required><br>
 			<label for="phone" class="fw-bold form-label mt-2">Téléphone:</label><br>
-			<input type="text" class="form-control" name="phone" id="phone" {% if inputs.telephone is defined %} value="{{ inputs.telephone }}" {% endif %}><br>
+			<input type="text" class="form-control" name="phone" id="phone" {% if contact.telephone is defined %} value="{{ contact.telephone }}" {% endif %}><br>
 			<label for="subject" class="fw-bold form-label mt-2">Objet:</label>
 			<span class="text-danger">*</span>
 			{% if errors.subject is defined %}
 				<span class="text-danger">{{ errors.subject }}</span>
 			{% endif %}
-			<input type="text" class="form-control" name="subject" id="subject" {% if inputs.subject is defined %} value="{{ inputs.subject }}" {% endif %} required><br>
+			<input type="text" class="form-control" name="subject" id="subject" {% if contact.subject is defined %} value="{{ contact.subject }}" {% endif %} required><br>
 			<label for="message" class="fw-bold form-label mt-2">Message:</label>
 			<span class="text-danger">*</span>
 			{% if errors.message is defined %}
 				<span class="text-danger">{{ errors.message }}</span>
 			{% endif %}
 			<textarea class="form-control" name="message" id="message" rows="5" required>
-				{%- if inputs.message is defined -%}
-					{{ inputs.message }}
+				{%- if contact.message is defined -%}
+					{{ contact.message }}
 				{%- endif -%}
 			</textarea>
 		</div>

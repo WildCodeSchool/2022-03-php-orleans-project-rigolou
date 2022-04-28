@@ -19,59 +19,59 @@ class ContactController extends AbstractController
         }
 
         $errors = [];
-        $inputs = [];
+        $contact = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $inputs = array_map('trim', $_POST);
-            $errors = $this->validateContactPost($inputs);
+            $contact = array_map('trim', $_POST);
+            $errors = $this->validateContactPost($contact);
             if (empty($errors)) {
-                $this->sendMail($inputs);
+                $this->sendMail($contact);
                 header('Location: /contact?send=success');
             }
         }
 
         return $this->twig->render('Contact/index.html.twig', [
             'errors' => $errors,
-            'inputs' => $inputs,
+            'contact' => $contact,
             'messageSend' => $messageSend,
         ]);
     }
 
 
-    private function validateContactPost(array $inputs): array
+    private function validateContactPost(array $contact): array
     {
         $errors = [];
-        if (empty($inputs['firstname'])) {
+        if (empty($contact['firstname'])) {
             $errors['firstname'] = 'Le prénom est obligatoire';
         }
 
-        if (empty($inputs['lastname'])) {
+        if (empty($contact['lastname'])) {
             $errors['lastname'] = 'Le nom est obligatoire';
         }
 
-        if (empty($inputs['email'])) {
+        if (empty($contact['email'])) {
             $errors['email'] = 'L\'e-mail est obligatoire';
-        } elseif (!filter_var($inputs['email'], FILTER_VALIDATE_EMAIL)) {
+        } elseif (!filter_var($contact['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'L\'e-mail n\'a pas le bon format';
         }
 
-        if (empty($inputs['subject'])) {
+        if (empty($contact['subject'])) {
             $errors['subject'] = 'L\'objet est obligatoire';
         }
 
-        if (empty($inputs['message'])) {
+        if (empty($contact['message'])) {
             $errors['message'] = 'Le message est obligatoire';
         }
         return $errors;
     }
 
-    private function sendMail(array $inputs): void
+    private function sendMail(array $contact): void
     {
-        $message = $this->twig->render('Contact/mail.html.twig', ['inputs' => $inputs]);
+        $message = $this->twig->render('Contact/mail.html.twig', ['contact' => $contact]);
 
         $mail = (new Email())
-         ->from($inputs['email'])
+         ->from($contact['email'])
          ->to(MAIL_INBOX)
-         ->subject($inputs['subject'])
+         ->subject($contact['subject'])
          ->html($message)
         ;
 
