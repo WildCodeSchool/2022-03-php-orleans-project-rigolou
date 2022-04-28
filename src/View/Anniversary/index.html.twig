@@ -20,7 +20,7 @@
 		
 			<div class="container-fluid col-4 ">
 			
-				<form class="m-2" method="post" accept-charset="UTF-8" novalidate>
+				<form class="m-2" method="post" accept-charset="UTF-8" >
 
 					{% if errors is not empty %}
 						<ul class="alert alert-danger m-4">
@@ -29,7 +29,7 @@
 						{%- endfor -%}
 						</ul>
 					{% elseif errors is not null %}
-						<p>le message a bien été envoyé !</p>
+						<p class="alert alert-success m-4">le message a bien été envoyé !</p>
 							
 					{% endif %}
 					<div class="m-4">
@@ -50,7 +50,7 @@
 						</div>
 						<div>
 							<label for="phone" class="form-label">Téléphone</label>
-							<input class="form-control mb-3" type="tel" id="phone" name="phone" pattern="^[0-9]{10}$" placeholder="06 50 22 34 65" required >
+							<input class="form-control mb-3" type="tel" id="phone" name="phone"  placeholder="06 50 22 34 65" required >
 						</div>
 						<div>
 							<label for="email" class="form-label">Email address</label>
