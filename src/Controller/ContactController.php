@@ -66,13 +66,7 @@ class ContactController extends AbstractController
 
     private function sendMail(array $inputs): void
     {
-        $message = '<p>Message de:<br>'
-        . $inputs['firstname'] . ' ' . $inputs['lastname'] . '<br>';
-        if ($inputs['phone'] !== '') {
-            $message .= 'Tel: ' . $inputs['phone'] . '<br>';
-        }
-        $message .= 'Email: ' . $inputs['email'];
-        $message .= '<p>'  . $inputs['message'] . '</p>';
+        $message = $this->twig->render('Contact/mail.html.twig', ['inputs' => $inputs]);
 
         $mail = (new Email())
          ->from($inputs['email'])
