@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class EventsManager extends AbstractManager
+class EventManager extends AbstractManager
 {
     public const TABLE = 'events';
 

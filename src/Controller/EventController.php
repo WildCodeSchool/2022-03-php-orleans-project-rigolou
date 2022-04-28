@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Model\EventsManager;
+use App\Model\EventManager;
 
-class EventsController extends AbstractController
+class EventController extends AbstractController
 {
     public function index(): string
     {
-        $eventsManager = new EventsManager();
+        $eventsManager = new EventManager();
         $pastEvents = $eventsManager->selectAllPastEvents();
         $upcomingEvents = $eventsManager->selectAllUpcomingEvents();
         return $this->twig->render(

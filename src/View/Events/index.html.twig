@@ -1,8 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block stylesheet %}
-	{# <link rel="stylesheet" href="assets/css/events.css"> #}
-{% endblock %}
+{% block stylesheet %}{% endblock %}
 
 {% block title %}
 	{{ parent() }}
@@ -14,111 +12,10 @@
 
 	<h2 class="text-center m-5">Evènements a venir :</h2>
 
-	<section class="container">
-		<div class="row">
-			{% for upcomingEvent in upcomingEvents %}
-				<div class="col-lg-4 mb-4">
-					<div class="card text-center">
-						<img src="assets/images/{{ upcomingEvent.image }}" class="card-img-top rounded-4" alt="{{ upcomingEvent.title }}">
-						<div class="card-body">
-							<h3 class="card-title">{{ upcomingEvent.title|upper }}</h3>
-							<p class="text-light">
-								<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-calendar-event me-1" viewbox="0 0 16 16">
-									<path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-									<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-								</svg>
-								{{ upcomingEvent.date }}</p>
-							<button type="button" class="btn btn-primary align-center" data-bs-toggle="modal" data-bs-target="#{{ upcomingEvent.title }}">
-								En savoir plus !
-							</button>
-
-						</div>
-					</div>
-				</div>
-				<!-- Button trigger modal -->
-
-
-				<!-- Modal -->
-				<div class="modal fade text-center" id="{{ upcomingEvent.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h3 class="modal-title" id="exampleModalLabel">{{ upcomingEvent.title|upper }}</h3>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								<img src="assets/images/{{ upcomingEvent.image }}" class="w-100" alt="{{ upcomingEvent.title }}">
-								<p>{{ upcomingEvent.description }}</p>
-								<p>
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewbox="0 0 16 16">
-										<path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-										<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-									</svg>
-									{{ upcomingEvent.date }}</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</section>
+	{% include 'Events/_eventCards.html.twig' with {'events': upcomingEvents } %}
 
 	<h2 class="text-center m-5">Evènements terminée :</h2>
 
-	<section class="container">
-		<div class="row">
-			{% for pastEvent in pastEvents %}
-				<div class="col-lg-4 mb-4">
-					<div class="card text-center">
-						<img src="assets/images/{{ pastEvent.image }}" class="card-img-top rounded-4" alt="{{ pastEvent.title }}">
-						<div class="card-body">
-							<h3 class="card-title">{{ pastEvent.title|upper }}</h3>
-							<p class="text-light">
-								<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-calendar-event me-1" viewbox="0 0 16 16">
-									<path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-									<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-								</svg>
-								{{ pastEvent.date }}</p>
-							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ pastEvent.title }}">
-								En savoir plus !
-							</button>
-
-						</div>
-					</div>
-				</div>
-				<!-- Button trigger modal -->
-
-
-				<!-- Modal -->
-				<div class="modal fade text-center" id="{{ pastEvent.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h3 class="modal-title" id="exampleModalLabel">{{ pastEvent.title|upper }}</h3>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								<img src="assets/images/{{ pastEvent.image }}" class="w-100" alt="{{ pastEvent.title }}">
-
-								<p>{{ pastEvent.description }}</p>
-								<p>
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewbox="0 0 16 16">
-										<path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-										<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-									</svg>
-									{{ pastEvent.date }}</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</section>
+	{% include 'Events/_eventCards.html.twig' with {'events': pastEvents } %}
 
 {% endblock %}
