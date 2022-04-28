@@ -8,9 +8,6 @@ class CafeteriaManager extends AbstractManager
     public const DRINK = 'drink';
     public const SNACKS = 'snack';
 
-    // public const CATEGORIES = ['boissons' => self::DRINK, 'snacks' => self::SNACKS];
-
-
     public function selectByCategory(string $category): array|false
     {
         // prepared request

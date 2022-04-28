@@ -12,6 +12,6 @@ class CafeteriaController extends AbstractController
         $drinks = $cafeteriaManager->selectByCategory(CafeteriaManager::DRINK);
         $snacks = $cafeteriaManager->selectByCategory(CafeteriaManager::SNACKS);
 
-        return $this->twig->render('Cafeteria/index.html.twig', ['boissons' => $drinks, 'snacks' => $snacks]);
+        return $this->twig->render('Cafeteria/index.html.twig', ['drinks' => $drinks, 'snacks' => $snacks]);
     }
 }
