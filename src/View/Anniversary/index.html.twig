@@ -4,56 +4,66 @@
 	{{ parent() }}
 	- Anniversary
 {% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="assets/css/anniversary.css">
+{% endblock %}
 
 {% block content %}
 	<main class="container-fluid">
-		<h1 class="text-center mb-5">Réservation</h1>
 
-		<div class="container-fluid">
-			<form method="post" accept-charset="UTF-8">
-				<label for="exampleFormControlInput1" class="form-label">Sélectionner une formule :</label>
-				<select class="form-select" aria-label="Default select example">
-					<option value="1">Formule anniversaire Triceratopss</option>
-					<option value="2">Formule anniversaire Diplodocus</option>
+		<h2 class="text-center m-5">Réservation</h2>
 
-				</select>
-				<div>
-					<label for="exampleFormControlInput1" class="form-label">Prénom:</label>
-					<input class="form-control" type="text" placeholder="Patrique" aria-label="default input example">
-				</div>
-				<div>
-					<label for="exampleFormControlInput1" class="form-label">Nom :</label>
-					<input class="form-control" type="text" placeholder="Dupont" aria-label="default input example">
-				</div>
-				<div>
-					<label for="exampleFormControlInput1" class="form-label">téléphone :</label>
-					<input class="form-control" type="tel" id="phone" name"phone" pattern="^[0-9]{10}$" placeholder="06 50 22 34 65" aria-label="default input example">
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlInput1" class="form-label">Email address :</label>
-					<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlInput1" class="form-label">Date :</label>
-					<input type="date" id="date" value="01/08/2015" class="form-control" >
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Informations supplémentaires (exemple: nombre de personnes)</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
+		<div class= "row " >
 
-				{% if errors is defined %}
-					<ul class="errors">
-						{% for error in errors %}
-							<li>{{ error }}</li>
-						{% endfor %}
+			<div class="w-50 h-50 m-auto">
+				<img class="img_header w-100 rounded-4" src="assets/images/anniversary_image.jpg" alt="Les enfants fête un anniversaire">
+			</div>
+		
+			<div class="container-fluid col-4 ">
+			
+				<form class="m-2" method="post" accept-charset="UTF-8" novalidate>
+					<ul class="alert alert-danger m-4">
+					{%- for error in errors -%}
+						<li>{{error}}</li>
+					{%- endfor -%}
 					</ul>
-				{% endif %}
+					<div class="m-4">
+						<label for="menu" class="form-label">Sélectionner une formule </label>
+						<select class="form-select " id="menu" name="menu" >
+							<option value="1">Formule anniversaire Triceratopss</option>
+							<option value="2">Formule anniversaire Diplodocus</option>
+						</select>
+					</div>
+					<div class="m-4 ">
+						<div>
+							<label for="firstname" class="form-label">Prénom</label>
+							<input class="form-control mb-3" type="text" id="firstname" name"firstname" placeholder="Patrick" required >
 
-				<input class=" " type="submit" value="Réserver">
-			</form>
-		</div>
+						</div>
+						<div>
+							<label for="lastname" class="form-label">Nom</label>
+							<input class="form-control mb-3" type="text" id="lastname" name"lastname" placeholder="Dupont" required >
+						</div>
+						<div>
+							<label for="phone" class="form-label">Téléphone</label>
+							<input class="form-control mb-3" type="tel" id="phone" name"phone" pattern="^[0-9]{10}$" placeholder="06 50 22 34 65" required >
+						</div>
+						<div>
+							<label for="email" class="form-label">Email address</label>
+							<input type="email" id="email" name"email" class="form-control mb-3"  placeholder="nom.prénom@gmail.com">
+						</div>
+						<div>
+							<label for="date" class="form-label">Date</label>
+							<input type="date" id="date" name="date" value="01/08/2015" class="form-control mb-3" >
+						</div>
+						<div>
+							<label for="message" class="form-label">Informations supplémentaires (exemple: nombre de personnes)</label>
+							<textarea class="form-control mb-3" id="message" name="message"rows="3"></textarea>
+						</div>
+					</div>
+					<button class="btn btn-primary m-4">Réserver</button>
+				</form>
+			</div>
 
-
+		</div>	
 	</main>
 {% endblock %}
