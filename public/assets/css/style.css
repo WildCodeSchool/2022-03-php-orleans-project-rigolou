@@ -101,6 +101,7 @@ h4 {
 
 .section-title {
     width: fit-content;
+    color: var(--bs-light);
 }
 
 .w-fit {
