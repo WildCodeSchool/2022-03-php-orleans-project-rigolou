@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}{% endblock %}
+
+{% block title %}
+	{{ parent() }}
+	- Evènements
+{% endblock %}
+
+
+{% block content %}
+
+	<h2 class="text-center m-5">Evènements a venir :</h2>
+
+	{% include 'Events/_eventCards.html.twig' with {'events': upcomingEvents } %}
+
+	<h2 class="text-center m-5">Evènements terminée :</h2>
+
+	{% include 'Events/_eventCards.html.twig' with {'events': pastEvents } %}
+
+{% endblock %}
