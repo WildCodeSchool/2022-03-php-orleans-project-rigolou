@@ -2,10 +2,16 @@
 
 namespace App\Controller;
 
+use App\Model\CafeteriaManager;
+
 class CafeteriaController extends AbstractController
 {
     public function index(): string
     {
-        return $this->twig->render('Cafeteria/index.html.twig');
+        $cafeteriaManager = new CafeteriaManager();
+        $drinks = $cafeteriaManager->selectByCategory(CafeteriaManager::DRINK);
+        $snacks = $cafeteriaManager->selectByCategory(CafeteriaManager::SNACKS);
+
+        return $this->twig->render('Cafeteria/index.html.twig', ['drinks' => $drinks, 'snacks' => $snacks]);
     }
 }
