@@ -16,5 +16,6 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'cafeteria' => ['CafeteriaController', 'index'],
+    'evenements' => ['EventController', 'index'],
     'contact' => ['ContactController', 'index', ['send']],
 ];
