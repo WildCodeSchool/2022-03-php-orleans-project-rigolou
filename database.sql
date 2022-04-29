@@ -158,3 +158,52 @@ VALUES
   ('fanta', 2, 'drink'),
   ('Panache', 3, 'drink'),
   ('Brownie', 1.7, 'snack');
+
+  CREATE TABLE IF NOT EXISTS `events` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(100) NOT NULL,
+    `image` VARCHAR(100) NOT NULL,
+    `description` TEXT NOT NULL,
+    `date` DATETIME NOT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB;
+  
+  
+INSERT INTO
+  `events` (`title`, `image`, `description`, `date`)
+VALUES
+  (
+    'noel',
+    'events.webp',
+    'soirée de noel',
+    '2025-12-31 23:59'
+  ),
+  (
+    'halloween',
+    'events.webp',
+    'soiréé halloween',
+    '2024-12-31 23:59'
+  ),(
+    'paques',
+    'events.webp',
+    'soirée de noel',
+    '2023-12-31 23:59'
+  ),
+  (
+    'past1',
+    'events.webp',
+    'soiréé halloween',
+    '2020-12-31 23:59'
+  ),
+  (
+    'past2',
+    'events.webp',
+    'soirée de noel',
+    '2019-12-31 23:59'
+  ),
+  (
+    'past3',
+    'events.webp',
+    'soiréé halloween',
+    '2018-12-31 23:59'
+  );
