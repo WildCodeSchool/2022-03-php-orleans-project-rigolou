@@ -42,9 +42,20 @@ h4{
     font-family: var(--title-font);
 }
 
+a {
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+a:hover {
+    color: var(--secondary);
+    filter: brightness(1.2);
+}
+
 h1 {
     font-size: calc(var(--title-size) * 2);
 }
+
 h2 {
     font-size: calc(var(--title-size) * 1.5);
 }

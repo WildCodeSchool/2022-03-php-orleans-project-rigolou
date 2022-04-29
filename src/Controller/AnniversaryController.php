@@ -13,7 +13,7 @@ class AnniversaryController extends AbstractController
     public function index(): string
     {
         $rateManager = new RateManager();
-        $anniversaryRates = $rateManager->selectAllAnniversary();
+        $anniversaryRates = $rateManager->selectAllAnniversaryRate();
         $detailsManager = new AnniversaryDetailsManager();
         $details = $detailsManager->selectAll('rate_id');
         return $this->twig->render('Anniversary/index.html.twig', [

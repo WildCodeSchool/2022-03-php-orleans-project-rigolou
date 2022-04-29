@@ -39,8 +39,7 @@ ENGINE = InnoDB;
 
 INSERT INTO `rate_category` (`category`, `constant_category`) VALUES
 ('Classique', 'standard'),
-('Anniversaire', 'anniversary'),
-('Autre', 'other');
+('Anniversaire', 'anniversary');
 
 --
 -- Structure de la table `rate`
