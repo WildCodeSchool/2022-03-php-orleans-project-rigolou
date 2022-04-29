@@ -15,12 +15,12 @@
 		</title>
 		{% block stylesheet %}{% endblock %}
 	</head>
-
-	<body>
-		{% include 'Components/_navbar.html.twig' %}
-		{% block header %}{% endblock %}
-		{% block content %}{% endblock %}
-		{% block footer %}{% endblock %}
-		{% block javascript %}{% endblock %}
-	</body>
+  
+  <body>
+      {% include 'Components/_navbar.html.twig' %}
+      {% block header %}{% endblock %}
+      {% block content %}{% endblock %}
+      {% block footer %}{% include 'Components/_footer.html.twig' %}{% endblock %}
+      {% block javascript %}{% endblock %}
+  </body>
 </html>
