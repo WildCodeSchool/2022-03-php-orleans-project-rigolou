@@ -1,8 +1,36 @@
 {% extends 'layout.admin.html.twig' %}
 
-{% block title %}{{ parent() }} - Attractions{% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Attractions
+{% endblock %}
 
 
 {% block content %}
-    <h1>Admin</h1>
+	<main class="container-fluid py-5">
+		<h1>Liste des attractions</h1>
+        <div class="w-75 mx-auto mb-3 mt-5">
+            <a href="attractions/add" class="btn btn-primary">Ajouter</a>
+        </div>
+		<table class="table table-hover w-75 mx-auto">
+			<thead class="table-light">
+				<tr>
+					<th scope="col">Nom</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for amusement in amusements %}
+                    <tr>
+					    <td class="align-middle w-75">{{ amusement.name }}</td>
+                        <td><a href="attractions/edit?id={{ amusement.id }}" class="btn btn-primary">modifier</a></td>
+                        <form action="attractions/delete?id={{ amusement.id }}" method="post">
+                            <td><button class="btn btn-primary">supprimer</button></td>
+                        </form>
+                    </tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
 {% endblock %}
