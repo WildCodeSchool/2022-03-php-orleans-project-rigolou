@@ -14,7 +14,7 @@ class ContactController extends AbstractController
     public function index(string $send = ''): string
     {
         $messageSend = false;
-        if ($send !== '' && trim($send) === 'success') {
+        if (trim($send) === 'success') {
             $messageSend = true;
         }
 
