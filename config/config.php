@@ -16,3 +16,6 @@ define('DB_DUMP_PATH', __DIR__ . '/../database.sql');
 
 //uploads
 define('APP_UPLOAD_PATH', 'uploads/');
+
+//Mail
+define('MAIL_INBOX', 'rigolou@wanadoo.fr');

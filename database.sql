@@ -14,12 +14,36 @@ SET
   /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
   /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
   /*!40101 SET NAMES utf8mb4 */;
+
+  CREATE TABLE `rate` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(255) NOT NULL,
+  `price` VARCHAR(100) NOT NULL,
+  `rate_category_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_rate_rate_category`
+    FOREIGN KEY (`rate_category_id`)
+    REFERENCES `rate_category` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 --
-  -- Base de données :  `simple-mvc`
-  --
-  -- --------------------------------------------------------
-  --
-  -- Structure de la table `rate_category`
+-- Contenu de la table `rate`
+--
+
+INSERT INTO `rate` (`description`, `price`, `rate_category_id`) VALUES
+('Mercredi, Samedi et Dimanche', '9€/pers', 1),
+('Vendredi', '5,50€/pers', 1),
+('Vacances scolaires', '9€/pers', 1),
+('Jours fèriées', '9€/pers', 1),
+('Parents', 'GRATUIT', 1),
+('Comité d''entreprise: Carnet de tickets à revendre aux employés', 'Nous contacter', 1),
+('Tarifs de groupes', 'Nous contacter', 1),
+('Triceratops', '16,50 euros / Enfants ( 8 Enfants minimum + Présence d’un adulte Obligatoire )', 2),
+('Diplodocys', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
+  
+  
   --
   CREATE TABLE `rate_category` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -27,54 +51,15 @@ SET
     `constant_category` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`id`)
   ) ENGINE = InnoDB;
---
-  -- Contenu de la table `rate_category`
-  --
+
 INSERT INTO
   `rate_category` (`category`, `constant_category`)
 VALUES
   ('Classique', 'standard'),
   ('Anniversaire', 'anniversary'),
   ('Autre', 'other');
---
-  -- Structure de la table `rate`
-  --
-  CREATE TABLE `rate` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `description` VARCHAR(255) NOT NULL,
-    `price` VARCHAR(100) NOT NULL,
-    `rate_category_id` INT NOT NULL,
-    PRIMARY KEY (`id`),
-    CONSTRAINT `fk_rate_rate_category` FOREIGN KEY (`rate_category_id`) REFERENCES `rate_category` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-  ) ENGINE = InnoDB;
---
-  -- Contenu de la table `rate`
-  --
-INSERT INTO
-  `rate` (`description`, `price`, `rate_category_id`)
-VALUES
-  ('Mercredi, Samedi et Dimanche', '9€/pers', 1),
-  ('Vendredi', '5,50€/pers', 1),
-  ('Vacances scolaires', '9€/pers', 1),
-  ('Jours fèriées', '9€/pers', 1),
-  ('Parents', 'GRATUIT', 1),
-  (
-    'Comité d''entreprise: Carnet de tickets à revendre aux employés',
-    'Nous contacter',
-    1
-  ),
-  ('Tarifs de groupes', 'Nous contacter', 1),
-  (
-    'Triceratops',
-    '16,50 euros / Enfants ( 8 Enfants minimum + Présence d’un adulte Obligatoire )',
-    2
-  ),
-  (
-    'Diplodocys',
-    '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )',
-    2
-  );
---
+
+
 
 CREATE TABLE IF NOT EXISTS `events` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -126,6 +111,27 @@ VALUES
   );
 
 
+CREATE TABLE IF NOT EXISTS `cafeteria` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(100) NOT NULL,
+    `price` FLOAT NOT NULL,
+    `category` VARCHAR(10) NOT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB;
+  
+INSERT INTO
+  `cafeteria` (`name`, `price`, `category`)
+VALUES
+  ('coca', 2.5, 'drink'),
+  ('biere', 3.5, 'drink'),
+  ('sandwich', 5, 'snack'),
+  ('crepes', 3.5, 'snack'),
+  ('pop-corn', 2.5, 'snack'),
+  ('fanta', 2, 'drink'),
+  ('Panache', 3, 'drink'),
+  ('Brownie', 1.7, 'snack');
+
+--
 -- Structure de la table `amusement`
 --
 
@@ -177,7 +183,6 @@ CREATE TABLE IF NOT EXISTS `anniversary_detail` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 INSERT INTO `anniversary_detail` (`detail`, `rate_id`) VALUES
 ('1 Gâteau',8),
