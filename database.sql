@@ -75,58 +75,7 @@ VALUES
     2
   );
 --
-  -- Structure de la table `amusement`
-  --
-  CREATE TABLE IF NOT EXISTS `amusement` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(100) NOT NULL,
-    `description` TEXT NOT NULL,
-    `image` VARCHAR(100) NOT NULL,
-    PRIMARY KEY (`id`)
-  ) ENGINE = InnoDB;
---
-  -- Contenu de la table `amusement`
-  --
-  CREATE TABLE IF NOT EXISTS `amusement` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(100) NOT NULL,
-    `description` TEXT NOT NULL,
-    `image` VARCHAR(100) NOT NULL,
-    PRIMARY KEY (`id`)
-  ) ENGINE = InnoDB;
-INSERT INTO
-  `amusement` (`name`, `description`, `image`)
-VALUES
-  (
-    'Châteaux gonflable',
-    'Attraction phare qui permet aux enfants de jouer en toute sécurité',
-    ''
-  ),
-  (
-    'Toboggans',
-    'Attraction phare qui permet aux enfants de jouer en toute sécurité',
-    ''
-  ),
-  (
-    'Flipper et baby foot',
-    'Attraction phare qui permet aux enfants de jouer en toute sécurité',
-    ''
-  ),
-  (
-    'Auto-tamponneuses',
-    'Attraction phare qui permet aux enfants de jouer en toute sécurité',
-    ''
-  ),
-  (
-    'Salle d''arcade',
-    'Attraction phare qui permet aux enfants de jouer en toute sécurité',
-    ''
-  ),
-  (
-    'Motos',
-    'Attraction phare qui permet aux enfants de jouer en toute sécurité',
-    ''
-  );
+
 CREATE TABLE IF NOT EXISTS `events` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(100) NOT NULL,
@@ -135,6 +84,8 @@ CREATE TABLE IF NOT EXISTS `events` (
     `date` DATETIME NOT NULL,
     PRIMARY KEY (`id`)
   ) ENGINE = InnoDB;
+  
+  
 INSERT INTO
   `events` (`title`, `image`, `description`, `date`)
 VALUES
@@ -173,3 +124,66 @@ VALUES
     'soiréé halloween',
     '2018-12-31 23:59'
   );
+
+
+-- Structure de la table `amusement`
+--
+
+CREATE TABLE IF NOT EXISTS `amusement` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `description` TEXT NOT NULL,
+  `image` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+--
+-- Contenu de la table `amusement`
+--
+
+INSERT INTO `amusement` (`name`, `description`, `image`) VALUES
+('Châteaux gonflable',
+'Attraction phare qui permet aux enfants de jouer en toute sécurité',
+''),
+('Toboggans',
+'Attraction phare qui permet aux enfants de jouer en toute sécurité',
+''),
+('Flipper et baby foot',
+'Attraction phare qui permet aux enfants de jouer en toute sécurité',
+''),
+('Auto-tamponneuses',
+'Attraction phare qui permet aux enfants de jouer en toute sécurité',
+''),
+('Salle d''arcade',
+'Attraction phare qui permet aux enfants de jouer en toute sécurité',
+''),
+('Motos',
+'Attraction phare qui permet aux enfants de jouer en toute sécurité',
+'');
+
+
+--
+-- Structure de la table `anniversary_details`
+--
+CREATE TABLE IF NOT EXISTS `anniversary_detail` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `detail` VARCHAR(255) NOT NULL,
+  `rate_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_anniversary_detail_1_idx` (`rate_id` ASC) VISIBLE,
+  CONSTRAINT `fk_anniversary_details_1`
+    FOREIGN KEY (`rate_id`)
+    REFERENCES `rate` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+INSERT INTO `anniversary_detail` (`detail`, `rate_id`) VALUES
+('1 Gâteau',8),
+('Des bonbons',8),
+('1 Cadeau',8),
+('1 Cartons d''invitation',8),
+('1 Animateur de 14h à 17h',9),
+('1 Tour de moto',9),
+('1 Gâteau',9);
