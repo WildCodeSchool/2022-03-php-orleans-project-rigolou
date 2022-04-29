@@ -207,3 +207,4 @@ VALUES
     'soiréé halloween',
     '2018-12-31 23:59'
   );
+

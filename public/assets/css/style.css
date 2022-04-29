@@ -8,6 +8,8 @@
     --bs-light-rgb: var(--light);
     --bs-light: rgb(var(--bs-light-rgb));
     --primary-light: #f8fbe1;
+    --bs-primary-light-rgb: var(--primary-light);
+    --bs-primary-light: rgb(var(--bs-primary-light-rgb));
     --intermediate: #6ac162;
     --secondary: #f29b30;
     --dark: #181b17;
