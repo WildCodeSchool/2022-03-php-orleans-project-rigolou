@@ -12,35 +12,29 @@
 	{% endif %}
 	<form action="/contact" method="post" class="container">
 		<div class="w-100">
-			<p class="text-danger">* champs obligatoires</p>
 			<label for="firstname" class="fw-bold form-label">Prénom:</label>
-			<span class="text-danger">*</span>
 			{% if errors.firstname is defined %}
 				<span class="text-danger">{{ errors.firstname }}</span>
 			{% endif %}
 			<input type="text" class="form-control" name="firstname" id="firstname" {% if contact.firstname is defined %} value="{{ contact.firstname }}" {% endif %} required><br>
 			<label for="lastname" class="fw-bold form-label mt-2">Nom:</label>
-			<span class="text-danger">*</span>
 			{% if errors.lastname is defined %}
 				<span class="text-danger">{{ errors.lastname }}</span>
 			{% endif %}
 			<input type="text" class="form-control" name="lastname" id="lastname" {% if contact.lastname is defined %} value="{{ contact.lastname }}" {% endif %} required><br>
 			<label for="email" class="fw-bold form-label mt-2">E-mail:</label>
-			<span class="text-danger">*</span>
 			{% if errors.email is defined %}
 				<span class="text-danger">{{ errors.email }}</span>
 			{% endif %}
 			<input type="text" class="form-control" name="email" id="email" {% if contact.email is defined %} value="{{ contact.email }}" {% endif %} required><br>
-			<label for="phone" class="fw-bold form-label mt-2">Téléphone:</label><br>
+			<label for="phone" class="fw-bold form-label mt-2">Téléphone: (optionnel)</label><br>
 			<input type="text" class="form-control" name="phone" id="phone" {% if contact.telephone is defined %} value="{{ contact.telephone }}" {% endif %}><br>
 			<label for="subject" class="fw-bold form-label mt-2">Objet:</label>
-			<span class="text-danger">*</span>
 			{% if errors.subject is defined %}
 				<span class="text-danger">{{ errors.subject }}</span>
 			{% endif %}
 			<input type="text" class="form-control" name="subject" id="subject" {% if contact.subject is defined %} value="{{ contact.subject }}" {% endif %} required><br>
 			<label for="message" class="fw-bold form-label mt-2">Message:</label>
-			<span class="text-danger">*</span>
 			{% if errors.message is defined %}
 				<span class="text-danger">{{ errors.message }}</span>
 			{% endif %}
