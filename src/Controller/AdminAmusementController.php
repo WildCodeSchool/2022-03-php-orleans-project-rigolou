@@ -19,7 +19,7 @@ class AdminAmusementController extends AbstractController
 
     public function add(): string
     {
-        $amusementInputs = $errors = [];
+        $amusementItems = $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $amusementItems = array_map('trim', $_POST);
             $errorsText = $this->textValidate($amusementItems);
@@ -38,7 +38,7 @@ class AdminAmusementController extends AbstractController
         }
         return $this->twig->render('Admin/Amusement/add.html.twig', [
             'errors' => $errors,
-            'amusementInputs' => $amusementInputs,
+            'amusementItems' => $amusementItems,
         ]);
     }
 
