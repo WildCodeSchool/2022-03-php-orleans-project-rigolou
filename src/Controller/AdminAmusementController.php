@@ -49,7 +49,7 @@ class AdminAmusementController extends AbstractController
         ]);
     }
 
-    public function textValidate(array $amusementItems): array
+    private function textValidate(array $amusementItems): array
     {
         $errors = [];
         if (empty($amusementItems['name'])) {
