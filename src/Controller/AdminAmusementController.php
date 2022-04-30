@@ -24,7 +24,7 @@ class AdminAmusementController extends AbstractController
             $errorsText = $this->textValidate($amusementItems);
             $errorsImage = [];
             if (file_exists($_FILES['image']['tmp_name'])) {
-                $errorsImage = $this->imageValidate();
+                $errorsImage = ImageController::validateImage();
             } else {
                 $errorsImage[] = 'L\'image est obligatoire';
             }
@@ -65,20 +65,6 @@ class AdminAmusementController extends AbstractController
             $errors[] = 'La description est obligatoire';
         }
 
-        return $errors;
-    }
-
-    public function imageValidate(): array
-    {
-        $errors = [];
-        if (!in_array(mime_content_type($_FILES['image']['tmp_name']), self::AUTHORIZED_MIMES)) {
-            $errors[] = 'Le format de l\'image n\'est pas valide';
-        }
-
-        $maxFileSize = 1000000;
-        if (filesize($_FILES['image']['tmp_name']) > $maxFileSize) {
-            $errors[] = 'L\'image doit faire moins de ' . $maxFileSize / 1000000 . 'mo';
-        }
         return $errors;
     }
 }
