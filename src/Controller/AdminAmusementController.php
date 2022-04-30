@@ -8,9 +8,9 @@ class AdminAmusementController extends AbstractController
 {
     public function index(): string
     {
-        $amusementsManager = new AmusementManager();
-        $amusements = $amusementsManager->selectAll('name');
+        $amusementManager = new AmusementManager();
+        $amusementItems = $amusementManager->selectAll('name');
 
-        return $this->twig->render('Admin/Amusement/index.html.twig', ['amusements' => $amusements]);
+        return $this->twig->render('Admin/Amusement/index.html.twig', ['amusementItems' => $amusementItems]);
     }
 }
