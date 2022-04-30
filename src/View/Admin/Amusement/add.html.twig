@@ -9,6 +9,6 @@
 {% block content %}
 	<main class="container-fluid py-5">
 		<h1>Ajouter une attraction</h1>
-		{% include "Admin/Amusement/_form.html.twig" %}
+		{% include "Admin/Amusement/_form.html.twig" with {'addOrEdit': 'add'} %}
 	</main>
 {% endblock %}

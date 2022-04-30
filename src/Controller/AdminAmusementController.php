@@ -22,13 +22,18 @@ class AdminAmusementController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $amusementItems = array_map('trim', $_POST);
             $errorsText = $this->textValidate($amusementItems);
-            $errorsImage = $this->imageValidate();
+            $errorsImage = [];
+            if (file_exists($_FILES['image']['tmp_name'])) {
+                $errorsImage = $this->imageValidate();
+            } else {
+                $errorsImage[] = 'L\'image est obligatoire';
+            }
 
             $errors = [...$errorsText, ...$errorsImage];
 
             //if we do empty($errors) GrumPHP is not happy: Variable $errors in empty() always exists and is not falsy.
             if (empty($errorsText) && empty($errorsImage)) {
-                $randomImageName = uniqid('', true) . basename($_FILES['image']['name']);
+                $randomImageName = uniqid('', true) . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                 move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_LOCALE_PATH . $randomImageName);
                 $amusementItems['image'] = $randomImageName;
 
@@ -66,19 +71,14 @@ class AdminAmusementController extends AbstractController
     public function imageValidate(): array
     {
         $errors = [];
-        if (file_exists($_FILES['image']['tmp_name'])) {
-            if (!in_array(mime_content_type($_FILES['image']['tmp_name']), self::AUTHORIZED_MIMES)) {
-                $errors[] = 'Le format de l\'image n\'est pas valide';
-            }
-
-            $maxFileSize = 1000000;
-            if (filesize($_FILES['image']['tmp_name']) > $maxFileSize) {
-                $errors[] = 'L\'image doit faire moins de ' . $maxFileSize / 1000000 . 'mo';
-            }
-        } else {
-            $errors[] = 'L\'image est obligatoire';
+        if (!in_array(mime_content_type($_FILES['image']['tmp_name']), self::AUTHORIZED_MIMES)) {
+            $errors[] = 'Le format de l\'image n\'est pas valide';
         }
 
+        $maxFileSize = 1000000;
+        if (filesize($_FILES['image']['tmp_name']) > $maxFileSize) {
+            $errors[] = 'L\'image doit faire moins de ' . $maxFileSize / 1000000 . 'mo';
+        }
         return $errors;
     }
 }
