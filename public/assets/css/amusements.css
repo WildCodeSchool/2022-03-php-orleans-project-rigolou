@@ -1,0 +1,14 @@
+
+.amusement-card{
+    --card-height: 150px; 
+
+    min-height: var(--card-height);
+}
+.img-size  {
+    --offset: 1.5rem; 
+
+    height: calc(100% - var(--offset));
+    width: 100% ;
+    margin-block-start: calc(var(--offset)/2);
+    object-fit: cover;
+}

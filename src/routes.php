@@ -9,11 +9,14 @@
 
 return [
     '' => ['HomeController', 'index',],
+    'anniversaire' => ['AnniversaryController', 'index'],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
+    'attractions' => ['AmusementController', 'index',],
     'cafeteria' => ['CafeteriaController', 'index'],
-    'anniversaire' => ['AnniversaryController', 'index'],
+    'evenements' => ['EventController', 'index'],
+    'contact' => ['ContactController', 'index', ['send']],
 ];

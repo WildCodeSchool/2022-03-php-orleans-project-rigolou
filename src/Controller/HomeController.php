@@ -13,7 +13,7 @@ class HomeController extends AbstractController
     public function index(): string
     {
         $rateManager = new RateManager();
-        $rates = $rateManager->selectAllNotAnniversaryRate();
+        $rates = $rateManager->selectAllStandardRate();
 
         $amusementManager = new AmusementManager();
         $amusements = $amusementManager->selectAll();

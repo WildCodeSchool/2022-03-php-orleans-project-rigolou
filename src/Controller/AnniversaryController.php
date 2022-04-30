@@ -19,7 +19,16 @@ class AnniversaryController extends AbstractController
             $errorsFormat = $this->validateFormat($reservation);
             $errors = [...$errorsEmpty, ...$errorsFormat];
         }
-        return $this->twig->render('Anniversary/index.html.twig', ['errors' => $errors]);
+      
+        $rateManager = new RateManager();
+        $anniversaryRates = $rateManager->selectAllAnniversaryRate();
+        $detailsManager = new AnniversaryDetailsManager();
+        $details = $detailsManager->selectAll('rate_id');
+        return $this->twig->render('Anniversary/index.html.twig', [
+            'anniversaryRates' => $anniversaryRates,
+            'details' => $details,
+            'errors' => $errors
+        ]);
     }
 
     public function validate(array $reservation): array
@@ -50,6 +59,7 @@ class AnniversaryController extends AbstractController
         }
         return $errorsEmpty;
     }
+  
     public function validateFormat(array $reservation): array
     {
         $errorsFormat = [];

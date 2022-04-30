@@ -9,21 +9,59 @@
 	- Cafétéria
 {% endblock %}
 
-{% block content %}
-
-	<header class="img p-0">
-		<div class="row m-0 p-0">
-			<img class="img_cafet p-0" src="assets/images/Cafet-1.webp" alt="">
-		</div>
-		<div class="text-center my-5">
-			<h3>Cafétéria</h3>
-			<h4>Bar & Snack</h4>
-			<div class="row m-0 p-0">
-				<p class="col-md-6 offset-md-3">Un espace bar et salon de thé permet aux adultes comme aux enfants de boire une boisson froide ou chaude. Un snack permet de faire goûter les enfants. Les adultes pourront également bénéficier de petits encas.
+{% block header %}
+	<header class="p-0">
+		<img class="img_cafet w-100 p-0" src="assets/images/Cafeteria-min.jpg" alt="">
+		<div class="row">
+			<img class="coffee1 col-lg-3 d-none d-lg-block pt-5 py-5" src="assets/images/coffee.png" alt="Coffee1">
+			<div class="text-center col-lg-6 my-5">
+				<h3>Cafétéria</h3>
+				<h4>Bar & Snack</h4>
+				<p class="col-lg-6 offset-md-3">Un espace bar et salon de thé permet aux adultes comme aux enfants de boire une boisson froide ou chaude. Un snack permet de faire goûter les enfants. Les adultes pourront également bénéficier de petits encas.
 				</p>
 			</div>
+			<img class="coffee2 col-lg-3 d-none d-lg-block pt-5 py-5" src="assets/images/patatoes.png" alt="Coffee2">
 		</div>
 	</header>
+{% endblock %}
 
+{% block content %}
+	<main class="container">
+		<div class="row justify-content-around">
+			<div class="bg-primary-light col-lg-4 p-4 m-2 shadow rounded-4">
+				<table class="w-100">
+					<thead>
+						<tr>
+							<h4 class="text-center">Boissons</h4>
+						</tr>
+					</thead>
+					{% for drink in drinks %}
+						<tr>
+							<td class="py-3">{{ drink.name }}</td>
+							<td class="text-end">{{ drink.price }}
+								€</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+
+			<div class="bg-primary-light col-lg-4 p-4 m-2 shadow rounded-4">
+				<table class="w-100">
+					<thead>
+						<tr>
+							<h4 class="text-center">Snacks</h4>
+						</tr>
+					</thead>
+					{% for snack in snacks %}
+						<tr>
+							<td class="py-3">{{ snack.name }}</td>
+							<td class="text-end">{{ snack.price }}
+								€</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</main>
 
 {% endblock %}

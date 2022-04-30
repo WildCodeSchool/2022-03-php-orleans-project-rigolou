@@ -5,3 +5,7 @@
 .error {
     list-style: none;
 }
+
+img {
+    object-fit: cover;
+}
