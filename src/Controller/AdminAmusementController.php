@@ -21,8 +21,8 @@ class AdminAmusementController extends AbstractController
     {
         $amusementInputs = $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $amusementInputs = array_map('trim', $_POST);
-            $errorsText = $this->textValidate($amusementInputs);
+            $amusementItems = array_map('trim', $_POST);
+            $errorsText = $this->textValidate($amusementItems);
             $errorsImage = $this->imageValidate();
 
             $errors = [...$errorsText, ...$errorsImage];
@@ -30,7 +30,9 @@ class AdminAmusementController extends AbstractController
             //if we do empty($errors) GrumPHP is not happy: Variable $errors in empty() always exists and is not falsy.
             if (empty($errorsText) && empty($errorsImage)) {
                 move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_LOCALE_PATH . $this->randomImageName);
-                //add in DB
+                $amusementItems['image'] = $this->randomImageName;
+                $amusementManager = new amusementManager();
+                $amusementManager->insert($amusementItems);
                 header('Location: /admin/attractions/');
             }
         }
