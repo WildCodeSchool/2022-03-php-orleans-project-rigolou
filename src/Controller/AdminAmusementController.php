@@ -6,7 +6,6 @@ use App\Model\AmusementManager;
 
 class AdminAmusementController extends AbstractController
 {
-    private string $randomImageName;
     public const AUTHORIZED_MIMES = ['image/jpeg','image/png', 'image/webp', 'image/gif'];
 
     public function index(): string
@@ -29,10 +28,13 @@ class AdminAmusementController extends AbstractController
 
             //if we do empty($errors) GrumPHP is not happy: Variable $errors in empty() always exists and is not falsy.
             if (empty($errorsText) && empty($errorsImage)) {
-                move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_LOCALE_PATH . $this->randomImageName);
-                $amusementItems['image'] = $this->randomImageName;
+                $randomImageName = uniqid('', true) . basename($_FILES['image']['name']);
+                move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_LOCALE_PATH . $randomImageName);
+                $amusementItems['image'] = $randomImageName;
+
                 $amusementManager = new amusementManager();
                 $amusementManager->insert($amusementItems);
+
                 header('Location: /admin/attractions/');
             }
         }
@@ -65,13 +67,11 @@ class AdminAmusementController extends AbstractController
     {
         $errors = [];
         if (file_exists($_FILES['image']['tmp_name'])) {
-            $this->randomImageName = uniqid('', true) . basename($_FILES['image']['name']);
-            $maxFileSize = 1000000;
-
             if (!in_array(mime_content_type($_FILES['image']['tmp_name']), self::AUTHORIZED_MIMES)) {
                 $errors[] = 'Le format de l\'image n\'est pas valide';
             }
 
+            $maxFileSize = 1000000;
             if (filesize($_FILES['image']['tmp_name']) > $maxFileSize) {
                 $errors[] = 'L\'image doit faire moins de ' . $maxFileSize / 1000000 . 'mo';
             }
