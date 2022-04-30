@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\AnniversaryDetailsManager;
+use App\Model\RateManager;
+
 class AnniversaryController extends AbstractController
 {
     protected const NAME_LENGTH = 60;
@@ -19,7 +22,7 @@ class AnniversaryController extends AbstractController
             $errorsFormat = $this->validateFormat($reservation);
             $errors = [...$errorsEmpty, ...$errorsFormat];
         }
-      
+
         $rateManager = new RateManager();
         $anniversaryRates = $rateManager->selectAllAnniversaryRate();
         $detailsManager = new AnniversaryDetailsManager();
@@ -33,7 +36,6 @@ class AnniversaryController extends AbstractController
 
     public function validate(array $reservation): array
     {
-
         $errorsEmpty = [];
         if (empty($reservation['firstname'])) {
             $errorsEmpty[] = 'Le prénom est obligatoire';
@@ -59,7 +61,7 @@ class AnniversaryController extends AbstractController
         }
         return $errorsEmpty;
     }
-  
+
     public function validateFormat(array $reservation): array
     {
         $errorsFormat = [];
