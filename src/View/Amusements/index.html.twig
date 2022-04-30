@@ -27,15 +27,14 @@
 
         {% for amusement in amusements %}
             <div class="container shadow rounded-4 bg-white mb-5 my-4">
-                <div class="row amusement-card">
-                    <div class="col-lg-9 d-flex flex-column {% if loop.index is even %} order-lg-2 ps-lg-0 {% else %} pe-lg-0{% endif %}">
-                        <h2 class="text-center mt-3 text-success"> {{amusement.name}} </h2>
-                        <div class="h-100 d-flex flex-column justify-content-center border-top border-dark">
-                        <p class="text-md-center {% if loop.index is even %} text-lg-center {% else %} text-lg-center{% endif %} "> {{amusement.description}}
+                <div class="row  amusement-card  ">
+                    <div class="col-lg-9 d-flex flex-column justify-content-between {% if loop.index is even %} order-lg-2 {% endif %}">
+                        <h2 class="text-center mt-3"> {{amusement.name}} </h2>
+                        <p class="mb-4 text-md-center {% if loop.index is even %} text-lg-center {% else %} text-lg-center{% endif %} "> {{amusement.description}}
                         </p>
-                        </div>
+
                     </div>
-                    <div class="col-lg-3{% if loop.index is even %} order-lg-1 {% endif %}">
+                    <div class="col-lg-3 {% if loop.index is even %} order-lg-1 {% endif %}">
                         <img class="img-size rounded-4" src="{% if amusement.image is empty %}assets/images/placeholder.jpg{% else %}{{constant('APP_UPLOAD_PATH') ~ amusement.image}}{% endif %}"  alt="Nom de l'attraction">
                     </div>
                 </div>
