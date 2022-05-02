@@ -158,6 +158,14 @@ h4 {
     .map-itinerary > div {
         position: static;
         width: 100%;
+        height: var(--map-height);
+    }
+    .map-itinerary > iframe {
+        height: var(--map-height);
+    }
+    .map-itinerary {
+        position: static;
+        height: 100%;
     }
 }
 
