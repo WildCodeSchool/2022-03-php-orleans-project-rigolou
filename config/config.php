@@ -15,7 +15,7 @@ define('APP_VIEW_PATH', __DIR__ . '/../src/View/');
 define('DB_DUMP_PATH', __DIR__ . '/../database.sql');
 
 define('APP_UPLOAD_PATH', 'uploads/');
-define('APP_UPLOAD_LOCALE_PATH', __DIR__ . '/../public/uploads/');
+define('APP_UPLOAD_LOCAL_PATH', __DIR__ . '/../public/uploads/');
 
 //Mail
 define('MAIL_INBOX', 'rigolou@wanadoo.fr');
