@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Login
+{% endblock %}
+
+{% block content %}
+	<main class="bg-section vh-100">
+        <div class="container h-100 d-flex flex-column justify-content-center align-items-center">
+            <div class="w-50 p-5 shadow rounded-4 bg-white">
+                <h1>Login</h1>
+                {% if errors is not null %}
+                    <ul class="alert alert-danger">
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                <form method="post" action="">
+                    <div class="mb-3">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control" type="email" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="password">Mot de passe</label>
+                        <input class="form-control" type="password" id="password" name="password" required>
+                    </div>
+                    <button class="btn btn-primary">S'identifier</button>
+                </form>
+            </div>
+        </div>
+	</main>
+{% endblock %}
+
