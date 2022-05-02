@@ -19,5 +19,4 @@ return [
     'cafeteria' => ['CafeteriaController', 'index'],
     'evenements' => ['EventController', 'index'],
     'contact' => ['ContactController', 'index', ['send']],
-
 ];
