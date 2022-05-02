@@ -1,0 +1,14 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Cafeteria
+{% endblock %}
+
+
+{% block content %}
+	<main class="container-fluid py-5">
+		<h1>Liste du bar</h1>
+		{% include "/Admin/_list.html.twig" with {'cols': {name: 'Nom', price: 'prix', category: 'categorie'}, 'items': cafeteriaItems, 'section': 'attractions'} %}
+	</main>
+{% endblock %}
