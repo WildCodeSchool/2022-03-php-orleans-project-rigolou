@@ -1,0 +1,14 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Attractions
+{% endblock %}
+
+
+{% block content %}
+	<main class="container-fluid py-5">
+		<h1>Liste des attractions</h1>
+		{% include "/Admin/_list.html.twig" with {'cols': {title: 'Titre', date: 'Date'}, 'items': eventItems, 'section': 'Events'} %}
+	</main>
+{% endblock %}
