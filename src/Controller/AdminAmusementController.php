@@ -7,6 +7,7 @@ use App\Model\AmusementManager;
 class AdminAmusementController extends AbstractController
 {
     public const AUTHORIZED_MIMES = ['image/jpeg','image/png', 'image/webp', 'image/gif'];
+    public const MAX_FILE_SIZE = 1000000;
 
     public function index(): string
     {
@@ -24,7 +25,7 @@ class AdminAmusementController extends AbstractController
             $errorsText = $this->textValidate($amusementItems);
             $errorsImage = [];
             if (file_exists($_FILES['image']['tmp_name'])) {
-                $errorsImage = ImageController::validateImage();
+                $errorsImage = $this->validateImage();
             } else {
                 $errorsImage[] = 'L\'image est obligatoire';
             }
@@ -36,7 +37,7 @@ class AdminAmusementController extends AbstractController
                 $randomImageName = uniqid('', true) . '.'
                 . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
-                move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_LOCAL_PATH . $randomImageName);
+                move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_PATH . $randomImageName);
                 $amusementItems['image'] = $randomImageName;
 
                 $amusementManager = new amusementManager();
@@ -48,6 +49,8 @@ class AdminAmusementController extends AbstractController
         return $this->twig->render('Admin/Amusement/add.html.twig', [
             'errors' => $errors,
             'amusementItems' => $amusementItems,
+            'authorizedMimes' => self::AUTHORIZED_MIMES,
+            'maxFileSize' => self::MAX_FILE_SIZE / 1000000,
         ]);
     }
 
@@ -67,6 +70,19 @@ class AdminAmusementController extends AbstractController
             $errors[] = 'La description est obligatoire';
         }
 
+        return $errors;
+    }
+
+    private function validateImage(): array
+    {
+        $errors = [];
+        if (!in_array(mime_content_type($_FILES['image']['tmp_name']), self::AUTHORIZED_MIMES)) {
+            $errors[] = 'Le format de l\'image n\'est pas valide';
+        }
+
+        if (filesize($_FILES['image']['tmp_name']) > self::MAX_FILE_SIZE) {
+            $errors[] = 'L\'image doit faire moins de ' . self::MAX_FILE_SIZE / 1000000 . 'mo';
+        }
         return $errors;
     }
 }
