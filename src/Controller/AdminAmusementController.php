@@ -33,7 +33,9 @@ class AdminAmusementController extends AbstractController
 
             //if we do empty($errors) GrumPHP is not happy: Variable $errors in empty() always exists and is not falsy.
             if (empty($errorsText) && empty($errorsImage)) {
-                $randomImageName = uniqid('', true) . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                $randomImageName = uniqid('', true) . '.'
+                . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+
                 move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_LOCAL_PATH . $randomImageName);
                 $amusementItems['image'] = $randomImageName;
 
