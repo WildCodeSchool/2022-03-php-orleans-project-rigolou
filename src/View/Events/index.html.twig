@@ -4,17 +4,17 @@
 
 {% block title %}
 	{{ parent() }}
-	- Evènements
+	- Événements
 {% endblock %}
 
 
 {% block content %}
 
-	<h2 class="text-center m-5">Evènements a venir :</h2>
+	<h2 class="text-center m-5">Événements à venir :</h2>
 
 	{% include 'Events/_eventCards.html.twig' with {'events': upcomingEvents } %}
 
-	<h2 class="text-center m-5">Evènements terminée :</h2>
+	<h2 class="text-center m-5">Événements terminés :</h2>
 
 	{% include 'Events/_eventCards.html.twig' with {'events': pastEvents } %}
 
