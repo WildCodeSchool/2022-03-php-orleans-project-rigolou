@@ -8,24 +8,29 @@
 {% block stylesheet %}<link rel="stylesheet" href="assets/css/home.css">
 {% endblock %}
 
-{% block content %}
-	<header class="container-fluid pt-5">
+{% block header %}
+	<header class="container-fluid pt-5 bg-light">
 		<div class="row">
-			<div class="logo col-lg-6 flex-column d-flex align-items-center ">
-				<img class="w-50" src="assets/images/Logo.png" alt="Logo">
-				<img class="w-50" src="assets/images/Title.png" alt="Title">
+			<div class="col-lg-6 d-flex flex-column align-items-center p-lg-5">
+				<img class="w-75 px-lg-5" src="assets/images/Logo.png" alt="Logo">
+				<img class="w-75 px-lg-5" src="assets/images/Title.png" alt="Title">
 			</div>
-			<div class="col-lg-6 my-sm-4 flex-column d-flex align-items-center justify-content-center">
-				<h1 class="text-dark">Bienvenue chez Rigolou !</h1>
+			<div class="col-lg-5 mt-4 px-3 flex-column d-flex align-items-center justify-content-center">
+				<h1 class="text-dark text-center mb-4">Bienvenue chez Rigolou !</h1>
 				<p>
-					La plaine de jeux et de loisirs  de 1800 m² à Saran pour les enfants jusqu’a 12 ans. Sous la responsabilité des parents ou d’un adulte accompagnant, les enfants peuvent jouer dans de nombreuses attractions.Venez passer un agréable moment en famille et en toute sécurité !
+					La plaine de jeux et de loisirs  de 1800 m² à Saran pour les enfants jusqu’a 12 ans. 
+					Sous la responsabilité des parents ou d’un adulte accompagnant, les enfants peuvent jouer dans de nombreuses attractions. 
 				</p>
+				<div class="w-100 fw-bold text-center">Venez passer un agréable moment en famille et en toute sécurité !</div>
 			</div>
 		</div>
 		<div class="w-100 pt-5">
 			<img class="img_header w-100 rounded-4" src="assets/images/Family_happy.jpeg" alt="Les enfants jouent">
 		</div>
 	</header>
+{% endblock %}
+
+{% block content %}
 	<main class="w-100">
 		<!-- amusement section -->
 		<section class="bg-section pt-5 text-center">
