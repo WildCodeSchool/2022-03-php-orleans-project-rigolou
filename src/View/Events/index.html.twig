@@ -9,13 +9,13 @@
 
 
 {% block content %}
-
-	<h2 class="text-center m-5">Événements à venir :</h2>
+<main class="bg-section py-5">
+	<h2 class="text-center mb-5">Événements à venir :</h2>
 
 	{% include 'Events/_eventCards.html.twig' with {'events': upcomingEvents } %}
 
 	<h2 class="text-center m-5">Événements terminés :</h2>
 
 	{% include 'Events/_eventCards.html.twig' with {'events': pastEvents } %}
-
+</main>
 {% endblock %}
