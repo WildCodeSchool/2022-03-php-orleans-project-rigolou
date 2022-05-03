@@ -24,4 +24,6 @@ return [
     'admin/attractions' => ['AdminAmusementController', 'index'],
     'admin/attractions/ajouter' => ['AdminAmusementController', 'add'],
     'admin/events' => ['AdminEventController', 'index'],
+    'admin/events/supprimer' => ['AdminEventController', 'delete'],
+
 ];
