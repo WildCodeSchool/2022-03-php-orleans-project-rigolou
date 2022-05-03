@@ -25,4 +25,5 @@ return [
     'admin/cafeteria' => ['AdminCafeteriaController', 'index'],
     'admin/attractions/ajouter' => ['AdminAmusementController', 'add'],
     'admin/events' => ['AdminEventController', 'index'],
+    'admin/tarifs' => ['AdminRateController', 'index'],
 ];
