@@ -24,6 +24,11 @@ class AdminAmusementController extends AbstractController
 
     public function add(): string
     {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+
         $amusementItems = $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $amusementItems = array_map('trim', $_POST);
@@ -59,6 +64,49 @@ class AdminAmusementController extends AbstractController
         ]);
     }
 
+    public function edit(int $id): string
+    {
+        $amusementItems = $errors = [];
+        if (is_numeric($id) && $id > 0) {
+            $amusementManager = new AmusementManager();
+            $amusementItems = $amusementManager->selectOneById($id);
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($amusementItems)) {
+                $savedImage = $amusementItems['image'];
+                $amusementItems = array_map('trim', $_POST);
+                $errorsText = $this->textValidate($amusementItems);
+                $errorsImage = [];
+                $isImageToBeChanged = false;
+                if (file_exists($_FILES['image']['tmp_name'])) {
+                    $isImageToBeChanged = true;
+                    $errorsImage = $this->validateImage();
+                }
+
+                $errors = [...$errorsText, ...$errorsImage];
+
+                //if we do empty($errors) GrumPHP is not happy
+                if (empty($errorsText) && empty($errorsImage)) {
+                    $amusementItems['id'] = $_GET['id'];
+                    if ($isImageToBeChanged) {
+                        $this->deleteImage($savedImage);
+                        $randomImageName = uniqid('', true) . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                        move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_PATH . $randomImageName);
+                        $amusementItems['image'] = $randomImageName;
+                        $amusementManager->updateWithImage($amusementItems);
+                    } else {
+                        $amusementManager->updateWithoutImage($amusementItems);
+                    }
+
+                    header('Location: /admin/attractions/');
+                }
+            }
+        }
+        return $this->twig->render('Admin/Amusement/edit.html.twig', [
+            'errors' => $errors,
+            'amusementItems' => $amusementItems,
+        ]);
+    }
+
     private function textValidate(array $amusementItems): array
     {
         $errors = [];
@@ -89,5 +137,12 @@ class AdminAmusementController extends AbstractController
             $errors[] = 'L\'image doit faire moins de ' . self::MAX_FILE_SIZE / 1000000 . 'mo';
         }
         return $errors;
+    }
+
+    private function deleteImage(string $image)
+    {
+        if ($image !== '' && file_exists(APP_UPLOAD_PATH . $image)) {
+            unlink(APP_UPLOAD_PATH . $image);
+        }
     }
 }
