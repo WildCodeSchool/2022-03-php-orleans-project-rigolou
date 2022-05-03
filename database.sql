@@ -198,3 +198,11 @@ CREATE TABLE IF NOT EXISTS `anniversary_reservation` (
   `rate_id` INT, 
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`));
+
+INSERT INTO `user` (`email`, `password`) VALUES ('admin@rigolou.fr', '$2y$10$KKYtYA3ETd1gVtdGb10tyOogZxDyMTzJClkqTVnBlreKwbheqfHne');

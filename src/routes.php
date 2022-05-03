@@ -18,7 +18,11 @@ return [
     'attractions' => ['AmusementController', 'index',],
     'cafeteria' => ['CafeteriaController', 'index'],
     'evenements' => ['EventController', 'index'],
+    'login' => ['LoginController', 'login'],
+    'logout' => ['LoginController', 'logout'],
     'contact' => ['ContactController', 'index', ['send']],
     'admin/attractions' => ['AdminAmusementController', 'index'],
     'admin/cafeteria' => ['AdminCafeteriaController', 'index'],
+    'admin/attractions/ajouter' => ['AdminAmusementController', 'add'],
+    'admin/events' => ['AdminEventController', 'index'],
 ];
