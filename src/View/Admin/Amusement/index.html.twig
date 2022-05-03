@@ -9,6 +9,9 @@
 {% block content %}
 	<main class="container-fluid py-5">
 		<h1>Liste des attractions</h1>
+		{% if deletedName != '' %}
+			<p class="alert alert-success w-fit">Les données de "{{ deletedName }}" ont été supprimées.</p>
+		{% endif %}
 		{% include "/Admin/_list.html.twig" with {'cols': {name: 'Nom'}, 'items': amusementItems, 'section': 'attractions'} %}
 	</main>
 {% endblock %}

@@ -9,17 +9,24 @@ class AdminAmusementController extends AbstractController
     public const AUTHORIZED_MIMES = ['image/jpeg','image/png', 'image/webp', 'image/gif'];
     public const MAX_FILE_SIZE = 1000000;
 
-    public function index(): string
+    public function index(string $deleted = '', string $name = ''): string
     {
         if (empty($_SESSION['user'])) {
             header('Location: /login');
             return '';
         }
 
+        $deletedName = '';
+        if (trim($deleted) === 'success' && trim($name) !== '') {
+            $deletedName = $name;
+        }
+
         $amusementManager = new AmusementManager();
         $amusementItems = $amusementManager->selectAll('name');
-
-        return $this->twig->render('Admin/Amusement/index.html.twig', ['amusementItems' => $amusementItems]);
+        return $this->twig->render('Admin/Amusement/index.html.twig', [
+            'amusementItems' => $amusementItems,
+            'deletedName' => $deletedName,
+        ]);
     }
 
     public function add(): string
@@ -76,6 +83,8 @@ class AdminAmusementController extends AbstractController
                     if (!empty($amusement)) {
                         $this->deleteImage($amusement['image']);
                         $amusementManager->delete((int)$id);
+                        header('Location: /admin/attractions?deleted=success&name=' . $amusement['name']);
+                        return '';
                     }
                 }
             }
