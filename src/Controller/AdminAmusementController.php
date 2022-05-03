@@ -67,15 +67,20 @@ class AdminAmusementController extends AbstractController
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $idAndImage = array_map('trim', $_POST);
-            if (isset($idAndImage['id']) && is_numeric($idAndImage['id']) && $idAndImage['id'] > 0) {
-                if (isset($idAndImage['image'])) {
-                    $this->deleteImage($idAndImage['image']);
+            if (isset($_POST['id'])) {
+                $id = trim($_POST['id']);
+                if (is_numeric($id) && $id > 0) {
+                    $amusementManager = new AmusementManager();
+                    $amusement = $amusementManager->selectOneById((int)$id);
+
+                    if (!empty($amusement)) {
+                        $this->deleteImage($amusement['image']);
+                        $amusementManager->delete((int)$id);
+                    }
                 }
-                $amusementManager = new AmusementManager();
-                $amusementManager->delete((int)$idAndImage['id']);
             }
         }
+
         header('Location: /admin/attractions/');
     }
 
@@ -113,7 +118,7 @@ class AdminAmusementController extends AbstractController
 
     private function deleteImage(string $image)
     {
-        if ($image !== '' && file_exists(APP_UPLOAD_PATH . $image)) {
+        if (is_file(APP_UPLOAD_PATH . $image)) {
             unlink(APP_UPLOAD_PATH . $image);
         }
     }
