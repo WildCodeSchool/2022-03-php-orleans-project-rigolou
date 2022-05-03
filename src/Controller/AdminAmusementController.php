@@ -69,12 +69,8 @@ class AdminAmusementController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $idAndImage = array_map('trim', $_POST);
             if (isset($idAndImage['id']) && is_numeric($idAndImage['id']) && $idAndImage['id'] > 0) {
-                if (
-                    isset($idAndImage['image'])
-                        && $idAndImage['image'] !== ''
-                            && file_exists(APP_UPLOAD_PATH . $idAndImage['image'])
-                ) {
-                    unlink(APP_UPLOAD_PATH . $idAndImage['image']);
+                if (isset($idAndImage['image'])) {
+                    $this->deleteImage($idAndImage['image']);
                 }
                 $amusementManager = new AmusementManager();
                 $amusementManager->delete((int)$idAndImage['id']);
@@ -113,5 +109,12 @@ class AdminAmusementController extends AbstractController
             $errors[] = 'L\'image doit faire moins de ' . self::MAX_FILE_SIZE / 1000000 . 'mo';
         }
         return $errors;
+    }
+
+    private function deleteImage(string $image)
+    {
+        if ($image !== '' && file_exists(APP_UPLOAD_PATH . $image)) {
+            unlink(APP_UPLOAD_PATH . $image);
+        }
     }
 }
