@@ -23,5 +23,6 @@ return [
     'contact' => ['ContactController', 'index', ['send']],
     'admin/attractions' => ['AdminAmusementController', 'index'],
     'admin/attractions/ajouter' => ['AdminAmusementController', 'add'],
+    'admin/attractions/modifier' => ['AdminAmusementController', 'edit', ['id']],
     'admin/events' => ['AdminEventController', 'index'],
 ];
