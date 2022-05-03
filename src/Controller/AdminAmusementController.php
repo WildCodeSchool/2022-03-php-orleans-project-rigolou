@@ -24,6 +24,11 @@ class AdminAmusementController extends AbstractController
 
     public function add(): string
     {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+
         $amusementItems = $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $amusementItems = array_map('trim', $_POST);
@@ -57,6 +62,25 @@ class AdminAmusementController extends AbstractController
             'authorizedMimes' => self::AUTHORIZED_MIMES,
             'maxFileSize' => self::MAX_FILE_SIZE / 1000000,
         ]);
+    }
+
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $idAndImage = array_map('trim', $_POST);
+            if (isset($idAndImage['id']) && is_numeric($idAndImage['id']) && $idAndImage['id'] > 0) {
+                if (
+                    isset($idAndImage['image'])
+                        && $idAndImage['image'] !== ''
+                            && file_exists(APP_UPLOAD_PATH . $idAndImage['image'])
+                ) {
+                    unlink(APP_UPLOAD_PATH . $idAndImage['image']);
+                }
+                $amusementManager = new AmusementManager();
+                $amusementManager->delete((int)$idAndImage['id']);
+            }
+        }
+        header('Location: /admin/attractions/');
     }
 
     private function textValidate(array $amusementItems): array
