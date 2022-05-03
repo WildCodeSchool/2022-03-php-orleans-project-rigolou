@@ -1,0 +1,14 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Tarifs
+{% endblock %}
+
+
+{% block content %}
+	<main class="container-fluid py-5">
+		<h1>Liste des tarifs</h1>
+		{% include "/Admin/_list.html.twig" with {'cols': {description: 'Description', category: 'Catégorie', price: 'Prix'}, 'items': rateItems, 'section': 'tarifs'} %}
+	</main>
+{% endblock %}

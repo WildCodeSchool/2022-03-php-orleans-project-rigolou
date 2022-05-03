@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\RateManager;
+
 class AdminRateController extends AbstractController
 {
     public function index(): string
@@ -10,6 +12,12 @@ class AdminRateController extends AbstractController
             header('Location: /login');
             return '';
         }
-        return $this->twig->render('Admin/Rate/index.html.twig');
+
+        $rateManager = new RateManager();
+        $rateItems = $rateManager->selectAll('category, description');
+
+        return $this->twig->render('Admin/Rate/index.html.twig', [
+            'rateItems' => $rateItems,
+        ]);
     }
 }

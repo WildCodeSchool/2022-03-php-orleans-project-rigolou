@@ -9,6 +9,16 @@ class RateManager extends AbstractManager
     public const ANNIVERSARY_RATE_CATEGORY = 'anniversary';
     public const STANDARD_RATE_CATEGORY = 'standard';
 
+    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . self::TABLE . ' AS r';
+        $query .= ' JOIN ' . self::CATEGORY_TABLE . ' AS rc ON r.rate_category_id = rc.id';
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+        return $this->pdo->query($query)->fetchAll();
+    }
+
     public function selectAllStandardRate(): array
     {
         $query = 'SELECT * FROM ' . self::TABLE . ' AS r';
