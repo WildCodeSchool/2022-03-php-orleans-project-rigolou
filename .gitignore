@@ -7,3 +7,4 @@ db.php
 .vscode
 .Ds_Store
 /public/uploads/*
+!.gitkeep

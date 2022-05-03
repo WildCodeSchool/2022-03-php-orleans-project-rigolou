@@ -4,18 +4,18 @@
 
 {% block title %}
 	{{ parent() }}
-	- Evènements
+	- Événements
 {% endblock %}
 
 
 {% block content %}
+	<main class="bg-section py-5">
+		<h2 class="text-center mb-5">Événements à venir :</h2>
 
-	<h2 class="text-center m-5">Evènements a venir :</h2>
+		{% include 'Events/_eventCards.html.twig' with {'events': upcomingEvents } %}
 
-	{% include 'Events/_eventCards.html.twig' with {'events': upcomingEvents } %}
+		<h2 class="text-center m-5">Événements terminés :</h2>
 
-	<h2 class="text-center m-5">Evènements terminée :</h2>
-
-	{% include 'Events/_eventCards.html.twig' with {'events': pastEvents } %}
-
+		{% include 'Events/_eventCards.html.twig' with {'events': pastEvents } %}
+	</main>
 {% endblock %}
