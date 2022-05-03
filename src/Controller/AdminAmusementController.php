@@ -11,11 +11,6 @@ class AdminAmusementController extends AbstractController
 
     public function index(): string
     {
-        if (empty($_SESSION['user'])) {
-            header('Location: /login');
-            return '';
-        }
-
         $amusementManager = new AmusementManager();
         $amusementItems = $amusementManager->selectAll('name');
 
@@ -24,10 +19,7 @@ class AdminAmusementController extends AbstractController
 
     public function add(): string
     {
-        if (empty($_SESSION['user'])) {
-            header('Location: /login');
-            return '';
-        }
+        $this->checkLogin();
 
         $amusementItems = $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -66,6 +58,8 @@ class AdminAmusementController extends AbstractController
 
     public function edit(int $id): string
     {
+        $this->checkLogin();
+
         $amusementItems = $errors = [];
         if (is_numeric($id) && $id > 0) {
             $amusementManager = new AmusementManager();
@@ -105,6 +99,13 @@ class AdminAmusementController extends AbstractController
             'errors' => $errors,
             'amusementItems' => $amusementItems,
         ]);
+    }
+
+    private function checkLogin()
+    {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+        }
     }
 
     private function textValidate(array $amusementItems): array
