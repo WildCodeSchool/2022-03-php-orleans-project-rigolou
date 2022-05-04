@@ -9,10 +9,7 @@
 {% block content %}
 	<main class="container-fluid py-5">
 		<h1 class="my-5">Liste des formules</h1>
-		{% for anniversaryRate in anniversaryRates %}
-		<div class="w-75 mx-auto">
-			<h2 class="mt-5 border-bottom">{{ anniversaryRate.description }}</h2>
-			<div class="w-75 mx-auto mb-3 mt-2">
+			<div class="w-75 mx-auto mb-3 mt-5">
 				<a href="/admin/anniversaire/detail/ajouter" class="btn btn-info w-fit d-flex gap-2 align-items-center">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
 						<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
@@ -21,6 +18,9 @@
 					Ajouter
 				</a>
 			</div>
+		{% for anniversaryRate in anniversaryRates %}
+		<div class="w-75 mx-auto">
+			<h2 class="mt-5 border-bottom">{{ anniversaryRate.description }}</h2>
 			<table class="table table-hover w-75 mx-auto">
 				<thead class="table-light">
 					<tr>
