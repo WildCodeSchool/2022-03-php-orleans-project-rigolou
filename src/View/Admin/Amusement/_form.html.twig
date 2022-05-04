@@ -10,7 +10,7 @@
     <input type="text" class="form-control" name="name" id="name" value="{% if amusementItems is not empty %}{{amusementItems.name}}{% endif %}" required>
     {%- if amusementItems.image is not empty -%}
         <div class="w-25 mt-4">
-            <img src="{{ constant('APP_UPLOAD_PATH') ~ amusementItems.image }}" alt="">
+            <img src="/{{ constant('APP_UPLOAD_PATH') ~ amusementItems.image }}" alt="">
         </div>
     {%- endif -%}
     <label for="image" class="form-label mt-4">Image ({{ maxFileSize }}mo maximum | Type: 
