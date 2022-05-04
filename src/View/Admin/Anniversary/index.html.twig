@@ -9,14 +9,15 @@
 {% block content %}
 	<main class="container-fluid py-5">
 
-		<h1 class = "mb-5 text-center">Liste des réservations</h1>      
+		<h1 class = "mb-5 ">Liste des réservations</h1>      
 
 		<table class="table table-hover w-75 mx-auto ">
             <thead class="table-light">
                 <tr>
-                    <th scope="col">Date</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Prénom</th>
+                    <th scope="col">Téléphone</th>
+                    <th scope="col">Date </th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>   
@@ -27,14 +28,18 @@
 
                 {% for item in anniversaryItems %}
                     <tr>
-                        <td >
-                        {{ item.reservation_date }}
-                        </td>
-                         <td>
+
+                         <td class="text-nowrap">
                         {{ item.firstname }}
                         </td>
-                         <td>   
+                         <td class="text-nowrap">   
                         {{ item.lastname }}
+                        </td> 
+                        <td class="text-nowrap">   
+                        {{ item.phone }}
+                        </td>                       
+                        <td class="w-100">
+                        {{ item.reservation_date }}
                         </td>
                         <td>
                             <a href="/admin/{{ section }}/modifier?id={{ item.id }}" class="btn btn-warning w-fit d-flex gap-2 align-items-center">
