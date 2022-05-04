@@ -12,6 +12,9 @@
 		{% if deletedName != '' %}
 			<p class="alert alert-success w-fit">Les données de "{{ deletedName }}" ont été supprimées.</p>
 		{% endif %}
+		{% if editedName != '' %}
+			<p class="alert alert-success w-fit">Les données de "{{ editedName }}" ont été modifiées.</p>
+		{% endif %}
 		{% include "/Admin/_list.html.twig" with {'cols': {name: 'Nom'}, 'items': amusementItems, 'section': 'attractions'} %}
 	</main>
 {% endblock %}
