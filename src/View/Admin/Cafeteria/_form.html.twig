@@ -1,0 +1,15 @@
+{# TODO : manage errors display #}
+
+<form method="post">
+	<input type="hidden" value="{{ cafeteria.id }}" name="id">
+	<label for="title">Nom</label>
+	<input type="text" value="{{ cafeteria.name }}" name="name" id="name">
+	<label for="title">Prix(€)</label>
+	<input type="number" value="{{ cafeteria.price }}" name="price" id="price">
+	<label for="title">Category</label>
+	<select name="category" id="category">
+		<option value="drink">Boissons</option>
+		<option value="snack">Encas</option>
+	</select>
+	<button>Envoyer</button>
+</form>
