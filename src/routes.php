@@ -29,6 +29,7 @@ return [
     'admin/events' => ['AdminEventController', 'index'],
     'admin/events/supprimer' => ['AdminEventController', 'delete'],
     'admin/tarifs' => ['AdminRateController', 'index'],
+    'admin/tarifs/ajouter' => ['AdminRateController', 'add'],
     'admin' => ['AdminController', 'index'],
 
 ];
