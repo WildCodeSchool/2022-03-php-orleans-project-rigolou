@@ -38,9 +38,10 @@
 						<div class="row w-50 py-3 mx-auto">
 							{% for detail in details %}
 								{% if anniversaryRate.id == detail.rate_id %}
-										<div class="col-lg-6">
-											<p class="fw-bold">🎉 {{ detail.detail }}</p>
-										</div>
+									<div class="col-lg-6">
+										<p class="fw-bold">🎉
+											{{ detail.detail }}</p>
+									</div>
 								{% endif %}
 							{% endfor %}
 						</div>
@@ -49,61 +50,65 @@
 				{% endfor %}
 			</div>
 		</section>
-    <!-- section reservation -->
-    <section class="container-fluid">
-      <h2 class="text-center m-5">Réservation</h2>
-      <div class= "row " >
-        <div class="w-50 h-50 m-auto">
-          <img class="img_header w-100 rounded-4" src="assets/images/anniversary_image.jpg" alt="Les enfants fête un anniversaire">
-        </div>
-        <div class="container-fluid col-4 ">
-          <form class="m-2" method="post" accept-charset="UTF-8" novalidate >
-            {% if errors is not empty %}
-              <ul class="alert alert-danger m-4 ">
-              {%- for error in errors -%}
-                <li class = "error mb-2" >{{error}}</li>
-              {%- endfor -%}
-              </ul>
-            {% elseif errors is not null %}
-              <p class="alert alert-success m-4">la réservation a bien été prise en compte !</p>
-            {% endif %}
-            <div class="m-4">
-              <label for="menu" class="form-label">Sélectionner une formule </label>
-              <select class="form-select " id="menu" name="menu"  >
-                <option value="1">Formule anniversaire Triceratops</option>
-                <option value="2">Formule anniversaire Diplodocus</option>
-              </select>
-            </div>
-            <div class="m-4 ">
-              <div>
-                <label for="firstname" class="form-label">Prénom</label>
-                <input class="form-control mb-3" type="text" id="firstname" name="firstname" placeholder="Patrick" required >
-              </div>
-              <div>
-                <label for="lastname" class="form-label">Nom</label>
-                <input class="form-control mb-3" type="text" id="lastname" name="lastname" placeholder="Dupont" required >
-              </div>
-              <div>
-                <label for="phone" class="form-label">Téléphone</label>
-                <input class="form-control mb-3" type="tel" id="phone" name="phone"  placeholder="06 50 22 34 65" required >
-              </div>
-              <div>
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" id="email" name="email" class="form-control mb-3"  placeholder="nom.prénom@gmail.com" required>
-              </div>
-              <div>
-                <label for="date" class="form-label">Date</label>
-                <input type="date" id="date" name="date" value="01/08/2015" class="form-control mb-3" required>
-              </div>
-              <div>
-                <label for="message" class="form-label">Informations supplémentaires (exemple: nombre de personnes)</label>
-                <textarea class="form-control mb-3" id="message" name="message"rows="3"required></textarea>
-              </div>
-            </div>
-              <button class="btn btn-primary m-4">Réserver</button>
-          </form>
-        </div>
-      </div>	
-    </section>
-   </main>
+		<!-- section reservation -->
+		<section class="container-fluid" id="reservation" >
+			<h2 class="text-center m-5">Réservation</h2>
+			<div class="row ">
+				<div class="w-50 h-50 m-auto">
+					<img class="img_header w-100 rounded-4" src="assets/images/anniversary_image.jpg" alt="Les enfants fête un anniversaire">
+				</div>
+				<div class="container-fluid col-4">
+					<form class="m-2" method="post"  accept-charset="UTF-8" action="#reservation" novalidate>
+						{% if errors is not empty %}
+							<ul class="alert alert-danger m-4">
+								{%- for error in errors -%}
+									<li class="error mb-2">{{error}}</li> 
+								{%- endfor -%}
+							</ul>
+						{% endif %}
+						<div class="m-4">
+							<label for="menu" class="form-label">Sélectionner une formule
+							</label>
+
+							<select class="form-select " id="menu" name="menu">
+
+								{% for anniversaryRate in anniversaryRates %}
+									<option value="{{ anniversaryRate.id }}">{{ anniversaryRate.description }}</option>
+								{% endfor %}
+
+							</select>
+						</div>
+						<div class="m-4 ">
+							<div>
+								<label for="firstname" class="form-label">Prénom</label>
+								<input class="form-control mb-3" type="text" id="firstname" name="firstname" value="{{anniversary_reservation.firstname}}" placeholder="Patrick" required>
+							</div>
+							<div>
+								<label for="lastname" class="form-label">Nom</label>
+								<input class="form-control mb-3" type="text" id="lastname" name="lastname" value="{{anniversary_reservation.lastname}}" placeholder="Dupont" required>
+							</div>
+							<div>
+								<label for="phone" class="form-label">Téléphone</label>
+								<input class="form-control mb-3" type="tel" id="phone" name="phone" value="{{anniversary_reservation.phone}}" placeholder="0650223465" required>
+							</div>
+							<div>
+								<label for="email" class="form-label">Email address</label>
+								<input type="email" id="email" name="email" class="form-control mb-3" value="{{anniversary_reservation.email}}"placeholder="nom.prénom@gmail.com" required>
+							</div>
+							<div>
+								<label for="date" class="form-label">Date</label>
+								<input type="date" id="date" name="date" value="{{anniversary_reservation.date}}"class="form-control mb-3" required>
+							</div>
+							<div>
+								<label for="message" class="form-label">Informations supplémentaires (exemple: nombre de personnes)</label>
+								<textarea class="form-control mb-3" id="message" name="message" value="{{anniversary_reservation.message}}" rows="3" required></textarea>
+							</div>
+						</div>
+						<button class="btn btn-primary m-4">Réserver</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
 {% endblock %}
+ 

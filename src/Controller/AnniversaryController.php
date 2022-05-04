@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\AnniversaryDetailsManager;
+use App\Model\AnniversaryManager;
 use App\Model\RateManager;
 
 class AnniversaryController extends AbstractController
@@ -12,17 +13,22 @@ class AnniversaryController extends AbstractController
 
     public function index()
     {
-        $errorsEmpty = null;
-        $errorsFormat = null;
-        $errors = null;
+        $errorsEmpty = [];
+        $errorsFormat = [];
+        $errors = [];
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $reservation = array_map('trim', $_POST);
             $errorsEmpty = $this->validate($reservation);
             $errorsFormat = $this->validateFormat($reservation);
             $errors = [...$errorsEmpty, ...$errorsFormat];
-        }
 
+            if (empty($errorsEmpty) && empty($errorsFormat)) {
+                $anniversaryManager = new AnniversaryManager();
+                $anniversaryManager->insert($reservation);
+            }
+        }
         $rateManager = new RateManager();
         $anniversaryRates = $rateManager->selectAllAnniversaryRate();
         $detailsManager = new AnniversaryDetailsManager();
