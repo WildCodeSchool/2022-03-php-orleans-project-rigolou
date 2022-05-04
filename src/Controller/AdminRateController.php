@@ -14,7 +14,7 @@ class AdminRateController extends AbstractController
         }
 
         $rateManager = new RateManager();
-        $rateItems = $rateManager->selectAll('category, description');
+        $rateItems = $rateManager->selectAllByCategory();
 
         return $this->twig->render('Admin/Rate/index.html.twig', [
             'rateItems' => $rateItems,
