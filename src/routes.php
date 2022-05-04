@@ -28,6 +28,7 @@ return [
     'admin/attractions/modifier' => ['AdminAmusementController', 'edit', ['id']],
     'admin/attractions/supprimer' => ['AdminAmusementController', 'delete'],
     'admin/events' => ['AdminEventController', 'index'],
+    'admin/events/ajouter' => ['AdminEventController', 'add'],
     'admin/events/supprimer' => ['AdminEventController', 'delete'],
     'admin/tarifs' => ['AdminRateController', 'index'],
     'admin' => ['AdminController', 'index'],
