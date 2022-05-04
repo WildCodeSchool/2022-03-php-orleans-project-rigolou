@@ -27,4 +27,5 @@ return [
     'admin/attractions/supprimer' => ['AdminAmusementController', 'delete'],
     'admin/events' => ['AdminEventController', 'index'],
     'admin/events/supprimer' => ['AdminEventController', 'delete'],
+    'admin/tarifs' => ['AdminRateController', 'index'],
 ];
