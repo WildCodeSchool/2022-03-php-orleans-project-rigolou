@@ -100,6 +100,7 @@ class AdminEventController extends AbstractController
             $errors[] = 'Date non valide';
         }
         return $errors;
+    }
 
     public function delete()
     {
