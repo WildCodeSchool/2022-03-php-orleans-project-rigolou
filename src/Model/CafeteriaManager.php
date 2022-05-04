@@ -20,9 +20,11 @@ class CafeteriaManager extends AbstractManager
 
     public function insert(array $cafeteria): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`name`) VALUES (:name)");
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`name`, `price`, `category`) 
+        VALUES (:name, :price, :category)");
         $statement->bindValue('name', $cafeteria['name'], \PDO::PARAM_STR);
-
+        $statement->bindValue('price', $cafeteria['price']);
+        $statement->bindValue('category', $cafeteria['category'], \PDO::PARAM_STR);
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
