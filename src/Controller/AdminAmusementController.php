@@ -40,12 +40,7 @@ class AdminAmusementController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $amusementItems = array_map('trim', $_POST);
             $errorsText = $this->textValidate($amusementItems);
-            $errorsImage = [];
-            if (file_exists($_FILES['image']['tmp_name'])) {
-                $errorsImage = $this->validateImage();
-            } else {
-                $errorsImage[] = 'L\'image est obligatoire';
-            }
+            $errorsImage = $this->validateImage($_FILES['image']);
 
             $errors = [...$errorsText, ...$errorsImage];
 
@@ -112,15 +107,21 @@ class AdminAmusementController extends AbstractController
         return $errors;
     }
 
-    private function validateImage(): array
+    private function validateImage($file): array
     {
         $errors = [];
-        if (!in_array(mime_content_type($_FILES['image']['tmp_name']), self::AUTHORIZED_MIMES)) {
-            $errors[] = 'Le format de l\'image n\'est pas valide';
-        }
+        if ($file['error'] === UPLOAD_ERR_NO_FILE) {
+            $errors[] = 'L\'image est obligatoire';
+        } elseif ($file['error'] !== UPLOAD_ERR_OK) {
+            $errors[] = 'Problème de téléchargement du fichier';
+        } else {
+            if (!in_array(mime_content_type($file['tmp_name']), self::AUTHORIZED_MIMES)) {
+                $errors[] = 'Le format de l\'image n\'est pas valide';
+            }
 
-        if (filesize($_FILES['image']['tmp_name']) > self::MAX_FILE_SIZE) {
-            $errors[] = 'L\'image doit faire moins de ' . self::MAX_FILE_SIZE / 1000000 . 'mo';
+            if (filesize($file['tmp_name']) > self::MAX_FILE_SIZE) {
+                $errors[] = 'L\'image doit faire moins de ' . self::MAX_FILE_SIZE / 1000000 . 'mo';
+            }
         }
         return $errors;
     }
