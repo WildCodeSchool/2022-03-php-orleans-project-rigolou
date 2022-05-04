@@ -21,7 +21,6 @@ class AdminCafeteriaController extends AbstractController
             // clean $_POST data
             $cafeteria = array_map('trim', $_POST);
             $errors = $this->validate($cafeteria);
-            // TODO validations (length, format...)
             if (empty($errors)) {
                 // if validation is ok, insert and redirection
                 $cafeteriaManager = new CafeteriaManager();
@@ -45,8 +44,8 @@ class AdminCafeteriaController extends AbstractController
             $errors[] = 'Le nom ne doit pas dépasser ' . $nameMaxLength . ' caractères';
         }
 
-        if (empty($cafeteria['price']) && !is_numeric($cafeteria['price'])) {
-            $errors[] = 'La prix est obligatoire et doit être un nombre';
+        if (empty($cafeteria['price']) && !is_numeric($cafeteria['price']) && $cafeteria['price'] > 0) {
+            $errors[] = 'Le prix est obligatoire et doit être un nombre supérieur à 0';
         }
 
         return $errors;
