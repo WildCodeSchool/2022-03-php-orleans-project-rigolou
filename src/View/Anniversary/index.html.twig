@@ -51,8 +51,8 @@
 			</div>
 		</section>
 		<!-- section reservation -->
-		<section class="container-fluid" id="reservation" >
-			<h2 class="text-center m-5">Réservation</h2>
+		<section class="container-fluid py-5" id="reservation" >
+			<h1 class="section-title mx-auto mt-2 mb-5 px-3 bg-primary rounded-4">Réservation</h1>
 			<div class="row ">
 				<div class="w-50 h-50 m-auto">
 					<img class="img_header w-100 rounded-4" src="assets/images/anniversary_image.jpg" alt="Les enfants fête un anniversaire">
@@ -66,6 +66,12 @@
 								{%- endfor -%}
 							</ul>
 						{% endif %}
+            {% if reservationMessage %}
+            <ul class="alert alert-success m-4">
+              <li class="error mb-2"> Votre demande de réservation a bien été prise en compte ! 
+              </li>
+            </ul>
+            {% endif %}
 						<div class="m-4">
 							<label for="menu" class="form-label">Sélectionner une formule
 							</label>
@@ -81,27 +87,27 @@
 						<div class="m-4 ">
 							<div>
 								<label for="firstname" class="form-label">Prénom</label>
-								<input class="form-control mb-3" type="text" id="firstname" name="firstname" value="{{anniversary_reservation.firstname}}" placeholder="Patrick" required>
+								<input class="form-control mb-3" type="text" id="firstname" name="firstname" value="{{reservation.firstname}}" placeholder="Patrick" required>
 							</div>
 							<div>
 								<label for="lastname" class="form-label">Nom</label>
-								<input class="form-control mb-3" type="text" id="lastname" name="lastname" value="{{anniversary_reservation.lastname}}" placeholder="Dupont" required>
+								<input class="form-control mb-3" type="text" id="lastname" name="lastname" value="{{reservation.lastname}}" placeholder="Dupont" required>
 							</div>
 							<div>
 								<label for="phone" class="form-label">Téléphone</label>
-								<input class="form-control mb-3" type="tel" id="phone" name="phone" value="{{anniversary_reservation.phone}}" placeholder="0650223465" required>
+								<input class="form-control mb-3" type="tel" id="phone" name="phone" value="{{reservation.phone}}" placeholder="0650223465" required>
 							</div>
 							<div>
 								<label for="email" class="form-label">Email address</label>
-								<input type="email" id="email" name="email" class="form-control mb-3" value="{{anniversary_reservation.email}}"placeholder="nom.prénom@gmail.com" required>
+								<input type="email" id="email" name="email" class="form-control mb-3" value="{{reservation.email}}"placeholder="nom.prénom@gmail.com" required>
 							</div>
 							<div>
 								<label for="date" class="form-label">Date</label>
-								<input type="date" id="date" name="date" value="{{anniversary_reservation.date}}"class="form-control mb-3" required>
+								<input type="date" id="date" name="date" value="{{reservation.date}}"class="form-control mb-3" required>
 							</div>
 							<div>
 								<label for="message" class="form-label">Informations supplémentaires (exemple: nombre de personnes)</label>
-								<textarea class="form-control mb-3" id="message" name="message" value="{{anniversary_reservation.message}}" rows="3" required></textarea>
+								<textarea class="form-control mb-3" id="message" name="message"  rows="3" required>{{reservation.message}}</textarea>
 							</div>
 						</div>
 						<button class="btn btn-primary m-4">Réserver</button>
