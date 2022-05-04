@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\AnniversaryDetailsManager;
+use App\Model\AnniversaryManager;
 use App\Model\RateManager;
 
 class AnniversaryController extends AbstractController
@@ -10,19 +11,29 @@ class AnniversaryController extends AbstractController
     protected const NAME_LENGTH = 60;
     protected const PHONE_LENGTH = 10;
 
-    public function index()
+    public function index(string $message = '')
     {
-        $errorsEmpty = null;
-        $errorsFormat = null;
-        $errors = null;
+        $reservationMessage = false;
 
+        if ($message === 'success') {
+            $reservationMessage = true;
+        }
+        $errorsEmpty = [];
+        $errorsFormat = [];
+        $errors = [];
+        $reservation = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $reservation = array_map('trim', $_POST);
             $errorsEmpty = $this->validate($reservation);
             $errorsFormat = $this->validateFormat($reservation);
             $errors = [...$errorsEmpty, ...$errorsFormat];
-        }
 
+            if (empty($errorsEmpty) && empty($errorsFormat)) {
+                $anniversaryManager = new AnniversaryManager();
+                $anniversaryManager->insert($reservation);
+                header('Location: /anniversaire?message=success#reservation');
+            }
+        }
         $rateManager = new RateManager();
         $anniversaryRates = $rateManager->selectAllAnniversaryRate();
         $detailsManager = new AnniversaryDetailsManager();
@@ -30,7 +41,9 @@ class AnniversaryController extends AbstractController
         return $this->twig->render('Anniversary/index.html.twig', [
             'anniversaryRates' => $anniversaryRates,
             'details' => $details,
-            'errors' => $errors
+            'errors' => $errors,
+            'reservation' => $reservation,
+            'reservationMessage' => $reservationMessage
         ]);
     }
 

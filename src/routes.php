@@ -9,7 +9,7 @@
 
 return [
     '' => ['HomeController', 'index',],
-    'anniversaire' => ['AnniversaryController', 'index'],
+    'anniversaire' => ['AnniversaryController', 'index', ['message']],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
