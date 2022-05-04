@@ -9,31 +9,38 @@ class AdminAmusementController extends AbstractController
     public const AUTHORIZED_MIMES = ['image/jpeg','image/png', 'image/webp', 'image/gif'];
     public const MAX_FILE_SIZE = 1000000;
 
-    public function index(): string
+    public function index(string $deleted = '', string $name = ''): string
     {
         if (empty($_SESSION['user'])) {
             header('Location: /login');
             return '';
         }
 
+        $deletedName = '';
+        if (trim($deleted) === 'success' && trim($name) !== '') {
+            $deletedName = $name;
+        }
+
         $amusementManager = new AmusementManager();
         $amusementItems = $amusementManager->selectAll('name');
-
-        return $this->twig->render('Admin/Amusement/index.html.twig', ['amusementItems' => $amusementItems]);
+        return $this->twig->render('Admin/Amusement/index.html.twig', [
+            'amusementItems' => $amusementItems,
+            'deletedName' => $deletedName,
+        ]);
     }
 
     public function add(): string
     {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+
         $amusementItems = $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $amusementItems = array_map('trim', $_POST);
             $errorsText = $this->textValidate($amusementItems);
-            $errorsImage = [];
-            if (file_exists($_FILES['image']['tmp_name'])) {
-                $errorsImage = $this->validateImage();
-            } else {
-                $errorsImage[] = 'L\'image est obligatoire';
-            }
+            $errorsImage = $this->validateImage($_FILES['image']);
 
             $errors = [...$errorsText, ...$errorsImage];
 
@@ -59,6 +66,28 @@ class AdminAmusementController extends AbstractController
         ]);
     }
 
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['id'])) {
+                $id = trim($_POST['id']);
+                if (is_numeric($id) && $id > 0) {
+                    $amusementManager = new AmusementManager();
+                    $amusement = $amusementManager->selectOneById((int)$id);
+
+                    if (!empty($amusement)) {
+                        $this->deleteImage($amusement['image']);
+                        $amusementManager->delete((int)$id);
+                        header('Location: /admin/attractions?deleted=success&name=' . $amusement['name']);
+                        return '';
+                    }
+                }
+            }
+        }
+
+        header('Location: /admin/attractions/');
+    }
+
     private function textValidate(array $amusementItems): array
     {
         $errors = [];
@@ -78,16 +107,29 @@ class AdminAmusementController extends AbstractController
         return $errors;
     }
 
-    private function validateImage(): array
+    private function validateImage($file): array
     {
         $errors = [];
-        if (!in_array(mime_content_type($_FILES['image']['tmp_name']), self::AUTHORIZED_MIMES)) {
-            $errors[] = 'Le format de l\'image n\'est pas valide';
-        }
+        if ($file['error'] === UPLOAD_ERR_NO_FILE) {
+            $errors[] = 'L\'image est obligatoire';
+        } elseif ($file['error'] !== UPLOAD_ERR_OK) {
+            $errors[] = 'Problème de téléchargement du fichier';
+        } else {
+            if (!in_array(mime_content_type($file['tmp_name']), self::AUTHORIZED_MIMES)) {
+                $errors[] = 'Le format de l\'image n\'est pas valide';
+            }
 
-        if (filesize($_FILES['image']['tmp_name']) > self::MAX_FILE_SIZE) {
-            $errors[] = 'L\'image doit faire moins de ' . self::MAX_FILE_SIZE / 1000000 . 'mo';
+            if (filesize($file['tmp_name']) > self::MAX_FILE_SIZE) {
+                $errors[] = 'L\'image doit faire moins de ' . self::MAX_FILE_SIZE / 1000000 . 'mo';
+            }
         }
         return $errors;
+    }
+
+    private function deleteImage(string $image)
+    {
+        if (is_file(APP_UPLOAD_PATH . $image)) {
+            unlink(APP_UPLOAD_PATH . $image);
+        }
     }
 }
