@@ -10,7 +10,6 @@ class AdminCafeteriaController extends AbstractController
     {
         $cafeteriatManager = new CafeteriaManager();
         $cafeteria = $cafeteriatManager->selectAll('name');
-        // $cafeteriaItems ??
 
         return $this->twig->render('Admin/Cafeteria/index.html.twig', ['cafeteriaItems' => $cafeteria]);
     }
@@ -31,7 +30,7 @@ class AdminCafeteriaController extends AbstractController
             }
         }
 
-        return $this->twig->render('Admin/Cafeteria/add.html.twig', ['errors' => $errors]);
+        return $this->twig->render('Admin/Cafeteria/add.html.twig', ['errors' => $errors, 'cafeteria' => $cafeteria]);
     }
 
     private function validate(array $cafeteria): array
