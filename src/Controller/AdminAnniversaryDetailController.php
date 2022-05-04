@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Model\AnniversaryManager;
+use App\Model\AnniversaryDetailsManager;
+use App\Model\RateManager;
 
 class AdminAnniversaryDetailController extends AbstractController
 {
@@ -12,7 +13,14 @@ class AdminAnniversaryDetailController extends AbstractController
             header('Location: /login');
             return '';
         }
+        $rateManager = new RateManager();
+        $anniversaryRates = $rateManager->selectAllAnniversaryRate();
 
-        return $this->twig->render('Admin/AnniversaryDetail/index.html.twig');
+        $detailsManager = new AnniversaryDetailsManager();
+        $anniversaryDetails = $detailsManager->selectAll();
+        return $this->twig->render('Admin/AnniversaryDetail/index.html.twig', [
+            'anniversaryRates' => $anniversaryRates,
+            'anniversaryDetails' => $anniversaryDetails,
+        ]);
     }
 }
