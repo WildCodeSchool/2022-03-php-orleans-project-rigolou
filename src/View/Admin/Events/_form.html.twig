@@ -12,12 +12,7 @@
 	<label for="date" class="form-label">Date</label>
 	<input type="date" class="form-control" name="date" id="date" value="" required>
 	<label for="image" class="form-label mt-4">Image ({{ maxFileSize }}mo maximum | Type:
-		{% for authorizedMime in authorizedMimes %}
-			{{ authorizedMime }}
-			{% if loop.last == false %},
-			{% endif %}
-		{% endfor %})
-	</label>
+		{{ authorizedMimes|join(',  ') }})</label>
 	<input type="file" class="form-control" name="image" id="image">
 	<label for="description" class="form-label mt-4">Description</label>
 	<textarea class="form-control" name="description" id="description" rows="6" required></textarea>

@@ -24,6 +24,11 @@ class AdminEventController extends AbstractController
 
     public function add(): ?string
     {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+
         $errors = [];
         $event = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -90,7 +95,10 @@ class AdminEventController extends AbstractController
         if (strlen($event['title']) > self::MAX_TITLE_SIZE) {
             $errors[] = 'Votre titre doit faire moins de ' . self::MAX_TITLE_SIZE;
         }
-
+        $dateCheck = explode('-', $event['date']);
+        if (checkdate(intval($dateCheck[1]), intval($dateCheck[2]), intval($dateCheck[0])) !== true) {
+            $errors[] = 'Date non valide';
+        }
         return $errors;
     }
 }
