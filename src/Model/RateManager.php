@@ -32,4 +32,10 @@ class RateManager extends AbstractManager
         $query .= ' WHERE rc.constant_category = \'' . self::ANNIVERSARY_RATE_CATEGORY . '\';';
         return $this->pdo->query($query)->fetchAll();
     }
+
+    public function selectAllRateCategory(): array
+    {
+        $query = 'SELECT * FROM ' . self::CATEGORY_TABLE;
+        return $this->pdo->query($query)->fetchAll();
+    }
 }

@@ -1,0 +1,14 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Tarifs - Ajouter
+{% endblock %}
+
+
+{% block content %}
+	<main class="container-fluid py-5">
+		<h1>Ajouter un tarif</h1>
+		{% include "Admin/Rate/_form.html.twig" with {'addOrEdit': 'add'} %}
+	</main>
+{% endblock %}

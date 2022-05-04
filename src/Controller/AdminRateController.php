@@ -20,4 +20,13 @@ class AdminRateController extends AbstractController
             'rateItems' => $rateItems,
         ]);
     }
+
+    public function add(): string
+    {
+        $rateManager = new RateManager();
+        $categoryItems = $rateManager->selectAllRateCategory();
+        return $this->twig->render('Admin/Rate/add.html.twig', [
+            'categoryItems' => $categoryItems,
+        ]);
+    }
 }
