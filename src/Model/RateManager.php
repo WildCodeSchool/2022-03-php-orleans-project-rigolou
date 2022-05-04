@@ -38,4 +38,16 @@ class RateManager extends AbstractManager
         $query = 'SELECT * FROM ' . self::CATEGORY_TABLE;
         return $this->pdo->query($query)->fetchAll();
     }
+
+    public function insert(array $items): void
+    {
+        $query = 'INSERT INTO ' . self::TABLE . ' (description, price, rate_category_id)
+         VALUES (:description, :price, :category)';
+         $statement = $this->pdo->prepare($query);
+         $statement->bindValue('description', $items['description'], \PDO::PARAM_STR);
+         $statement->bindValue('price', $items['price'], \PDO::PARAM_STR);
+         $statement->bindValue('category', $items['category'], \PDO::PARAM_INT);
+
+         $statement->execute();
+    }
 }
