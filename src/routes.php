@@ -21,6 +21,7 @@ return [
     'login' => ['LoginController', 'login'],
     'logout' => ['LoginController', 'logout'],
     'contact' => ['ContactController', 'index', ['send']],
+    'admin/reservations' => ['AdminAnniversaryController', 'index'],
     'admin/cafeteria' => ['AdminCafeteriaController', 'index'],
     'admin/attractions' => ['AdminAmusementController', 'index', ['success', 'name']],
     'admin/attractions/ajouter' => ['AdminAmusementController', 'add'],
@@ -30,5 +31,4 @@ return [
     'admin/events/supprimer' => ['AdminEventController', 'delete'],
     'admin/tarifs' => ['AdminRateController', 'index'],
     'admin' => ['AdminController', 'index'],
-
 ];

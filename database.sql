@@ -197,7 +197,12 @@ CREATE TABLE IF NOT EXISTS `anniversary_reservation` (
   `is_accepted` TINYINT NULL,
   `rate_id` INT, 
   PRIMARY KEY (`id`)
-);
+) ENGINE = InnoDB;
+
+INSERT INTO
+  `anniversary_reservation` (`reservation_date`, `firstname`, `lastname`, `email`,`phone`, `message`)
+VALUES
+  ('2012-12-12', 'Fabien', 'Dupont', 'fabien.dupont@wanadoo.fr', '0765352515', 'Je viens avec mon enfant de 10 ans et ses 8 copains ');
 
 CREATE TABLE `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
