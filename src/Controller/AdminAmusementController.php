@@ -66,6 +66,55 @@ class AdminAmusementController extends AbstractController
         ]);
     }
 
+    public function edit(int $id): string
+    {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+
+        $amusementItems = $errors = [];
+        $amusementManager = new AmusementManager();
+        $amusementItems = $amusementManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($amusementItems)) {
+            $savedImage = $amusementItems['image'];
+            $amusementItems = array_map('trim', $_POST);
+            $errorsText = $this->textValidate($amusementItems);
+            $errorsImage = [];
+            $isImageToBeChanged = false;
+            if ($_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
+                $isImageToBeChanged = true;
+                $errorsImage = $this->validateImage($_FILES['image']);
+            }
+
+            $errors = [...$errorsText, ...$errorsImage];
+
+            //if we do empty($errors) GrumPHP is not happy
+            if (empty($errorsText) && empty($errorsImage)) {
+                $amusementItems['id'] = $id;
+                if ($isImageToBeChanged) {
+                    $this->deleteImage($savedImage);
+                    $randomImageName = uniqid('', true);
+                    $randomImageName .= '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                    move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_PATH . $randomImageName);
+                    $amusementItems['image'] = $randomImageName;
+                } else {
+                    $amusementItems['image'] = $savedImage;
+                }
+                $amusementManager->update($amusementItems);
+                header('Location: /admin/attractions?edited=success&name=' . $amusementItems['name']);
+            }
+        }
+
+        return $this->twig->render('Admin/Amusement/edit.html.twig', [
+            'errors' => $errors,
+            'amusementItems' => $amusementItems,
+            'authorizedMimes' => self::AUTHORIZED_MIMES,
+            'maxFileSize' => self::MAX_FILE_SIZE / 1000000,
+        ]);
+    }
+
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

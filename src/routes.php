@@ -24,6 +24,7 @@ return [
     'admin/cafeteria' => ['AdminCafeteriaController', 'index'],
     'admin/attractions' => ['AdminAmusementController', 'index', ['deleted', 'name']],
     'admin/attractions/ajouter' => ['AdminAmusementController', 'add'],
+    'admin/attractions/modifier' => ['AdminAmusementController', 'edit', ['id']],
     'admin/attractions/supprimer' => ['AdminAmusementController', 'delete'],
     'admin/events' => ['AdminEventController', 'index'],
     'admin/events/supprimer' => ['AdminEventController', 'delete'],
