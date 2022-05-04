@@ -1,0 +1,12 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Événements Ajout
+{% endblock %}
+
+{% block content %}
+    <h1>Ajouter un Événement</h1>
+    {% include "/Admin/Events/_form.html.twig" with {'addOrEdit': 'add'} %}
+{% endblock %}
+
