@@ -21,10 +21,10 @@ return [
     'login' => ['LoginController', 'login'],
     'logout' => ['LoginController', 'logout'],
     'contact' => ['ContactController', 'index', ['send']],
-    'admin/attractions' => ['AdminAmusementController', 'index'],
     'admin/cafeteria' => ['AdminCafeteriaController', 'index'],
+    'admin/attractions' => ['AdminAmusementController', 'index', ['deleted', 'name']],
     'admin/attractions/ajouter' => ['AdminAmusementController', 'add'],
+    'admin/attractions/supprimer' => ['AdminAmusementController', 'delete'],
     'admin/events' => ['AdminEventController', 'index'],
     'admin/events/supprimer' => ['AdminEventController', 'delete'],
-
 ];

@@ -9,21 +9,33 @@ class AdminAmusementController extends AbstractController
     public const AUTHORIZED_MIMES = ['image/jpeg','image/png', 'image/webp', 'image/gif'];
     public const MAX_FILE_SIZE = 1000000;
 
-    public function index(): string
+    public function index(string $deleted = '', string $name = ''): string
     {
         if (empty($_SESSION['user'])) {
             header('Location: /login');
             return '';
         }
 
+        $deletedName = '';
+        if (trim($deleted) === 'success' && trim($name) !== '') {
+            $deletedName = $name;
+        }
+
         $amusementManager = new AmusementManager();
         $amusementItems = $amusementManager->selectAll('name');
-
-        return $this->twig->render('Admin/Amusement/index.html.twig', ['amusementItems' => $amusementItems]);
+        return $this->twig->render('Admin/Amusement/index.html.twig', [
+            'amusementItems' => $amusementItems,
+            'deletedName' => $deletedName,
+        ]);
     }
 
     public function add(): string
     {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+
         $amusementItems = $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $amusementItems = array_map('trim', $_POST);
@@ -52,6 +64,28 @@ class AdminAmusementController extends AbstractController
             'authorizedMimes' => self::AUTHORIZED_MIMES,
             'maxFileSize' => self::MAX_FILE_SIZE / 1000000,
         ]);
+    }
+
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['id'])) {
+                $id = trim($_POST['id']);
+                if (is_numeric($id) && $id > 0) {
+                    $amusementManager = new AmusementManager();
+                    $amusement = $amusementManager->selectOneById((int)$id);
+
+                    if (!empty($amusement)) {
+                        $this->deleteImage($amusement['image']);
+                        $amusementManager->delete((int)$id);
+                        header('Location: /admin/attractions?deleted=success&name=' . $amusement['name']);
+                        return '';
+                    }
+                }
+            }
+        }
+
+        header('Location: /admin/attractions/');
     }
 
     private function textValidate(array $amusementItems): array
@@ -90,5 +124,12 @@ class AdminAmusementController extends AbstractController
             }
         }
         return $errors;
+    }
+
+    private function deleteImage(string $image)
+    {
+        if (is_file(APP_UPLOAD_PATH . $image)) {
+            unlink(APP_UPLOAD_PATH . $image);
+        }
     }
 }
