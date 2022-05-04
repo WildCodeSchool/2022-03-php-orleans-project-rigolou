@@ -26,23 +26,22 @@ class AdminEventController extends AbstractController
             $id = trim($_POST['id']);
             if ($id > 0) {
                 $eventManager = new EventManager();
+                $event = $eventManager->selectOneById((int) $id);
 
-                $this->deleteImage((int) $id);
+                if (!empty($event)) {
+                    $this->deleteImage((string) $event['image']);
 
-                $eventManager->delete((int)$id);
+                    $eventManager->delete((int)$id);
 
-                header('Location: /admin/events');
+                    header('Location: /admin/events');
+                }
             }
         }
     }
 
-    private function deleteImage(int $id)
+    private function deleteImage(string $image)
     {
-        $eventManager = new EventManager();
-        $event = $eventManager->selectOneById((int) $id);
-        if (!empty($event)) {
-            $image = APP_UPLOAD_PATH . $event['image'];
-            unlink($image);
-        }
+        $image = APP_UPLOAD_PATH . $image;
+        unlink($image);
     }
 }
