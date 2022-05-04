@@ -1,67 +1,71 @@
 {% extends 'layout.html.twig' %}
 
-{% block stylesheet %}
-	<link rel="stylesheet" href="assets/css/cafeteria.css">
-{% endblock %}
-
 {% block title %}
 	{{ parent() }}
 	- Cafétéria
 {% endblock %}
 
 {% block header %}
-	<header class="p-0">
-		<img class="img_cafet w-100 p-0" src="assets/images/Cafeteria-min.jpg" alt="">
-		<div class="row">
-			<img class="coffee1 col-lg-3 d-none d-lg-block pt-5 py-5" src="assets/images/coffee.png" alt="Coffee1">
-			<div class="text-center col-lg-6 my-5">
-				<h3>Cafétéria</h3>
-				<h4>Bar & Snack</h4>
-				<p class="col-lg-6 offset-md-3">Un espace bar et salon de thé permet aux adultes comme aux enfants de boire une boisson froide ou chaude. Un snack permet de faire goûter les enfants. Les adultes pourront également bénéficier de petits encas.
-				</p>
+	<header class="container-fluid bg-light p-0 m-0">
+		<div class="row align-items-center m-0">
+			<div class="col-lg-6 d-flex flex-column justify-content-center mt-3">
+				<img class="rounded-4 w-100 shadow" src="assets/images/Cafeteria-min.jpg" alt="">
 			</div>
-			<img class="coffee2 col-lg-3 d-none d-lg-block pt-5 py-5" src="assets/images/patatoes.png" alt="Coffee2">
-		</div>
-	</header>
-{% endblock %}
-
-{% block content %}
-	<main class="container">
-		<div class="row justify-content-around">
-			<div class="bg-primary-light col-lg-4 p-4 m-2 shadow rounded-4">
-				<table class="w-100">
-					<thead>
-						<tr>
-							<h4 class="text-center">Boissons</h4>
-						</tr>
-					</thead>
-					{% for drink in drinks %}
-						<tr>
-							<td class="py-3">{{ drink.name }}</td>
-							<td class="text-end">{{ drink.price }}
-								€</td>
-						</tr>
-					{% endfor %}
-				</table>
-			</div>
-
-			<div class="bg-primary-light col-lg-4 p-4 m-2 shadow rounded-4">
-				<table class="w-100">
-					<thead>
-						<tr>
-							<h4 class="text-center">Snacks</h4>
-						</tr>
-					</thead>
-					{% for snack in snacks %}
-						<tr>
-							<td class="py-3">{{ snack.name }}</td>
-							<td class="text-end">{{ snack.price }}
-								€</td>
-						</tr>
-					{% endfor %}
-				</table>
+			<div class="col-lg-6">
+				<div class="d-flex align-items-center justify-content-center px-5">
+					<img class="coffee1 col-lg-2 d-none d-lg-block pt-5 py-5 ms-5 me-5" src="assets/images/coffee.png" alt="Coffee1">
+					<div>
+						<h1 class="text-dark text-center mt-4 mb-3">Cafétéria</h1>
+						<h2 class="text-center">Bar & Snack</h2>
+					</div>
+					<img class="coffee2 col-lg-2 d-none d-lg-block pt-5 py-5 ms-5 me-5" src="assets/images/patatoes.png" alt="Coffee2">
+				</div>
+				<p class="ms-5 me-5">Un espace bar et salon de thé permet aux adultes comme aux enfants de boire une boisson froide ou chaude. Un snack permet de faire goûter les enfants. Les adultes pourront également bénéficier de petits encas.</p>
 			</div>
 		</div>
-	</main>
+	{% endblock %}
 
-{% endblock %}
+	{% block content %}
+		<main class="container">
+			<div class="row justify-content-around">
+				<div class="bg-primary-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
+					<table class="w-100">
+						<thead>
+							<tr>
+								<h4 class="text-center">Boissons</h4>
+							</tr>
+						</thead>
+						<tbody>
+							{% for drink in drinks %}
+								<tr>
+									<td class="py-3">{{ drink.name }}</td>
+									<td class="text-end">{{ drink.price }}
+										€</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+
+				<div class="bg-primary-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
+					<table class="w-100">
+						<thead>
+							<tr>
+								<h4 class="text-center">Snacks</h4>
+							</tr>
+						</thead>
+						<tbody>
+							{% for snack in snacks %}
+								<tr>
+									<td class="py-3">{{ snack.name }}</td>
+									<td class="text-end">{{ snack.price }}
+										€</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+
+	{% endblock %}
