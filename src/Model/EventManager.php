@@ -36,4 +36,22 @@ class EventManager extends AbstractManager
 
         $statement->execute();
     }
+
+    public function update(array $items)
+    {
+        $query = 'UPDATE ' . self::TABLE . ' set 
+        title=:title, 
+        description=:description, 
+        image=:image,
+        date=:date  
+        WHERE id=:id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('title', $items['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $items['description'], \PDO::PARAM_STR);
+        $statement->bindValue('image', $items['image'], \PDO::PARAM_STR);
+        $statement->bindValue('id', $items['id'], \PDO::PARAM_INT);
+        $statement->bindValue('date', $items['date'], \PDO::PARAM_STR);
+
+        $statement->execute();
+    }
 }

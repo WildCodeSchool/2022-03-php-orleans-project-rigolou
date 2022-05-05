@@ -31,6 +31,7 @@ return [
     'admin/cafeteria/ajouter' => ['AdminCafeteriaController', 'add'],
     'admin/events/ajouter' => ['AdminEventController', 'add'],
     'admin/events/supprimer' => ['AdminEventController', 'delete'],
+    'admin/events/modifier' => ['AdminEventController', 'edit', ['id']],
     'admin/tarifs' => ['AdminRateController', 'index'],
     'admin' => ['AdminController', 'index'],
 
