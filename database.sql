@@ -49,7 +49,7 @@ VALUES
 
 CREATE TABLE `rate` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `description` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(100) NOT NULL,
   `price` VARCHAR(100) NOT NULL,
   `rate_category_id` INT NOT NULL,
   PRIMARY KEY (`id`),
