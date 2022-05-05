@@ -1,0 +1,13 @@
+{% extends "adminLayout.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	- Admin - ADD
+{% endblock %}
+
+{% block content %}
+	<div class="title mt-5 ps-5">
+		<h1>Ajouter un nouveau Produit</h1>
+	</div>
+	{% include 'Admin/Cafeteria/_form.html.twig' %}
+{% endblock %}
