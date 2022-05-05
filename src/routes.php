@@ -10,11 +10,6 @@
 return [
     '' => ['HomeController', 'index',],
     'anniversaire' => ['AnniversaryController', 'index', ['message']],
-    'items' => ['ItemController', 'index',],
-    'items/edit' => ['ItemController', 'edit', ['id']],
-    'items/show' => ['ItemController', 'show', ['id']],
-    'items/add' => ['ItemController', 'add',],
-    'items/delete' => ['ItemController', 'delete',],
     'attractions' => ['AmusementController', 'index',],
     'cafeteria' => ['CafeteriaController', 'index'],
     'evenements' => ['EventController', 'index'],
@@ -34,7 +29,7 @@ return [
     'admin/events/modifier' => ['AdminEventController', 'edit', ['id']],
     'admin/tarifs' => ['AdminRateController', 'index'],
     'admin/tarifs/ajouter' => ['AdminRateController', 'add'],
+    'admin/tarifs/modifier' => ['AdminRateController', 'edit', ['id']],
     'admin' => ['AdminController', 'index'],
     'admin/cafeteria/supprimer' => ['AdminCafeteriaController', 'delete'],
-
 ];
