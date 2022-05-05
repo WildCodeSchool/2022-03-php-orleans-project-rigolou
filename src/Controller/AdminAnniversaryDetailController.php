@@ -23,4 +23,21 @@ class AdminAnniversaryDetailController extends AbstractController
             'anniversaryDetails' => $anniversaryDetails,
         ]);
     }
+
+    public function add(int $rate)
+    {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+
+        $detailsManager = new AnniversaryDetailsManager();
+        $details = $detailsManager->selectAllByRateId($rate);
+        if (!empty($details)) {
+            return $this->twig->render('Admin/AnniversaryDetail/add.html.twig', [
+                'details' => $details,
+            ]);
+        }
+        header('Location: /admin/anniversaire');
+    }
 }
