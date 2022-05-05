@@ -6,6 +6,8 @@ use App\Model\CafeteriaManager;
 
 class AdminCafeteriaController extends AbstractController
 {
+    public const ALLOWED_CATEGORIES = ['drink' => 'Boisson', 'snack' => 'Encas'];
+
     public function index(): string
     {
         $cafeteriatManager = new CafeteriaManager();
@@ -26,7 +28,11 @@ class AdminCafeteriaController extends AbstractController
                 header('Location: /admin/cafeteria');
             }
         }
-        return $this->twig->render('Admin/Cafeteria/add.html.twig', ['errors' => $errors, 'cafeteria' => $cafeteria]);
+        return $this->twig->render('Admin/Cafeteria/add.html.twig', [
+            'errors' => $errors,
+            'cafeteria' => $cafeteria,
+            'allowedCategories' => self::ALLOWED_CATEGORIES,
+        ]);
     }
 
     private function validate(array $cafeteria): array
@@ -70,6 +76,7 @@ class AdminCafeteriaController extends AbstractController
         return $this->twig->render('Admin/Cafeteria/edit.html.twig', [
             'errors' => $errors,
             'cafeteria' => $cafeteria,
+            'allowedCategories' => self::ALLOWED_CATEGORIES,
         ]);
     }
 }
