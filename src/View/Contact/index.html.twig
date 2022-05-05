@@ -31,9 +31,9 @@
 						{% if errors.email is defined %}
 							<span class="text-danger">{{ errors.email }}</span>
 						{% endif %}
-						<input type="text" class="form-control" name="email" id="email" placeholder="jean.dupont@mail.fr" {% if contact.email is defined %} value="{{ contact.email }}" {% endif %} required><br>
+						<input type="email" class="form-control" name="email" id="email" placeholder="jean.dupont@mail.fr" {% if contact.email is defined %} value="{{ contact.email }}" {% endif %} required><br>
 						<label for="phone" class="fw-bold form-label mt-2">Téléphone (optionnel)</label><br>
-						<input type="text" class="form-control" name="phone" id="phone" placeholder="0699999999" {% if contact.telephone is defined %} value="{{ contact.telephone }}" {% endif %}><br>
+						<input type="tel" class="form-control" name="phone" id="phone" placeholder="0699999999" {% if contact.telephone is defined %} value="{{ contact.telephone }}" {% endif %}><br>
 						<label for="subject" class="fw-bold form-label mt-2">Objet</label>
 						{% if errors.subject is defined %}
 							<span class="text-danger">{{ errors.subject }}</span>
