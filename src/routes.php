@@ -9,7 +9,7 @@
 
 return [
     '' => ['HomeController', 'index',],
-    'anniversaire' => ['AnniversaryController', 'index'],
+    'anniversaire' => ['AnniversaryController', 'index', ['message']],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
@@ -21,9 +21,17 @@ return [
     'login' => ['LoginController', 'login'],
     'logout' => ['LoginController', 'logout'],
     'contact' => ['ContactController', 'index', ['send']],
-    'admin/attractions' => ['AdminAmusementController', 'index'],
+    'admin/reservations' => ['AdminAnniversaryController', 'index'],
     'admin/cafeteria' => ['AdminCafeteriaController', 'index'],
+    'admin/attractions' => ['AdminAmusementController', 'index', ['success', 'name']],
     'admin/attractions/ajouter' => ['AdminAmusementController', 'add'],
+    'admin/attractions/modifier' => ['AdminAmusementController', 'edit', ['id']],
+    'admin/attractions/supprimer' => ['AdminAmusementController', 'delete'],
     'admin/events' => ['AdminEventController', 'index'],
     'admin/cafeteria/ajouter' => ['AdminCafeteriaController', 'add'],
+    'admin/events/ajouter' => ['AdminEventController', 'add'],
+    'admin/events/supprimer' => ['AdminEventController', 'delete'],
+    'admin/tarifs' => ['AdminRateController', 'index'],
+    'admin' => ['AdminController', 'index'],
+
 ];
