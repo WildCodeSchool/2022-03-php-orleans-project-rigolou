@@ -179,12 +179,12 @@ VALUES
 INSERT INTO
   `events` (`title`, `image`, `description`, `date`)
 VALUES
-  ('noel', 'events.webp', 'soirée de noel', '2025-12-31'),
-  ('halloween', 'events.webp', 'soiréé halloween', '2024-12-31'),
-  ('paques', 'events.webp', 'soirée de noel', '2023-12-31'),
-  ('past1', 'events.webp', 'soiréé halloween', '2020-12-31'),
-  ('past2', 'events.webp', 'soirée de noel', '2019-12-31'),
-  ('past3', 'events.webp', 'soiréé halloween', '2018-12-31');
+  ('noel', '', 'soirée de noel', '2025-12-31'),
+  ('halloween', '', 'soiréé halloween', '2024-12-31'),
+  ('paques', '', 'soirée de noel', '2023-12-31'),
+  ('past1', '', 'soiréé halloween', '2020-12-31'),
+  ('past2', '', 'soirée de noel', '2019-12-31'),
+  ('past3', '', 'soiréé halloween', '2018-12-31');
 
 CREATE TABLE IF NOT EXISTS `anniversary_reservation` (
   `id` INT NOT NULL AUTO_INCREMENT, 

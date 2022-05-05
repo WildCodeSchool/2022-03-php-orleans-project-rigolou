@@ -125,6 +125,58 @@ class AdminEventController extends AbstractController
     private function deleteImage(string $image)
     {
         $image = APP_UPLOAD_PATH . $image;
-        unlink($image);
+        if (is_file($image)) {
+            unlink($image);
+        }
+    }
+
+
+    public function edit(int $id)
+    {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+
+        $eventItems = $errors = [];
+        $eventManager = new EventManager();
+        $eventItems = $eventManager->selectOneById($id);
+
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($eventItems)) {
+            $savedImage = $eventItems['image'];
+            $eventItems = array_map('trim', $_POST);
+            $errorsText = $this->textValidate($eventItems);
+            $errorsImage = [];
+            $isImageToBeChanged = false;
+            if ($_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
+                $isImageToBeChanged = true;
+                $errorsImage = $this->validateImage();
+            }
+
+            $errors = [...$errorsText, ...$errorsImage];
+
+            //if we do empty($errors) GrumPHP is not happy
+            if (empty($errorsText) && empty($errorsImage)) {
+                $eventItems['id'] = $id;
+                if ($isImageToBeChanged) {
+                    $this->deleteImage($savedImage);
+                    $randomImageName = uniqid('', true);
+                    $randomImageName .= '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                    move_uploaded_file($_FILES['image']['tmp_name'], APP_UPLOAD_PATH . $randomImageName);
+                    $eventItems['image'] = $randomImageName;
+                } else {
+                    $eventItems['image'] = $savedImage;
+                }
+                $eventManager->update($eventItems);
+                header('Location: /admin/events');
+            }
+        }
+        return $this->twig->render('Admin/Events/edit.html.twig', [
+            'errors' => $errors,
+            'eventItems' => $eventItems,
+            'authorizedMimes' => AdminAmusementController::AUTHORIZED_MIMES,
+            'maxFileSize' => AdminAmusementController::MAX_FILE_SIZE / 1000000,
+        ]);
     }
 }
