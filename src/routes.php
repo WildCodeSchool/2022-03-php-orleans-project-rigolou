@@ -33,5 +33,5 @@ return [
     'admin/events/supprimer' => ['AdminEventController', 'delete'],
     'admin/tarifs' => ['AdminRateController', 'index'],
     'admin' => ['AdminController', 'index'],
-
+    'admin/cafeteria/modifier' => ['AdminCafeteriaController', 'edit', ['id']],
 ];
