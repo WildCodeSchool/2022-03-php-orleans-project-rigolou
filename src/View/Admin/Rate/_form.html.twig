@@ -11,7 +11,7 @@
     <label for="category" class="form-label">Catégorie</label>
     <select name="category" id="category" class="form-select">
         {% for category in categories %}
-            <option value="{{ category.id }}"{% if rates.category == category.id %} default{% endif %}>
+            <option value="{{ category.id }}"{% if rates.category == category.id %} selected{% endif %}>
                 {{ category.category }}
             </option>
         {% endfor %}
