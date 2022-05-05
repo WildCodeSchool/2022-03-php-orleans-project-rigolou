@@ -200,9 +200,9 @@ CREATE TABLE IF NOT EXISTS `anniversary_reservation` (
 ) ENGINE = InnoDB;
 
 INSERT INTO
-  `anniversary_reservation` (`reservation_date`, `firstname`, `lastname`, `email`,`phone`, `message`)
+  `anniversary_reservation` (`reservation_date`, `firstname`, `lastname`, `email`,`phone`, `message`, `rate_id`)
 VALUES
-  ('2012-12-12', 'Fabien', 'Dupont', 'fabien.dupont@wanadoo.fr', '0765352515', 'Je viens avec mon enfant de 10 ans et ses 8 copains ');
+  ('2012-12-12', 'Fabien', 'Dupont', 'fabien.dupont@wanadoo.fr', '0765352515', 'Je viens avec mon enfant de 10 ans et ses 8 copains ', '8');
 
 CREATE TABLE `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
