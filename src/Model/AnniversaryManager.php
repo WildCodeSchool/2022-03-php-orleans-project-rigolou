@@ -23,10 +23,12 @@ class AnniversaryManager extends AbstractManager
         $statement->execute();
     }
 
-    public function confirm(int $id): void
+    public function confirm($bool, $id): void
     {
-        $query = 'UPDATE' . self::TABLE . 'SET `is_accepted`= 1  WHERE id=' . $id;
+        $query = 'UPDATE ' . self::TABLE . ' SET is_accepted = :bool  WHERE id = :id ;';
         $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->bindValue('bool', $bool, \PDO::PARAM_INT);
 
         $statement->execute();
     }

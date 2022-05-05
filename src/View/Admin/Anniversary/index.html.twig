@@ -27,7 +27,7 @@
 
 
                 {% for item in anniversaryItems %}
-                    <tr>
+                    <tr class="{% if item.is_accepted == 1 %}bg-success{% else %}bg-danger{% endif %}">
 
                          <td class="text-nowrap">
                         {{ item.firstname }}

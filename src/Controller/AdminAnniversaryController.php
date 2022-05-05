@@ -41,17 +41,26 @@ class AdminAnniversaryController extends AbstractController
         ]);
     }
 
-    public function confirm(): void
+    public function confirm()
     {
-        // if (empty($_SESSION['user'])) {
-        //     header('Location: /login');
-        //     return '';
-        // }
-        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        //     $amusementItems = array_map('trim', $_POST);
-
-        // }
-        // $comfirmManager = new AnniversaryManager();
-        // $comfirm = $comfirmManager->confirm();
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $inputs = array_map('trim', $_POST);
+            if (
+                empty($inputs['id']) ||
+                (int)$inputs['bool'] > 1 ||
+                (int)$inputs['bool'] < 0
+            ) {
+                header('Location: /admin/reservations');
+                return '';
+            }
+            $comfirmManager = new AnniversaryManager();
+            $comfirmManager->confirm($inputs['bool'], $inputs['id']);
+            header('Location: /admin/reservations');
+            return '';
+        }
     }
 }
