@@ -1,3 +1,4 @@
 parameters:
 	ignoreErrors:
 		- '#Constant [A-Z_]+ not found.#'
+		- '#NumberOfChildren  The class AbstractController has [0-100] children. Consider to rebalance this class hierarchy to keep number of children under [0-100].#'
