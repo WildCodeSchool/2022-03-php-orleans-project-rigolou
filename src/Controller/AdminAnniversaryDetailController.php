@@ -42,7 +42,7 @@ class AdminAnniversaryDetailController extends AbstractController
                 if ($error === '') {
                     $newDetail['rate_id'] = $details[0]['rate_id'];
                     $detailsManager->insert($newDetail);
-                    header('Location: /admin/anniversaire/ajouter?rate=' . $newDetail['rate_id']);
+                    header('Location: /admin/anniversaire');
                 }
             }
             return $this->twig->render('Admin/AnniversaryDetail/add.html.twig', [
