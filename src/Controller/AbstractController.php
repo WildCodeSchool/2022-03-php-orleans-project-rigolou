@@ -7,12 +7,6 @@ use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
 
 /**
- * This will suppress all the PMD warnings in
- * this class.
- *
- * @SuppressWarnings(PHPMD)
- */
-/**
  * Initialized some Controller common features (Twig...)
  */
 abstract class AbstractController
