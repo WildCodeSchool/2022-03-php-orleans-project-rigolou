@@ -50,6 +50,11 @@ class AdminCafeteriaController extends AbstractController
         if (empty($cafeteria['price']) && !is_numeric($cafeteria['price']) && $cafeteria['price'] > 0) {
             $errors[] = 'Le prix est obligatoire et doit être un nombre supérieur à 0';
         }
+
+        if (!array_key_exists($cafeteria['category'], self::ALLOWED_CATEGORIES)) {
+            $errors[] = 'La catégorie choisie ne correspond pas';
+        }
+
         return $errors;
     }
 
