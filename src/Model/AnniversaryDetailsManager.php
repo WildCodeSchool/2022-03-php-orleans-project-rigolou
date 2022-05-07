@@ -12,7 +12,7 @@ class AnniversaryDetailsManager extends AbstractManager
      */
     public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = 'SELECT * FROM ' . self::TABLE . ' AS ad 
+        $query = 'SELECT ad.id, ad.detail, r.description, ad.rate_id FROM ' . self::TABLE . ' AS ad 
         JOIN ' . self::RATE_TABLE . ' AS r ON ad.rate_id = r.id';
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
