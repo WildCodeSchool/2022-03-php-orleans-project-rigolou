@@ -30,6 +30,7 @@ return [
     'admin/events/modifier' => ['AdminEventController', 'edit', ['id']],
     'admin/tarifs' => ['AdminRateController', 'index'],
     'admin/tarifs/ajouter' => ['AdminRateController', 'add'],
+    'admin/tarifs/modifier' => ['AdminRateController', 'edit', ['id']],
     'admin' => ['AdminController', 'index'],
     'admin/cafeteria/supprimer' => ['AdminCafeteriaController', 'delete'],
 ];
