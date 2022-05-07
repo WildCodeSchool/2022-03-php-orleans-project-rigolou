@@ -23,4 +23,20 @@ class AdminAnniversaryDetailController extends AbstractController
             'anniversaryDetails' => $anniversaryDetails,
         ]);
     }
+
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            if ($id > 0) {
+                $detailsManager = new AnniversaryDetailsManager();
+                $detail = $detailsManager->selectOneById((int) $id);
+
+                if (!empty($detail)) {
+                    $detailsManager->delete((int)$id);
+                }
+            }
+        }
+        header('Location: /admin/anniversaire');
+    }
 }
