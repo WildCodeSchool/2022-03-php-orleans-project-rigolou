@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Model\AmusementManager;
 
-class AdminAmusementController extends AbstractController
+class AdminAmusementController2 extends AbstractController
 {
     public const AUTHORIZED_MIMES = ['image/jpeg','image/png', 'image/webp', 'image/gif'];
     public const MAX_FILE_SIZE = 1000000;
