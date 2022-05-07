@@ -15,7 +15,6 @@ class AdminRateController extends AbstractController
 
         $rateManager = new RateManager();
         $rateItems = $rateManager->selectAllByCategory();
-
         return $this->twig->render('Admin/Rate/index.html.twig', [
             'rateItems' => $rateItems,
         ]);
@@ -44,6 +43,39 @@ class AdminRateController extends AbstractController
             'errors' => $errors,
         ]);
     }
+
+    public function edit(int $id): string
+    {
+        $id = trim((string)$id);
+        $rateManager = new RateManager();
+        $rates = $rateManager->selectOneById((int)$id);
+
+        if (!empty($rates)) {
+            $categories = $rateManager->selectAllRateCategory();
+            $errors = [];
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $rates = array_map('trim', $_POST);
+                $errors = $this->validateForm($rates, $categories);
+
+                if (empty($errors)) {
+                    $rates['id'] = $id;
+                    $rateManager = new RateManager();
+                    $rateManager->update($rates);
+
+                    header('Location: /admin/tarifs');
+                }
+            }
+            return $this->twig->render('Admin/Rate/edit.html.twig', [
+                'categories' => $categories,
+                'rates' => $rates,
+                'errors' => $errors,
+            ]);
+        } else {
+            header('Location: /admin/tarifs');
+            return '';
+        }
+    }
+
 
     private function validateForm(array $ratesPost, array $categories): array
     {
