@@ -34,10 +34,29 @@ class AdminAnniversaryDetailController extends AbstractController
         $detailsManager = new AnniversaryDetailsManager();
         $details = $detailsManager->selectAllByRateId($rate);
         if (!empty($details)) {
+            $error = '';
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $newDetail = trim($_POST['detail']);
+                $error = $this->validate($newDetail);
+                if ($error === '') {
+                }
+            }
             return $this->twig->render('Admin/AnniversaryDetail/add.html.twig', [
                 'details' => $details,
             ]);
         }
         header('Location: /admin/anniversaire');
+    }
+
+    public function validate(string $detail): string
+    {
+        $error = '';
+        $maxDetailLength = 255;
+        if (empty($detail)) {
+            $error = 'Le détail est obligatoire';
+        } elseif (strlen($detail) > 255) {
+            $error = 'Le détail doit faire moins de ' . $maxDetailLength . 'caractères';
+        }
+        return $error;
     }
 }
