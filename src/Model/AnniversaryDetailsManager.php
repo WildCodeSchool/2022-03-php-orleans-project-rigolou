@@ -31,4 +31,15 @@ class AnniversaryDetailsManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function insert(array $items): void
+    {
+        $query = 'INSERT INTO ' . self::TABLE . ' (detail, rate_id)
+         VALUES (:detail, :rate_id)';
+         $statement = $this->pdo->prepare($query);
+         $statement->bindValue('detail', $items['detail'], \PDO::PARAM_STR);
+         $statement->bindValue('rate_id', $items['rate_id'], \PDO::PARAM_INT);
+
+         $statement->execute();
+    }
 }
