@@ -11,7 +11,8 @@ class RateManager extends AbstractManager
 
     public function selectAllByCategory(): array
     {
-        $query = 'SELECT * FROM ' . self::TABLE . ' AS r';
+        $query = 'SELECT r.id, r.description, r.price, r.rate_category_id, ';
+        $query .= 'rc.id AS category_id, rc.category FROM ' . self::TABLE . ' AS r';
         $query .= ' JOIN ' . self::CATEGORY_TABLE . ' AS rc ON r.rate_category_id = rc.id';
         $query .= ' ORDER BY category ASC, description ASC';
         return $this->pdo->query($query)->fetchAll();
