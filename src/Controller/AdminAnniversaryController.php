@@ -19,11 +19,11 @@ class AdminAnniversaryController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             if ($id > 0) {
-                $eventManager = new AnniversaryManager();
-                $event = $eventManager->selectOneById((int) $id);
+                $reservationManager = new AnniversaryManager();
+                $reservation = $reservationManager->selectOneById((int) $id);
 
-                if (!empty($event)) {
-                    $eventManager->delete((int)$id);
+                if (!empty($reservation)) {
+                    $reservationManager->delete((int)$id);
 
                     header('Location: /admin/reservations');
                 }
