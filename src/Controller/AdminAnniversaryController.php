@@ -13,4 +13,21 @@ class AdminAnniversaryController extends AbstractController
 
         return $this->twig->render('Admin/Anniversary/index.html.twig', ['anniversaryItems' => $anniversaryItems]);
     }
+    public function delete()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            if ($id > 0) {
+                $eventManager = new AnniversaryManager();
+                $event = $eventManager->selectOneById((int) $id);
+
+                if (!empty($event)) {
+                    $eventManager->delete((int)$id);
+
+                    header('Location: /admin/reservations');
+                }
+            }
+        }
+    }
 }
