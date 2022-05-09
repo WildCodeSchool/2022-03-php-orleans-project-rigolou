@@ -49,13 +49,11 @@ class AdminRateController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
-            if ($id > 0) {
-                $rateManager = new RateManager();
-                $rate = $rateManager->selectOneById((int) $id);
+            $rateManager = new RateManager();
+            $rate = $rateManager->selectOneById((int) $id);
 
-                if (!empty($rate)) {
-                    $rateManager->delete((int)$id);
-                }
+            if (!empty($rate)) {
+                $rateManager->delete((int)$id);
             }
         }
         header('Location: /admin/tarifs');
