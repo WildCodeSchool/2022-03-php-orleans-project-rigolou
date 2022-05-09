@@ -49,7 +49,7 @@ VALUES
 
 CREATE TABLE `rate` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `description` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(100) NOT NULL,
   `price` VARCHAR(100) NOT NULL,
   `rate_category_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -75,7 +75,7 @@ VALUES
   ('Comité d''entreprise: Carnet de tickets à revendre aux employés', 'Nous contacter', 1),
   ('Tarifs de groupes', 'Nous contacter', 1),
   ('Triceratops', '16,50 euros / Enfants ( 8 Enfants minimum + Présence d’un adulte Obligatoire )', 2),
-  ('Diplodocys', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
+  ('Diplodocus', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
 
 
 --
@@ -179,12 +179,12 @@ VALUES
 INSERT INTO
   `events` (`title`, `image`, `description`, `date`)
 VALUES
-  ('noel', 'events.webp', 'soirée de noel', '2025-12-31'),
-  ('halloween', 'events.webp', 'soiréé halloween', '2024-12-31'),
-  ('paques', 'events.webp', 'soirée de noel', '2023-12-31'),
-  ('past1', 'events.webp', 'soiréé halloween', '2020-12-31'),
-  ('past2', 'events.webp', 'soirée de noel', '2019-12-31'),
-  ('past3', 'events.webp', 'soiréé halloween', '2018-12-31');
+  ('noel', '', 'soirée de noel', '2025-12-31'),
+  ('halloween', '', 'soiréé halloween', '2024-12-31'),
+  ('paques', '', 'soirée de noel', '2023-12-31'),
+  ('past1', '', 'soiréé halloween', '2020-12-31'),
+  ('past2', '', 'soirée de noel', '2019-12-31'),
+  ('past3', '', 'soiréé halloween', '2018-12-31');
 
 CREATE TABLE IF NOT EXISTS `anniversary_reservation` (
   `id` INT NOT NULL AUTO_INCREMENT, 

@@ -83,5 +83,21 @@ class AdminCafeteriaController extends AbstractController
             'cafeteria' => $cafeteria,
             'allowedCategories' => self::ALLOWED_CATEGORIES,
         ]);
+  
+    public function delete()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            if ($id > 0) {
+                $cafeteriaManager = new CafeteriaManager();
+                $cafeteria = $cafeteriaManager->selectOneById((int) $id);
+
+                if (!empty($cafeteria)) {
+                    $cafeteriaManager->delete((int)$id);
+                }
+            }
+        }
+        header('Location: /admin/cafeteria');
     }
 }
