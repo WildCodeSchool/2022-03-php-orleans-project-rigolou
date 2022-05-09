@@ -29,7 +29,7 @@
 										</a>
 									</td>
 									<td>
-										<form action="/admin/anniversaire/supprimer" method="post">
+										<form action="/admin/anniversaire/supprimer" method="post" onsubmit="return confirm('Confirmer la suppression ?')>
 											<button class="btn btn-danger w-fit d-flex gap-2 align-items-center">
 												<input type="hidden" name="id" value="{{ anniversaryDetail.id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
