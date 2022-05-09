@@ -18,7 +18,7 @@ class AdminAnniversaryController extends AbstractController
         $anniversaryManager = new AnniversaryManager();
         $anniversaryItems = $anniversaryManager->selectAll('reservation_date', 'DESC');
 
-        return $this->twig->render('Admin/Anniversary/index.html.twig', ['anniversaryItems' => $anniversaryItems]);
+        return $this->twig->render('Admin/Anniversary/index.html.twig', ['reservations' => $anniversaryItems]);
     }
 
     public function details(int $id): string
@@ -48,17 +48,9 @@ class AdminAnniversaryController extends AbstractController
             return '';
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $inputs = array_map('trim', $_POST);
-            if (
-                empty($inputs['id']) ||
-                (int)$inputs['bool'] > 1 ||
-                (int)$inputs['bool'] < 0
-            ) {
-                header('Location: /admin/reservations');
-                return '';
-            }
+            $reservation = array_map('trim', $_POST);
             $comfirmManager = new AnniversaryManager();
-            $comfirmManager->confirm($inputs['bool'], $inputs['id']);
+            $comfirmManager->confirm($reservation['bool'], $reservation['id']);
             header('Location: /admin/reservations');
             return '';
         }
