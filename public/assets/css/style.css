@@ -104,6 +104,11 @@ h4 {
     border-bottom-left-radius: 0;
 }
 
+.card-img-top, .card-img-bottom {
+    height: 25vh;
+    object-fit: cover;
+}
+
 .card-title {
     color: var(--bs-light);
     font-size: calc(var(--text-size) * 1.2);

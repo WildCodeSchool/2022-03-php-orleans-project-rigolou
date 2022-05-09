@@ -8,7 +8,7 @@
 
 {% block content %}
 	<main class="container-fluid py-5">
-		<h1>Liste des tarifs</h1>
+		<h1 class="text-center">Liste des tarifs</h1>
 		{% include "/Admin/_list.html.twig" with {'cols': {category: 'Catégorie', description: 'Description'}, 'items': rateItems, 'section': 'tarifs'} %}
 	</main>
 {% endblock %}
