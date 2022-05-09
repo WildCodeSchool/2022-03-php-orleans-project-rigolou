@@ -54,8 +54,6 @@ class RateManager extends AbstractManager
 
     public function update(array $items): void
     {
-        $query = 'INSERT INTO ' . self::TABLE . ' (description, price, rate_category_id)
-         VALUES (:description, :price, :category)';
         $query = 'UPDATE ' . self::TABLE . ' SET description=:description, price=:price, 
         rate_category_id=:rate_category_id WHERE id=:id';
         $statement = $this->pdo->prepare($query);
