@@ -13,8 +13,8 @@
 		{% endif %}
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-5 justify-content-center pt-5">
-					<img class="d-lg-block d-sm-none h-75 rounded-4 shadow" src="/assets/images/contact.png" alt="">
+				<div class="col-lg-5 pt-5 d-lg-block d-none">
+					<img class="flex justify-content-center  h-75 rounded-4 shadow" src="/assets/images/contact.png" alt="">
 				</div>
 				<form action="/contact" method="post" class="col-lg-7">
 						<label for="firstname" class="fw-bold form-label">Prénom</label>
@@ -48,14 +48,14 @@
 								{{ contact.message }}
 							{%- endif -%}
 						</textarea>
-					<div class="w-100 mt-3 pb-5">
-						<button class="btn btn-primary mt-4 ms-auto gap-2 align-items-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="mb-1 bi bi-envelope" viewBox="0 0 16 16">
+					
+						<button class="btn btn-primary mt-5 d-flex gap-2 align-items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
 								<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
 							</svg>
 							Envoyer
 						</button>
-					</div>
+					
 				</form>
 			</div>
 		</div>
