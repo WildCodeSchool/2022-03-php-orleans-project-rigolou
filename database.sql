@@ -75,7 +75,7 @@ VALUES
   ('Comité d''entreprise: Carnet de tickets à revendre aux employés', 'Nous contacter', 1),
   ('Tarifs de groupes', 'Nous contacter', 1),
   ('Triceratops', '16,50 euros / Enfants ( 8 Enfants minimum + Présence d’un adulte Obligatoire )', 2),
-  ('Diplodocys', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
+  ('Diplodocus', '12 euros / Enfants ( 5 Enfants minimum + Présence d’un adulte Obligatoire )', 2);
 
 
 --
