@@ -16,9 +16,9 @@ class AdminAnniversaryController extends AbstractController
         }
 
         $anniversaryManager = new AnniversaryManager();
-        $anniversaryItems = $anniversaryManager->selectAll('reservation_date', 'DESC');
+        $reservations = $anniversaryManager->selectAll('reservation_date', 'DESC');
 
-        return $this->twig->render('Admin/Anniversary/index.html.twig', ['reservations' => $anniversaryItems]);
+        return $this->twig->render('Admin/Anniversary/index.html.twig', ['reservations' => $reservations]);
     }
 
     public function details(int $id): string
