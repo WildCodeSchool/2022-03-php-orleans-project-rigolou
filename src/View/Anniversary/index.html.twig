@@ -51,13 +51,13 @@
 			</div>
 		</section>
 		<!-- section reservation -->
-		<section class="container-fluid py-5" id="reservation" >
+		<section class="container-fluid py-5 bg-light" id="reservation" >
 			<h1 class="section-title mx-auto mt-2 mb-5 px-3 bg-primary rounded-4">Réservation</h1>
 			<div class="row ">
-				<div class="w-50 h-50 m-auto">
-					<img class="img_header w-100 rounded-4" src="assets/images/anniversary_image.jpg" alt="Les enfants fête un anniversaire">
+				<div class="col-lg-6 w-50 h-50 m-auto">
+					<img class="img_header d-none d-lg-block w-100 rounded-4" src="assets/images/anniversary_image.jpg" alt="Les enfants fête un anniversaire">
 				</div>
-				<div class="container-fluid col-4">
+				<div class="container-fluid col-lg-6 ">
 					<form class="m-2" method="post"  accept-charset="UTF-8" action="#reservation" novalidate>
 						{% if errors is not empty %}
 							<ul class="alert alert-danger m-4">
@@ -76,7 +76,7 @@
 							<label for="menu" class="form-label">Sélectionner une formule
 							</label>
 
-							<select class="form-select " id="menu" name="menu">
+							<select class="form-select" id="menu" name="menu">
 
 								{% for anniversaryRate in anniversaryRates %}
 									<option value="{{ anniversaryRate.id }}">{{ anniversaryRate.description }}</option>

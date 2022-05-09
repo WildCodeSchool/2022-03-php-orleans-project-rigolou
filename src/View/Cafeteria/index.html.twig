@@ -7,7 +7,7 @@
 
 {% block header %}
 	<header class="container-fluid bg-light p-0 m-0">
-		<div class="row align-items-center m-0">
+		<div class="row align-items-center m-0 ">
 			<div class="col-lg-6 d-flex flex-column justify-content-center mt-3">
 				<img class="rounded-4 w-100 shadow" src="assets/images/Cafeteria-min.jpg" alt="">
 			</div>
@@ -28,18 +28,18 @@
 	{% block content %}
 		<main class="container">
 			<div class="row justify-content-around">
-				<div class="bg-primary-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
+				<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
 					<table class="w-100">
 						<thead>
 							<tr>
-								<h4 class="text-center">Boissons</h4>
+								<h4 class="text-center text-success border-bottom border-dark">Boissons</h4>
 							</tr>
 						</thead>
 						<tbody>
 							{% for drink in drinks %}
 								<tr>
-									<td class="py-3">{{ drink.name }}</td>
-									<td class="text-end">{{ drink.price }}
+									<td class="py-3 border-bottom fw-bold">{{ drink.name }}</td>
+									<td class="text-end border-bottom">{{ drink.price }}
 										€</td>
 								</tr>
 							{% endfor %}
@@ -47,18 +47,18 @@
 					</table>
 				</div>
 
-				<div class="bg-primary-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
+				<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
 					<table class="w-100">
 						<thead>
 							<tr>
-								<h4 class="text-center">Snacks</h4>
+								<h4 class="text-center text-success border-bottom border-dark">Snacks</h4>
 							</tr>
 						</thead>
 						<tbody>
 							{% for snack in snacks %}
 								<tr>
-									<td class="py-3">{{ snack.name }}</td>
-									<td class="text-end">{{ snack.price }}
+									<td class="py-3 border-bottom fw-bold">{{ snack.name }}</td>
+									<td class="text-end border-bottom">{{ snack.price }}
 										€</td>
 								</tr>
 							{% endfor %}
@@ -67,5 +67,6 @@
 				</div>
 			</div>
 		</main>
+
 
 	{% endblock %}

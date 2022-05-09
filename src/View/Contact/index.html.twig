@@ -6,51 +6,58 @@
 {% endblock %}
 
 {% block content %}
-	<h1 class="section-title mx-auto my-5 px-3 bg-primary rounded-4">Nous contacter</h1>
-	{% if messageSend %}
-		<p class="alert alert-success w-fit mx-auto">Merci pour nous avoir contacté. Nous vous recontacterons dans les plus brefs délais.</p>
-	{% endif %}
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-5 d-flex justify-content-center pt-5">
-				<img class="d-lg-block d-sm-none h-75 rounded-4 shadow" src="/assets/images/contact.png" alt="">
+	<main class="bg-light pt-5">
+		<h1 class="section-title mx-auto mb-5 px-3 bg-primary rounded-4">Nous contacter</h1>
+		{% if messageSend %}
+			<p class="alert alert-success w-fit mx-auto">Merci pour nous avoir contacté. Nous vous recontacterons dans les plus brefs délais.</p>
+		{% endif %}
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 d-flex align-items-center mb-5">
+					<img class="w-100" src="/assets/images/Mail.png" alt="">
+				</div>
+				<form action="/contact" method="post" class="col-lg-6">
+						<label for="firstname" class="fw-bold form-label">Prénom</label>
+						{% if errors.firstname is defined %}
+							<span class="text-danger">{{ errors.firstname }}</span>
+						{% endif %}
+						<input type="text" class="form-control" name="firstname" id="firstname" placeholder="Jean" {% if contact.firstname is defined %} value="{{ contact.firstname }}" {% endif %} required><br>
+						<label for="lastname" class="fw-bold form-label mt-2">Nom:</label>
+						{% if errors.lastname is defined %}
+							<span class="text-danger">{{ errors.lastname }}</span>
+						{% endif %}
+						<input type="text" class="form-control" name="lastname" id="lastname" placeholder="Dupont" {% if contact.lastname is defined %} value="{{ contact.lastname }}" {% endif %} required><br>
+						<label for="email" class="fw-bold form-label mt-2">E-mail</label>
+						{% if errors.email is defined %}
+							<span class="text-danger">{{ errors.email }}</span>
+						{% endif %}
+						<input type="email" class="form-control" name="email" id="email" placeholder="jean.dupont@mail.fr" {% if contact.email is defined %} value="{{ contact.email }}" {% endif %} required><br>
+						<label for="phone" class="fw-bold form-label mt-2">Téléphone (optionnel)</label><br>
+						<input type="tel" class="form-control" name="phone" id="phone" placeholder="0699999999" {% if contact.telephone is defined %} value="{{ contact.telephone }}" {% endif %}><br>
+						<label for="subject" class="fw-bold form-label mt-2">Objet</label>
+						{% if errors.subject is defined %}
+							<span class="text-danger">{{ errors.subject }}</span>
+						{% endif %}
+						<input type="text" class="form-control" name="subject" id="subject" placeholder="reservation" {% if contact.subject is defined %} value="{{ contact.subject }}" {% endif %} required><br>
+						<label for="message" class="fw-bold form-label mt-2">Message</label>
+						{% if errors.message is defined %}
+							<span class="text-danger">{{ errors.message }}</span>
+						{% endif %}
+						<textarea class="form-control" name="message" id="message" rows="5" placeholder="Entrez votre message..." required>
+							{%- if contact.message is defined -%}
+								{{ contact.message }}
+							{%- endif -%}
+						</textarea>
+					<div class="w-100 text-end mt-3 mb-5">
+						<button class="btn btn-primary ms-auto d-flex gap-2 align-items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+								<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+							</svg>
+							Envoyer
+						</button>
+					</div>
+				</form>
 			</div>
-			<form action="/contact" method="post" class="col-lg-7">
-					<label for="firstname" class="fw-bold form-label">Prénom</label>
-					{% if errors.firstname is defined %}
-						<span class="text-danger">{{ errors.firstname }}</span>
-					{% endif %}
-					<input type="text" class="form-control" name="firstname" id="firstname" {% if contact.firstname is defined %} value="{{ contact.firstname }}" {% endif %} required><br>
-					<label for="lastname" class="fw-bold form-label mt-2">Nom:</label>
-					{% if errors.lastname is defined %}
-						<span class="text-danger">{{ errors.lastname }}</span>
-					{% endif %}
-					<input type="text" class="form-control" name="lastname" id="lastname" {% if contact.lastname is defined %} value="{{ contact.lastname }}" {% endif %} required><br>
-					<label for="email" class="fw-bold form-label mt-2">E-mail</label>
-					{% if errors.email is defined %}
-						<span class="text-danger">{{ errors.email }}</span>
-					{% endif %}
-					<input type="text" class="form-control" name="email" id="email" {% if contact.email is defined %} value="{{ contact.email }}" {% endif %} required><br>
-					<label for="phone" class="fw-bold form-label mt-2">Téléphone (optionnel)</label><br>
-					<input type="text" class="form-control" name="phone" id="phone" {% if contact.telephone is defined %} value="{{ contact.telephone }}" {% endif %}><br>
-					<label for="subject" class="fw-bold form-label mt-2">Objet</label>
-					{% if errors.subject is defined %}
-						<span class="text-danger">{{ errors.subject }}</span>
-					{% endif %}
-					<input type="text" class="form-control" name="subject" id="subject" {% if contact.subject is defined %} value="{{ contact.subject }}" {% endif %} required><br>
-					<label for="message" class="fw-bold form-label mt-2">Message</label>
-					{% if errors.message is defined %}
-						<span class="text-danger">{{ errors.message }}</span>
-					{% endif %}
-					<textarea class="form-control" name="message" id="message" rows="5" required>
-						{%- if contact.message is defined -%}
-							{{ contact.message }}
-						{%- endif -%}
-					</textarea>
-          <div class="w-100 text-end mt-3 pb-5">
-            <button class="btn btn-primary">Envoyer</button>
-          </div>
-			</form>
 		</div>
-	</div>
+	</main>
 {% endblock %}
