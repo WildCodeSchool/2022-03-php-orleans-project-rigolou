@@ -11,14 +11,14 @@
     <label for="category" class="form-label">Catégorie</label>
     <select name="category" id="category" class="form-select">
         {% for category in categories %}
-            <option value="{{ category.id }}" {%- if rates.rate_category_id == category.id -%}selected{%- endif -%}>
+            <option value="{{ category.id }}"{% if rate.rate_category_id == category.id %} selected{% endif %}>
                 {{ category.category }}
             </option>
         {% endfor %}
     </select>
     <label for="description" class="form-label mt-4">Description</label>
-    <input type="text" name="description" id="description" class="form-control" value="{{ rates.description }}" required>
+    <input type="text" name="description" id="description" class="form-control" value="{{ rate.description }}" required>
     <label for="price" class="form-label mt-4">Prix</label>
-    <input type="text" name="price" id="price" class="form-control" value="{{ rates.price }}" required>
+    <input type="text" name="price" id="price" class="form-control" value="{{ rate.price }}" required>
     <button class="btn btn-{{ buttonColor }} w-fit d-flex gap-2 align-items-center mt-3">{{ buttonIcon|raw }}{{ buttonLabel }}</button>
 </form>
