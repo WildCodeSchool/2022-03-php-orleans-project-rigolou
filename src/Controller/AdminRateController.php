@@ -54,6 +54,20 @@ class AdminRateController extends AbstractController
         ]);
     }
 
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $rateManager = new RateManager();
+            $rate = $rateManager->selectOneById((int) $id);
+
+            if (!empty($rate)) {
+                $rateManager->delete((int)$id);
+            }
+        }
+        header('Location: /admin/tarifs');
+    }
+
     public function edit(int $id): string
     {
         if (empty($_SESSION['user'])) {

@@ -36,6 +36,7 @@ return [
     'admin/tarifs' => ['AdminRateController', 'index', ['msg']],
     'admin/tarifs/ajouter' => ['AdminRateController', 'add'],
     'admin/tarifs/modifier' => ['AdminRateController', 'edit', ['id']],
+    'admin/tarifs/supprimer' => ['AdminRateController', 'delete'],
     'admin' => ['AdminController', 'index'],
     'admin/cafeteria/modifier' => ['AdminCafeteriaController', 'edit', ['id']],
     'admin/cafeteria/supprimer' => ['AdminCafeteriaController', 'delete'],
