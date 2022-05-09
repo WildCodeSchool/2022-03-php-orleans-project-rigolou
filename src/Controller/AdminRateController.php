@@ -45,6 +45,7 @@ class AdminRateController extends AbstractController
         ]);
     }
 
+
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -57,6 +58,36 @@ class AdminRateController extends AbstractController
             }
         }
         header('Location: /admin/tarifs');
+    }
+
+    public function edit(int $id)
+    {
+        if (empty($_SESSION['user'])) {
+            header('Location: /login');
+            return '';
+        }
+
+        $rates = $errors = [];
+        $rateManager = new RateManager();
+        $rates = $rateManager->selectOneById($id);
+        $categories = $rateManager->selectAllRateCategory();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($rates)) {
+            $rates = array_map('trim', $_POST);
+            $errors = $this->validateForm($rates, $categories);
+
+            if (empty($errors)) {
+                $rates['id'] = $id;
+                $rateManager->update($rates);
+                header('Location: /admin/tarifs');
+            }
+        }
+
+        return $this->twig->render('Admin/Rate/edit.html.twig', [
+            'categories' => $categories,
+            'rates' => $rates,
+            'errors' => $errors,
+        ]);
     }
 
     private function validateForm(array $ratesPost, array $categories): array

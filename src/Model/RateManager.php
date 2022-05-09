@@ -11,10 +11,10 @@ class RateManager extends AbstractManager
 
     public function selectAllByCategory(): array
     {
-        $query = 'SELECT r.id, r.description, r.price, r.rate_category_id, ';
-        $query .= 'rc.id AS category_id, rc.category FROM ' . self::TABLE . ' AS r';
-        $query .= ' JOIN ' . self::CATEGORY_TABLE . ' AS rc ON r.rate_category_id = rc.id';
-        $query .= ' ORDER BY category ASC, description ASC';
+        $query = 'SELECT r.id, r.description, r.price, r.rate_category_id,
+         rc.id AS category_id, rc.category FROM ' . self::TABLE . ' AS r
+         JOIN ' . self::CATEGORY_TABLE . ' AS rc ON r.rate_category_id = rc.id
+         ORDER BY category ASC, description ASC';
         return $this->pdo->query($query)->fetchAll();
     }
 
@@ -50,5 +50,21 @@ class RateManager extends AbstractManager
          $statement->bindValue('category', $items['category'], \PDO::PARAM_INT);
 
          $statement->execute();
+    }
+
+    public function update(array $items): void
+    {
+        $query = 'UPDATE ' . self::TABLE . ' set 
+        description=:description, 
+        price=:price, 
+        rate_category_id=:category 
+        WHERE id=:id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('description', $items['description'], \PDO::PARAM_STR);
+        $statement->bindValue('price', $items['price'], \PDO::PARAM_STR);
+        $statement->bindValue('category', $items['category'], \PDO::PARAM_INT);
+        $statement->bindValue('id', $items['id'], \PDO::PARAM_INT);
+
+        $statement->execute();
     }
 }
