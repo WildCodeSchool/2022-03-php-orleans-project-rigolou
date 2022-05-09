@@ -17,6 +17,8 @@ return [
     'logout' => ['LoginController', 'logout'],
     'contact' => ['ContactController', 'index', ['send']],
     'admin/reservations' => ['AdminAnniversaryController', 'index'],
+    'admin/reservations/details' => ['AdminAnniversaryController', 'details', ['id']],
+    'admin/reservations/valider' => ['AdminAnniversaryController', 'confirm'],
     'admin/reservations/supprimer' => ['AdminAnniversaryController', 'delete'],
     'admin/cafeteria' => ['AdminCafeteriaController', 'index'],
     'admin/attractions' => ['AdminAmusementController', 'index', ['success', 'name']],
