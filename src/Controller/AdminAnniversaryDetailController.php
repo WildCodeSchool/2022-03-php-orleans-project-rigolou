@@ -7,12 +7,20 @@ use App\Model\RateManager;
 
 class AdminAnniversaryDetailController extends AbstractController
 {
-    public function index(): string
+    public function index(string $msg = ''): string
     {
         if (empty($_SESSION['user'])) {
             header('Location: /login');
             return '';
         }
+
+        $message = '';
+        if ($msg === 'deleted') {
+            $message = 'Le détail a été supprimé';
+        } elseif ($msg === 'edited') {
+            $message = 'Le détail a été édité';
+        }
+
         $rateManager = new RateManager();
         $anniversaryRates = $rateManager->selectAllAnniversaryRate();
 
@@ -21,6 +29,7 @@ class AdminAnniversaryDetailController extends AbstractController
         return $this->twig->render('Admin/AnniversaryDetail/index.html.twig', [
             'anniversaryRates' => $anniversaryRates,
             'anniversaryDetails' => $anniversaryDetails,
+            'message' => $message,
         ]);
     }
 
@@ -35,7 +44,7 @@ class AdminAnniversaryDetailController extends AbstractController
                 $detailsManager->delete((int)$id);
             }
         }
-        header('Location: /admin/anniversaire');
+        header('Location: /admin/anniversaire?msg=deleted');
     }
 
     public function add(int $rate = 0)
