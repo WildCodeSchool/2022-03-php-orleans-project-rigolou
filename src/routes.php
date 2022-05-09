@@ -28,6 +28,7 @@ return [
     'admin/events' => ['AdminEventController', 'index'],
     'admin/anniversaire' => ['AdminAnniversaryDetailController', 'index'],
     'admin/anniversaire/ajouter' => ['AdminAnniversaryDetailController', 'add', ['rate']],
+    'admin/anniversaire/modifier' => ['AdminAnniversaryDetailController', 'edit', ['rate', 'id']],
     'admin/anniversaire/supprimer' => ['AdminAnniversaryDetailController', 'delete'],
     'admin/cafeteria/ajouter' => ['AdminCafeteriaController', 'add'],
     'admin/events/ajouter' => ['AdminEventController', 'add'],

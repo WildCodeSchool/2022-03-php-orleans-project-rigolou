@@ -42,4 +42,16 @@ class AnniversaryDetailsManager extends AbstractManager
 
          $statement->execute();
     }
+
+    public function update(array $items): void
+    {
+        $query = 'UPDATE ' . self::TABLE . ' SET detail=:detail, rate_id=:rate_id
+         WHERE id=:id';
+         $statement = $this->pdo->prepare($query);
+         $statement->bindValue('detail', $items['detail'], \PDO::PARAM_STR);
+         $statement->bindValue('rate_id', $items['rate_id'], \PDO::PARAM_INT);
+         $statement->bindValue('id', $items['id'], \PDO::PARAM_INT);
+
+         $statement->execute();
+    }
 }
