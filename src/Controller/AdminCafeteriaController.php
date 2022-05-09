@@ -83,7 +83,8 @@ class AdminCafeteriaController extends AbstractController
             'cafeteria' => $cafeteria,
             'allowedCategories' => self::ALLOWED_CATEGORIES,
         ]);
-  
+    }
+
     public function delete()
     {
 
