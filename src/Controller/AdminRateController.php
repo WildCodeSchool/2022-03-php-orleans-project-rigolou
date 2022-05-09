@@ -89,7 +89,6 @@ class AdminRateController extends AbstractController
         return '';
     }
 
-
     private function validateForm(array $ratesPost, array $categories): array
     {
         $errors = [];

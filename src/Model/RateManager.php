@@ -64,4 +64,20 @@ class RateManager extends AbstractManager
 
         $statement->execute();
     }
+
+    public function update(array $items): void
+    {
+        $query = 'UPDATE ' . self::TABLE . ' set 
+        description=:description, 
+        price=:price, 
+        rate_category_id=:category 
+        WHERE id=:id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('description', $items['description'], \PDO::PARAM_STR);
+        $statement->bindValue('price', $items['price'], \PDO::PARAM_STR);
+        $statement->bindValue('category', $items['category'], \PDO::PARAM_INT);
+        $statement->bindValue('id', $items['id'], \PDO::PARAM_INT);
+
+        $statement->execute();
+    }
 }
