@@ -26,47 +26,48 @@
 	{% endblock %}
 
 	{% block content %}
-		<main class="container">
-			<div class="row justify-content-around">
-				<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
-					<table class="w-100">
-						<thead>
-							<tr>
-								<h4 class="text-center text-success border-bottom border-dark">Boissons</h4>
-							</tr>
-						</thead>
-						<tbody>
-							{% for drink in drinks %}
+		<section class="bg-section-alternate">
+			<main class="container">
+				<div class="row justify-content-around">
+					<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
+						<table class="w-100">
+							<thead>
 								<tr>
-									<td class="py-3 border-bottom fw-bold">{{ drink.name }}</td>
-									<td class="text-end border-bottom">{{ drink.price }}
-										€</td>
+									<h4 class="text-center text-success border-bottom border-dark">Boissons</h4>
 								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
+							</thead>
+							<tbody>
+								{% for drink in drinks %}
+									<tr>
+										<td class="py-3 border-bottom fw-bold">{{ drink.name }}</td>
+										<td class="text-end border-bottom">{{ drink.price }}
+											€</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 
-				<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
-					<table class="w-100">
-						<thead>
-							<tr>
-								<h4 class="text-center text-success border-bottom border-dark">Snacks</h4>
-							</tr>
-						</thead>
-						<tbody>
-							{% for snack in snacks %}
+					<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
+						<table class="w-100">
+							<thead>
 								<tr>
-									<td class="py-3 border-bottom fw-bold">{{ snack.name }}</td>
-									<td class="text-end border-bottom">{{ snack.price }}
-										€</td>
+									<h4 class="text-center text-success border-bottom border-dark">Snacks</h4>
 								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{% for snack in snacks %}
+									<tr>
+										<td class="py-3 border-bottom fw-bold">{{ snack.name }}</td>
+										<td class="text-end border-bottom">{{ snack.price }}
+											€</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</div>
-		</main>
-
+			</main>
+		</section>
 
 	{% endblock %}
