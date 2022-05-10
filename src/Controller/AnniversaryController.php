@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\AnniversaryDetailsManager;
 use App\Model\AnniversaryManager;
 use App\Model\RateManager;
+use DateTime;
 
 class AnniversaryController extends AbstractController
 {
@@ -93,8 +94,25 @@ class AnniversaryController extends AbstractController
         if (strlen($reservation["phone"]) > self::PHONE_LENGTH) {
             $errorsFormat[] = "Le numéro de téléphone ne doit pas dépasser " . self::PHONE_LENGTH . " caractères";
         }
-
+        if (!$this->validateDate($reservation["date"])) {
+            $errorsFormat[] = "La date n'a pas le bon format";
+        } elseif (!$this->greaterDateThanToday($reservation["date"])) {
+            $errorsFormat[] = "La date ne doit pas être égale ou antérieur à aujourd'hui";
+        }
 
         return $errorsFormat;
+    }
+
+    private function validateDate($date)
+    {
+        $day = \DateTime::createFromFormat('Y-m-d', $date);
+        return $day && $day-> format('Y-m-d') === $date;
+    }
+
+    private function greaterDateThanToday($date)
+    {
+        $dateNow = new DateTime();
+        $dateReservation = new DateTime($date);
+        return $dateReservation >= $dateNow;
     }
 }
