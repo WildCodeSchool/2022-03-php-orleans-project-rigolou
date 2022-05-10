@@ -40,7 +40,7 @@
 						<tbody>
 							{% for drink in drinks %}
 								<tr>
-									<td class="py-3 border-bottom fw-bold">{{ drink.name }}</td>
+									<td class="py-3 border-bottom fw-bold">{{ drink.name|capitalize }}</td>
 									<td class="text-end border-bottom">{{ drink.price }}€</td>
 								</tr>
 							{% endfor %}
@@ -57,7 +57,7 @@
 						<tbody>
 							{% for snack in snacks %}
 								<tr>
-									<td class="py-3 border-bottom fw-bold">{{ snack.name }}</td>
+									<td class="py-3 border-bottom fw-bold">{{ snack.name|capitalize }}</td>
 									<td class="text-end border-bottom">{{ snack.price }}€</td>
 								</tr>
 							{% endfor %}
