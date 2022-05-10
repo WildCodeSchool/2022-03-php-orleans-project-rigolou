@@ -8,9 +8,7 @@
 
 {% block content %}
 	<main class="container-fluid py-5">
-        <div class="d-flex justify-content-between w-50 mx-auto pb-3 px-2">
             <h1 class="text-center mb-5">Ajouter dans {{ detailsByRate[0].description }}</h1>
-        </div>
         {% include "Admin/AnniversaryDetail/_table.html.twig" with {
             'inputLabel': 'Nouveau',
             'buttonColor': 'info',
