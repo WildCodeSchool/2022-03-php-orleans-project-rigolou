@@ -70,7 +70,7 @@ VALUES
   ('Mercredi, Samedi et Dimanche', '9€/pers', 1),
   ('Vendredi', '5,50€/pers', 1),
   ('Vacances scolaires', '9€/pers', 1),
-  ('Jours fèriées', '9€/pers', 1),
+  ('Jours fériés', '9€/pers', 1),
   ('Parents', 'GRATUIT', 1),
   ('Comité d''entreprise: Carnet de tickets à revendre aux employés', 'Nous contacter', 1),
   ('Tarifs de groupes', 'Nous contacter', 1),
