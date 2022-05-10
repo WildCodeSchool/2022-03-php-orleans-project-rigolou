@@ -7,7 +7,7 @@
 
 {% block content %}
 	<main class="bg-light py-5 container-fluid">
-		<h1 class="section-title mx-auto mb-5 px-3 bg-primary rounded-4">Nous contacter</h1>
+		<h1 class="section-title mx-auto mb-5 px-3 bg-primary rounded-4 text-center">Nous contacter</h1>
 		{% if messageSend %}
 			<p class="alert alert-success w-fit mx-auto">Merci pour nous avoir contacté. Nous vous recontacterons dans les plus brefs délais.</p>
 		{% endif %}
@@ -22,7 +22,7 @@
 						<span class="text-danger">{{ errors.firstname }}</span>
 					{% endif %}
 					<input type="text" class="form-control" name="firstname" id="firstname" placeholder="Jean" {% if contact.firstname is defined %} value="{{ contact.firstname }}" {% endif %} required><br>
-					<label for="lastname" class="fw-bold form-label mt-2">Nom:</label>
+					<label for="lastname" class="fw-bold form-label mt-2">Nom</label>
 					{% if errors.lastname is defined %}
 						<span class="text-danger">{{ errors.lastname }}</span>
 					{% endif %}
