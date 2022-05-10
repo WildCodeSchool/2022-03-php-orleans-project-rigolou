@@ -7,7 +7,6 @@
 			{% endfor %}
 		</div>
 	{% endif %}
-
 	<label for="title" class="form-label">Titre</label>
 	<input type="text" class="form-control" name="title" id="title" value="{% if eventItems is not empty %}{{eventItems.title}}{% endif %}" required>
 	<label for="date" class="form-label">Date</label>
