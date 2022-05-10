@@ -10,12 +10,15 @@
 
 {% block content %}
 	<main class="bg-section py-5 container-fluid">
-		<h1 class="section-title text-center mx-auto mt-4 pt-3 pb-1 px-2 mb-3 mx-auto bg-primary rounded-4">Événements à venir</h1>
+		<section>
+			<h1 class="section-title text-center mx-auto mt-4 pt-3 pb-1 px-2 mb-3 mx-auto bg-primary rounded-4">Événements à venir</h1>
 
-		{% include 'Events/_eventCards.html.twig' with {'events': upcomingEvents } %}
+			{% include 'Events/_eventCards.html.twig' with {'events': upcomingEvents } %}
+		</section>
+		<section>
+			<h1 class="section-title text-center mx-auto mt-4 pt-3 pb-1 px-2 mb-3 mx-auto bg-primary rounded-4">Événements terminés</h1>
 
-		<h1 class="section-title text-center mx-auto mt-4 pt-3 pb-1 px-2 mb-3 mx-auto bg-primary rounded-4">Événements terminés</h1>
-
-		{% include 'Events/_eventCards.html.twig' with {'events': pastEvents } %}
+			{% include 'Events/_eventCards.html.twig' with {'events': pastEvents } %}
+		</section>
 	</main>
 {% endblock %}
