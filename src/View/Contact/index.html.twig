@@ -22,7 +22,7 @@
 						<span class="text-danger">{{ errors.firstname }}</span>
 					{% endif %}
 					<input type="text" class="form-control" name="firstname" id="firstname" placeholder="Jean" {% if contact.firstname is defined %} value="{{ contact.firstname }}" {% endif %} required><br>
-					<label for="lastname" class="fw-bold form-label mt-2">Nom:</label>
+					<label for="lastname" class="fw-bold form-label mt-2">Nom</label>
 					{% if errors.lastname is defined %}
 						<span class="text-danger">{{ errors.lastname }}</span>
 					{% endif %}
