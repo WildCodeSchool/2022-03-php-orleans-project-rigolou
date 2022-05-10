@@ -12,18 +12,18 @@
 									<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
 								</svg>
 								{{ event.date }}</p>
-							<button type="button" class="btn btn-primary align-center" data-bs-toggle="modal" data-bs-target="#{{ event.title }}">
+							<button type="button" class="btn btn-primary align-center" data-bs-toggle="modal" data-bs-target="#{{ event.title|replace({' ':''}) }}">
 								En savoir plus !
 							</button>
 						</div>
 					</div>
 				</div>
 
-				<div class="modal fade text-center" id="{{ event.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade text-center" id="{{ event.title|replace({' ':''}) }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h3 class="modal-title" id="exampleModalLabel">{{ event.title|upper }}</h3>
+								<h3 class="modal-title text-wrap" id="exampleModalLabel">{{ event.title|upper }}</h3>
 								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
