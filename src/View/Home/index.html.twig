@@ -19,7 +19,7 @@
 				<h1 class="text-dark text-center mb-4">Bienvenue chez Rigolou !</h1>
 				<p>
 					La plaine de jeux et de loisirs  de 1800 m² à Saran pour les enfants jusqu’a 12 ans. 
-					Sous la responsabilité des parents ou d’un adulte accompagnant, les enfants peuvent jouer dans de nombreuses attractions. 
+															Sous la responsabilité des parents ou d’un adulte accompagnant, les enfants peuvent jouer dans de nombreuses attractions.
 				</p>
 				<div class="w-100 fw-bold text-center">Venez passer un agréable moment en famille et en toute sécurité !</div>
 			</div>
@@ -31,7 +31,8 @@
 {% endblock %}
 
 {% block content %}
-	<main class="w-100">
+	<main
+		class="w-100">
 		<!-- amusement section -->
 		<section class="bg-section pt-5 text-center">
 			<h1 class="section-title mx-auto mt-2 mb-4 px-3 bg-primary rounded-4">Attractions</h1>
@@ -41,7 +42,7 @@
 						<article class="col-lg-3 col-md-6 mb-2">
 							<div class="card d-flex justify-content-between shadow border-0">
 								<div class="card-title align-self-center my-2">{{ amusement.name }}</div>
-								<img src="{% if amusement.image is empty %}assets/images/attraction_placeholder.jpg{% else %}{{ constant('APP_UPLOAD_PATH') ~ amusement.image }}{% endif %}" alt="{{ amusement.name }}"class="card-img-bottom rounded-0">
+								<img src="{% if amusement.image is empty %}assets/images/attraction_placeholder.jpg{% else %}{{ constant('APP_UPLOAD_PATH') ~ amusement.image }}{% endif %}" alt="{{ amusement.name }}" class="card-img-bottom rounded-0">
 							</div>
 						</article>
 					{% endfor %}
@@ -110,11 +111,13 @@
 									<td class="py-3 fw-bold">Formules anniversaire</td>
 									<td class="text-end py-3">
 										<a href="/anniversaire">
-											Page dédiée
-											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-circle" viewbox="0 0 16 16">
-												<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-											</svg>
-										</a>
+											<div class="text-nowrap">
+												Page dédiée
+												<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-circle" viewbox="0 0 16 16">
+													<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+												</svg>
+											</a>
+										</div>
 									</td>
 								</tr>
 							</tbody>
