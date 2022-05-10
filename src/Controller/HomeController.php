@@ -22,7 +22,7 @@ class HomeController extends AbstractController
 
         $amusementsNumber = count($amusements);
         if ($amusementsNumber > 0) {
-            if (count($amusements) > self::MAX_CARDS_AMUSEMENT) {
+            if ($amusementsNumber > self::MAX_CARDS_AMUSEMENT) {
                 $amusementsNumber = self::MAX_CARDS_AMUSEMENT;
             }
 
