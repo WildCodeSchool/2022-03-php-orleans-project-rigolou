@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Confirmation réservation</title>
+	</head>
+	<body>
+		<h3>Bonjour,</h3>
+		<p>
+			{{ mailContent.firstname|capitalize }}
+			{{ mailContent.lastname|capitalize }}<br></p>
+		<p>Nous vous confirmons que votre réservation du
+			<b><u>{{ mailContent.reservation_date}}</u></b>
+			a bien été acceptée !</p>
+		<br>
+		<p>Cordialement,</p>
+		<p style="color:green">le Rigolou<br>
+			Parc de l’orée de la fôret / rue de la tuilerie<br>
+			45770 Saran<br>
+			02.38.73.12.14</p>
+	</body>
+</html>
