@@ -58,7 +58,7 @@
 					<img class="d-none  d-lg-block rounded-4" src="assets/images/anniversary_image.png" alt="Les enfants fêtent un anniversaire">
 				</div>
 				<div class="container-fluid col-lg-6 ">
-					<form class="m-2" method="post"  accept-charset="UTF-8" action="#reservation" novalidate>
+					<form class="m-2" method="post"  accept-charset="UTF-8" action="#reservation" >
 						{% if errors is not empty %}
 							<ul class="alert alert-danger m-4">
 								{%- for error in errors -%}
@@ -110,7 +110,7 @@
 								<textarea class="form-control mb-3" id="message" name="message"  rows="3" required>{{reservation.message}}</textarea>
 							</div>
 						</div>
-						<button class="btn btn-primary m-4">Réserver</button>
+						<button class="btn btn-primary m-4 mt-3">Réserver</button>
 					</form>
 				</div>
 			</div>
