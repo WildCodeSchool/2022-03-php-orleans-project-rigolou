@@ -36,7 +36,7 @@ class AdminAnniversaryController extends AbstractController
         $reservation = $reservationManager->selectOneById($id);
         $rateManager = new RateManager();
         $anniversaryRates = $rateManager->selectAll();
-        $titre = $anniversaryRates[$reservation['rate_id']];
+        $titre = $anniversaryRates[$reservation['rate_id'] - 1];
         return $this->twig->render('Admin/Anniversary/details.html.twig', [
             'reservation' => $reservation,
             'anniversaryRates' => $anniversaryRates,
