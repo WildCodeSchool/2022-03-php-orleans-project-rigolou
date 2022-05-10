@@ -26,7 +26,7 @@ return [
     'admin/attractions/modifier' => ['AdminAmusementController', 'edit', ['id']],
     'admin/attractions/supprimer' => ['AdminAmusementController', 'delete'],
     'admin/events' => ['AdminEventController', 'index'],
-    'admin/anniversaire' => ['AdminAnniversaryDetailController', 'index', ['msg']],
+    'admin/anniversaire' => ['AdminAnniversaryDetailController', 'index', ['message']],
     'admin/anniversaire/ajouter' => ['AdminAnniversaryDetailController', 'add', ['rate']],
     'admin/anniversaire/modifier' => ['AdminAnniversaryDetailController', 'edit', ['rate', 'id']],
     'admin/anniversaire/supprimer' => ['AdminAnniversaryDetailController', 'delete'],

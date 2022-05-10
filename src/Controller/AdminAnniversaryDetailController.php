@@ -7,18 +7,18 @@ use App\Model\RateManager;
 
 class AdminAnniversaryDetailController extends AbstractController
 {
-    public function index(string $msg = ''): string
+    public function index(string $message = ''): string
     {
         if (empty($_SESSION['user'])) {
             header('Location: /login');
             return '';
         }
 
-        $message = '';
-        if ($msg === 'deleted') {
-            $message = 'Le détail a été supprimé';
-        } elseif ($msg === 'edited') {
-            $message = 'Le détail a été édité';
+        $confirmationMessage = '';
+        if ($message === 'deleted') {
+            $confirmationMessage = 'Le détail a été supprimé';
+        } elseif ($message === 'edited') {
+            $confirmationMessage = 'Le détail a été édité';
         }
 
         $rateManager = new RateManager();
@@ -29,7 +29,7 @@ class AdminAnniversaryDetailController extends AbstractController
         return $this->twig->render('Admin/AnniversaryDetail/index.html.twig', [
             'anniversaryRates' => $anniversaryRates,
             'anniversaryDetails' => $anniversaryDetails,
-            'message' => $message,
+            'confirmationMessage' => $confirmationMessage,
         ]);
     }
 
@@ -44,7 +44,7 @@ class AdminAnniversaryDetailController extends AbstractController
                 $detailsManager->delete((int)$id);
             }
         }
-        header('Location: /admin/anniversaire?msg=deleted');
+        header('Location: /admin/anniversaire?message=deleted');
     }
 
     public function add(int $rate = 0)
@@ -94,7 +94,7 @@ class AdminAnniversaryDetailController extends AbstractController
                 $error = $this->validate($detail);
                 if ($error === '') {
                     $detailsManager->update($detail);
-                    header('Location: /admin/anniversaire?msg=edited');
+                    header('Location: /admin/anniversaire?message=edited');
                 }
             }
             return $this->twig->render('Admin/AnniversaryDetail/edit.html.twig', [

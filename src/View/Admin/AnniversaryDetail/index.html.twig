@@ -8,8 +8,8 @@
 
 {% block content %}
 	<main class="container-fluid py-5">
-		{% if message is not empty %}
-			<p class="alert alert-success w-fit">{{ message }}</p>
+		{% if confirmationMessage is not empty %}
+			<p class="alert alert-success w-fit">{{ confirmationMessage }}</p>
 		{% endif %}
 		<h1 class="my-5 text-center">Liste des formules</h1>
 		{% for anniversaryRate in anniversaryRates %}
