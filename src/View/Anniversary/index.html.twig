@@ -15,11 +15,15 @@
 			<div class="col-lg-6 d-flex flex-column justify-content-center mt-3">
 				<img class="rounded-4 w-100 shadow" src="assets/images/anniversary_header.jpg" alt="">
 			</div>
-			<div class="col-lg-6 d-flex flex-column justify-content-center px-lg-5">
-				<h1 class="text-dark text-center mt-4 mb-3">Anniversaire</h1>
-				<p>Pour faire de l'anniversaire de votre enfant un moment inoubliable, pensez à venir le fêter au Rigolou avec tous ses amis.<br>
-					Un emplacement anniversaire vous sera spécialement dédié et aménagé toute la journé</p>
-				<p>Seulement sur réservation. Présence d'un adulte obligatoire. La réservation se fait sur place et de préférence au moins une semaine à l'avance.</p>
+			<div class="col-lg-6">
+				<div class="d-flex align-items-center justify-content-center px-5">
+					<img class="coffee1 col-lg-2 d-none d-lg-block pt-5 py-5 ms-5 me-5" src="assets/images/BL.png" alt="Balloon1">
+					<div>
+						<h1 class="text-dark text-center mt-4 mb-3">Anniversaire</h1>
+					</div>
+					<img class="coffee2 col-lg-2 d-none d-lg-block pt-5 py-5 ms-5 me-5" src="assets/images/BL1.png" alt="Balloon2">
+				</div>
+				<p class="text-center">Pour faire de l'anniversaire de votre enfant un moment inoubliable, pensez à venir le fêter au Rigolou avec tous ses amis. Un emplacement anniversaire vous sera spécialement dédié et aménagé toute la journé. Seulement sur réservation. Présence d'un adulte obligatoire. La réservation se fait sur place et de préférence au moins une semaine à l'avance.</p>
 			</div>
 		</div>
 	</header>
@@ -51,27 +55,28 @@
 			</div>
 		</section>
 		<!-- section reservation -->
-		<section class="container-fluid py-5 bg-light" id="reservation" >
+		<section class="container-fluid py-5 bg-light" id="reservation">
 			<h1 class="section-title mx-auto mt-2 mb-5 px-3 bg-primary rounded-4">Réservation</h1>
 			<div class="row ">
 				<div class="col-lg-6 d-flex justify-content-center  ">
 					<img class="d-none  d-lg-block rounded-4" src="assets/images/anniversary_image.png" alt="Les enfants fêtent un anniversaire">
 				</div>
 				<div class="container-fluid col-lg-6 ">
-					<form class="m-2" method="post"  accept-charset="UTF-8" action="#reservation" >
+					<form class="m-2" method="post" accept-charset="UTF-8" action="#reservation">
 						{% if errors is not empty %}
 							<ul class="alert alert-danger m-4">
 								{%- for error in errors -%}
-									<li class="error mb-2">{{error}}</li> 
+									<li class="error mb-2">{{error}}</li>
 								{%- endfor -%}
 							</ul>
 						{% endif %}
-            {% if reservationMessage %}
-            <ul class="alert alert-success m-4">
-              <li class="error mb-2"> Votre demande de réservation a bien été prise en compte ! 
-              </li>
-            </ul>
-            {% endif %}
+						{% if reservationMessage %}
+							<ul class="alert alert-success m-4">
+								<li class="error mb-2">
+									Votre demande de réservation a bien été prise en compte !
+								</li>
+							</ul>
+						{% endif %}
 						<div class="m-4">
 							<label for="menu" class="form-label">Sélectionner une formule
 							</label>
@@ -99,15 +104,15 @@
 							</div>
 							<div>
 								<label for="email" class="form-label">Email address</label>
-								<input type="email" id="email" name="email" class="form-control mb-3" value="{{reservation.email}}"placeholder="nom.prénom@gmail.com" required>
+								<input type="email" id="email" name="email" class="form-control mb-3" value="{{reservation.email}}" placeholder="nom.prénom@gmail.com" required>
 							</div>
 							<div>
 								<label for="date" class="form-label">Date</label>
-								<input type="date" id="date" name="date" value="{{reservation.date}}"class="form-control mb-3" required>
+								<input type="date" id="date" name="date" value="{{reservation.date}}" class="form-control mb-3" required>
 							</div>
 							<div>
 								<label for="message" class="form-label">Informations supplémentaires (exemple: nombre de personnes)</label>
-								<textarea class="form-control mb-3" id="message" name="message"  rows="3" required>{{reservation.message}}</textarea>
+								<textarea class="form-control mb-3" id="message" name="message" rows="3" required>{{reservation.message}}</textarea>
 							</div>
 						</div>
 						<button class="btn btn-primary m-4 mt-3">Réserver</button>
@@ -117,4 +122,3 @@
 		</section>
 	</main>
 {% endblock %}
- 
