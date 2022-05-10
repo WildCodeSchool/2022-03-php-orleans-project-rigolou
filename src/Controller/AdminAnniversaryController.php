@@ -52,7 +52,7 @@ class AdminAnniversaryController extends AbstractController
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $reservation = array_map('trim', $_POST);
-            if ((int)$reservation['bool'] === 1) {
+            if ($reservation['bool']) {
                 $anniversaryManager = new AnniversaryManager();
                 $mailContent = $anniversaryManager->selectOneById((int)$reservation['id']);
                 $this->sendMail($mailContent);

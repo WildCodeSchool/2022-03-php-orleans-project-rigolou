@@ -7,16 +7,16 @@
 		<title>Confirmation réservation</title>
 	</head>
 	<body>
-		<p>Bonjour,
-			<br>
-			{{ mailContent.firstname }}
-			{{ mailContent.lastname }}<br></p>
+		<h3>Bonjour,</h3>
+		<p>
+			{{ mailContent.firstname|capitalize }}
+			{{ mailContent.lastname|capitalize }}<br></p>
 		<p>Nous vous confirmons que votre réservation du
-			{{ mailContent.reservation_date}}
+			<b><u>{{ mailContent.reservation_date}}</u></b>
 			a bien été acceptée !</p>
 		<br>
-		<p>Cordialement,<br>
-			le Rigolou<br>
+		<p>Cordialement,</p>
+		<p style="color:green">le Rigolou<br>
 			Parc de l’orée de la fôret / rue de la tuilerie<br>
 			45770 Saran<br>
 			02.38.73.12.14</p>
