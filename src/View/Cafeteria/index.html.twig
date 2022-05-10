@@ -23,51 +23,48 @@
 				<p class="ms-5 me-5">Un espace bar et salon de thé permet aux adultes comme aux enfants de boire une boisson froide ou chaude. Un snack permet de faire goûter les enfants. Les adultes pourront également bénéficier de petits encas.</p>
 			</div>
 		</div>
-	{% endblock %}
+	</header>
+{% endblock %}
 
-	{% block content %}
-		<section class="bg-section-alternate mt-3">
-			<main class="container">
-				<div class="row justify-content-around">
-					<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
-						<table class="w-100">
-							<thead>
+{% block content %}
+	<main class="bg-section-alternate mt-3">
+		<section class="container">
+			<div class="row justify-content-around">
+				<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
+					<table class="w-100">
+						<thead>
+							<tr>
+								<h2 class="text-center text-success border-bottom border-dark">Boissons</h2>
+							</tr>
+						</thead>
+						<tbody>
+							{% for drink in drinks %}
 								<tr>
-									<h2 class="text-center text-success border-bottom border-dark">Boissons</h2>
+									<td class="py-3 border-bottom fw-bold">{{ drink.name }}</td>
+									<td class="text-end border-bottom">{{ drink.price }}€</td>
 								</tr>
-							</thead>
-							<tbody>
-								{% for drink in drinks %}
-									<tr>
-										<td class="py-3 border-bottom fw-bold">{{ drink.name }}</td>
-										<td class="text-end border-bottom">{{ drink.price }}
-											€</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-
-					<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
-						<table class="w-100">
-							<thead>
-								<tr>
-									<h2 class="text-center text-success border-bottom border-dark">Snacks</h2>
-								</tr>
-							</thead>
-							<tbody>
-								{% for snack in snacks %}
-									<tr>
-										<td class="py-3 border-bottom fw-bold">{{ snack.name }}</td>
-										<td class="text-end border-bottom">{{ snack.price }}
-											€</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
+							{% endfor %}
+						</tbody>
+					</table>
 				</div>
-			</main>
+				<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
+					<table class="w-100">
+						<thead>
+							<tr>
+								<h2 class="text-center text-success border-bottom border-dark">Snacks</h2>
+							</tr>
+						</thead>
+						<tbody>
+							{% for snack in snacks %}
+								<tr>
+									<td class="py-3 border-bottom fw-bold">{{ snack.name }}</td>
+									<td class="text-end border-bottom">{{ snack.price }}€</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</section>
-
-	{% endblock %}
+	</main>
+{% endblock %}
