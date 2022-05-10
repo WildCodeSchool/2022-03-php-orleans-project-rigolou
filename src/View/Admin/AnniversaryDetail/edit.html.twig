@@ -2,16 +2,16 @@
 
 {% block title %}
 	{{ parent() }}
-	- Détail anniversaire - {{ detailByRate[0].description }}
+	- Détail anniversaire -
+	{{ detailByRate[0].description }}
 {% endblock %}
 
 
 {% block content %}
 	<main class="container-fluid py-5">
-        <div class="d-flex justify-content-between w-50 mx-auto pb-3 px-2">
-            <h1 class="text-center mb-5">Modifier dans {{ detailsByRate[0].description }}</h1>
-        </div>
-        {% include "Admin/AnniversaryDetail/_table.html.twig" with {
+		<h1 class="text-center mb-5">Modifier dans
+			{{ detailsByRate[0].description }}</h1>
+		{% include "Admin/AnniversaryDetail/_table.html.twig" with {
             'inputLabel': 'Editer',
             'buttonColor': 'warning',
 			'buttonIcon': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
