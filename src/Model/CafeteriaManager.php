@@ -28,4 +28,19 @@ class CafeteriaManager extends AbstractManager
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
+
+    public function update(array $cafeteria): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET
+        `name`=:name,
+        `price`=:price,
+        `category`=:category
+        WHERE id=:id");
+        $statement->bindValue('name', $cafeteria['name'], \PDO::PARAM_STR);
+        $statement->bindValue('price', $cafeteria['price']);
+        $statement->bindValue('category', $cafeteria['category'], \PDO::PARAM_STR);
+        $statement->bindValue('id', $cafeteria['id'], \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
 }

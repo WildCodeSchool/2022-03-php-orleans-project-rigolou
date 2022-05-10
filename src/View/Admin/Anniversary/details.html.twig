@@ -1,0 +1,91 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Réservation - Détails
+{% endblock %}
+
+
+{% block content %}
+	<main class="container-fluid  py-5">
+		<h1 class="text-center">Détails de la réservation</h1>
+
+		<table class="table container table-hover mt-5">
+			<thead class="table-light ">
+				<tr>
+					<th scope="col">Réservation pour la formule
+						{{titre.description}}</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Prénom</th>
+					<td class="">
+						{{ reservation.firstname }}
+					</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td class="">
+						{{ reservation.lastname }}
+					</td>
+				</tr>
+				<tr>
+					<th>Téléphone</th>
+					<td class="">
+						{{ reservation.phone }}
+					</td>
+				</tr>
+				<tr>
+					<th>Date</th>
+					<td class="">
+						{{ reservation.reservation_date }}
+					</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td class="">
+						{{ reservation.email }}
+					</td>
+				</tr>
+				<tr>
+					<th>Message</th>
+					<td class="">
+						{{ reservation.message }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="d-flex container justify-content-between p-0">
+		<form action="/admin/reservations/valider" method="post">
+		<input name="id" hidden value="{{reservation.id}}"></input>
+			{% if reservation.is_accepted == 0 %}			
+					<input name="bool" hidden value="1"></input>
+					<button class="btn btn-success w-fit d-flex gap-2 align-items-center mt-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewbox="0 0 16 16">
+							<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+						</svg>
+						Valider
+					</button>
+			{% else %}
+						<input name="bool" hidden value="0"></input>
+						<button class="btn btn-danger w-fit d-flex gap-2 align-items-center mt-2">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewbox="0 0 16 16">
+								<path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+								<path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+							</svg>
+							Refuser
+						</button>
+					
+			{% endif %}
+			</form>
+			<a href="/admin/reservations" class="btn btn-dark w-fit d-flex  gap-2 align-items-center mt-2">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square" viewbox="0 0 16 16">
+					<path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+				</svg>
+				Retour
+			</a>
+		</div>
+	</main>
+{% endblock %}
