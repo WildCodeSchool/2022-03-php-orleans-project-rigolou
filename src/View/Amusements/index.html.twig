@@ -15,7 +15,7 @@
         <h1 class="bg-primary section-title mx-auto mb-5 mt-5 px-3 rounded-4">Attractions</h1>
 
         {% for amusement in amusements %} 
-            <div class="container w-75 mb-5 p-3 rounded-4 border shadow bg-light">
+            <div class="container mb-5 p-3 rounded-4 border shadow bg-light">
                  <div class="row amusement-card  ">
                      <div class="col-lg-9 d-flex flex-column justify-content-between {% if loop.index is even %} order-lg-2 ps-lg-0 {% else %} pe-lg-0 {% endif %}">
                          <h2 class="text-center fs-1 pb-2 text-success border-bottom border-dark"> {{amusement.name}} </h2>
