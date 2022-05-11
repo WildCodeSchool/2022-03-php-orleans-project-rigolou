@@ -149,7 +149,7 @@ VALUES
 
 CREATE TABLE IF NOT EXISTS `cafeteria` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(100) NOT NULL,
+    `name` VARCHAR(20) NOT NULL,
     `price` FLOAT NOT NULL,
     `category` VARCHAR(10) NOT NULL,
     PRIMARY KEY (`id`)
