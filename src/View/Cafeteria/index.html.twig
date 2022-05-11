@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block header %}
-	<header class="container-fluid bg-light p-0 m-0">
+	<header class="container-fluid bg-light pb-3 m-0">
 		<div class="row align-items-center m-0 ">
 			<div class="col-lg-6 d-flex flex-column justify-content-center mt-3">
 				<img class="rounded-4 w-100 shadow" src="assets/images/Cafeteria-min.jpg" alt="">
@@ -27,44 +27,40 @@
 {% endblock %}
 
 {% block content %}
-	<main class="bg-section-alternate mt-3">
+	<main class="bg-section-alternate">
 		<section class="container">
 			<div class="row justify-content-around">
-				<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
-					<table class="w-100">
-						<thead>
-							<tr>
-								<h2 class="text-center text-success border-bottom border-dark">Boissons</h2>
-							</tr>
-						</thead>
-						<tbody>
-							{% for drink in drinks %}
-								<tr>
-									<td class="py-3 border-bottom fw-bold">{{ drink.name }}</td>
-									<td class="text-end border-bottom">{{ drink.price }}€</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+				<div class="col-lg-4">
+					<div class="bg-light p-4 m-2 mt-5 shadow rounded-4">
+						<h2 class="text-center text-success border-bottom border-dark">Boissons</h2>
+						<table class="w-100">
+							<tbody>
+								{% for drink in drinks %}
+									<tr>
+										<td class="py-3 border-bottom fw-bold">{{ drink.name|capitalize }}</td>
+										<td class="text-end border-bottom">{{ drink.price }}€</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 				</div>
-				<div class="bg-light col-lg-4 p-4 m-2 mt-5 mb-5 shadow rounded-4">
-					<table class="w-100">
-						<thead>
-							<tr>
-								<h2 class="text-center text-success border-bottom border-dark">Snacks</h2>
-							</tr>
-						</thead>
-						<tbody>
-							{% for snack in snacks %}
-								<tr>
-									<td class="py-3 border-bottom fw-bold">{{ snack.name }}</td>
-									<td class="text-end border-bottom">{{ snack.price }}€</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+				<div class="col-lg-4">
+					<div class="bg-light p-4 my-5 shadow rounded-4">
+						<h2 class="text-center text-success border-bottom border-dark">Snacks</h2>
+						<table class="w-100">
+							<tbody>
+								{% for snack in snacks %}
+									<tr>
+										<td class="py-3 border-bottom fw-bold">{{ snack.name|capitalize }}</td>
+										<td class="text-end border-bottom">{{ snack.price }}€</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-		</section>
-	</main>
-{% endblock %}
+		</div>
+	</section>
+</main>{% endblock %}

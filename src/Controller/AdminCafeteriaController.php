@@ -42,12 +42,12 @@ class AdminCafeteriaController extends AbstractController
             $errors[] = 'Le nom est obligatoire';
         }
 
-        $nameMaxLength = 100;
+        $nameMaxLength = 20;
         if (strlen($cafeteria['name']) > $nameMaxLength) {
             $errors[] = 'Le nom ne doit pas dépasser ' . $nameMaxLength . ' caractères';
         }
 
-        if (empty($cafeteria['price']) && !is_numeric($cafeteria['price']) && $cafeteria['price'] > 0) {
+        if (empty($cafeteria['price']) || !is_numeric($cafeteria['price']) || (int)$cafeteria['price'] < 0) {
             $errors[] = 'Le prix est obligatoire et doit être un nombre supérieur à 0';
         }
 

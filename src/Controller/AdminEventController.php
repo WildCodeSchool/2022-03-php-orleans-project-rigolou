@@ -8,17 +8,23 @@ class AdminEventController extends AbstractController
 {
     public const MAX_TITLE_SIZE = 100;
 
-    public function index(): string
+    public function index(string $status = '', string $event = ''): string
     {
         if (empty($_SESSION['user'])) {
             header('Location: /login');
             return '';
         }
-
         $eventManager = new EventManager();
         $eventItems = $eventManager->selectAll('title');
 
-        return $this->twig->render('Admin/Events/index.html.twig', ['eventItems' => $eventItems]);
+        return $this->twig->render(
+            'Admin/Events/index.html.twig',
+            [
+                'eventItems' => $eventItems,
+                'status' => $status,
+                'event' => $event
+            ]
+        );
     }
 
 
@@ -116,7 +122,7 @@ class AdminEventController extends AbstractController
 
                     $eventManager->delete((int)$id);
 
-                    header('Location: /admin/events');
+                    header('Location: /admin/events?status=delete&event=' . $event['title']);
                 }
             }
         }
@@ -169,12 +175,12 @@ class AdminEventController extends AbstractController
                     $eventItems['image'] = $savedImage;
                 }
                 $eventManager->update($eventItems);
-                header('Location: /admin/events');
+                header('Location: /admin/events?status=modif&event=' . $eventItems['title']);
             }
         }
         return $this->twig->render('Admin/Events/edit.html.twig', [
             'errors' => $errors,
-            'eventItems' => $eventItems,
+            'event' => $eventItems,
             'authorizedMimes' => AdminAmusementController::AUTHORIZED_MIMES,
             'maxFileSize' => AdminAmusementController::MAX_FILE_SIZE / 1000000,
         ]);

@@ -9,6 +9,14 @@
 {% block content %}
 	<main class="container-fluid py-5">
 		<h1 class="text-center">Liste des événements</h1>
+		<div class="w-75 mx-auto">
+			{% if status == 'modif' %}
+				<p class="alert alert-success w-fit text-center">Les données de "{{ event }}" ont été modifiées.</p>
+			{% endif %}
+			{% if status == 'delete' %}
+				<p class="alert alert-success w-fit ">Les données de "{{ event }}" ont été supprimées.</p>
+			{% endif %}
+		</div>
 		{% include "/Admin/_list.html.twig" with {'cols': {title: 'Titre', date: 'Date'}, 'items': eventItems, 'section': 'events'} %}
 	</main>
 {% endblock %}

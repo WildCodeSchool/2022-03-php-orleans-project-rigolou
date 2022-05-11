@@ -2,13 +2,13 @@
 
 {% block title %}
 	{{ parent() }}
-	- Détail anniversaire - {{ detailsByRate[0].description }}
+	- Détail anniversaire - {{ anniversaryRate.description }}
 {% endblock %}
 
 
 {% block content %}
 	<main class="container-fluid py-5">
-            <h1 class="text-center mb-5">Ajouter dans {{ detailsByRate[0].description }}</h1>
+            <h1 class="text-center mb-5">Ajouter dans {{ anniversaryRate.description }}</h1>
         {% include "Admin/AnniversaryDetail/_table.html.twig" with {
             'inputLabel': 'Nouveau',
             'buttonColor': 'info',
