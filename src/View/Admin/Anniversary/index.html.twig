@@ -29,16 +29,16 @@
                 {% for reservation in reservations %}
                     <tr class="{% if reservation.is_accepted == 1 %}bg-success{% else %}bg-secondary{% endif %}">
 
-                         <td class="text-nowrap">
+                         <td class="text-nowrap text-light">
                         {{ reservation.firstname }}
                         </td>
-                         <td class="text-nowrap">   
+                         <td class="text-nowrap text-light">   
                         {{ reservation.lastname }}
                         </td> 
-                        <td class="text-nowrap">   
+                        <td class="text-nowrap text-light">   
                         {{ reservation.phone }}
                         </td>                       
-                        <td class="w-100">
+                        <td class="w-100 text-light">
                         {{ reservation.reservation_date }}
                         </td>
                         <td>
