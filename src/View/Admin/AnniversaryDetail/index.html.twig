@@ -8,8 +8,11 @@
 
 {% block content %}
 	<main class="container-fluid">
+		<h1 class="my-5 text-center">Liste des formules</h1>
 		{% if confirmationMessage is not empty %}
-			<p class="alert alert-success w-fit">{{ confirmationMessage }}</p>
+			<div class="w-75 mx-auto">
+				<p class="alert alert-success w-fit">{{ confirmationMessage }}</p>
+			</div>
 		{% endif %}
 		<h1 class="my-5 text-center">Liste des formules</h1>
 		{% if anniversaryRates is empty %}
