@@ -47,8 +47,11 @@ class AdminCafeteriaController extends AbstractController
             $errors[] = 'Le nom ne doit pas dépasser ' . $nameMaxLength . ' caractères';
         }
 
-        if (empty($cafeteria['price']) || !is_numeric($cafeteria['price']) || (int)$cafeteria['price'] > 0) {
-            $errors[] = 'Le prix est obligatoire et doit être un nombre supérieur à 0';
+        if (
+            empty($cafeteria['price']) || !is_numeric($cafeteria['price']) ||
+            (int)$cafeteria['price'] < 0 || (int)$cafeteria['price'] > 100
+        ) {
+            $errors[] = 'Le prix est obligatoire et doit être un nombre supérieur à 0 et inférieur à 100';
         }
 
         if (!array_key_exists($cafeteria['category'], self::ALLOWED_CATEGORIES)) {
