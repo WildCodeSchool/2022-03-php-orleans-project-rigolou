@@ -132,6 +132,10 @@ header {
     width: fit-content;
 }
 
+.vh-80 {
+    height: 80vh;
+}
+
 .bg-section {
     background-color: var(--section-background);
     background-image: url("../images/inspiration-geometry.png");
