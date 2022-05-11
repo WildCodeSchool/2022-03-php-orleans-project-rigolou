@@ -15,8 +15,8 @@
 		{{ authorizedMimes|join(',  ') }})</label>
 	<input type="file" class="form-control" name="image" id="image">
 	{%- if eventItems.image is not empty -%}
-		<div class="w-25 mt-4">
-			<img src="/{{ constant('APP_UPLOAD_PATH') ~ eventItems.image }}" alt="">
+		<div class="mt-4">
+			<img class="w-50 h-25" src="/{{ constant('APP_UPLOAD_PATH') ~ eventItems.image }}" alt="">
 		</div>
 	{%- endif -%}
 	<label for="description" class="form-label mt-4">Description</label>

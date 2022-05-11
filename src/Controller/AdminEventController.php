@@ -8,7 +8,7 @@ class AdminEventController extends AbstractController
 {
     public const MAX_TITLE_SIZE = 100;
 
-    public function index(): string
+    public function index(string $status, string $event): string
     {
         if (empty($_SESSION['user'])) {
             header('Location: /login');
@@ -18,7 +18,14 @@ class AdminEventController extends AbstractController
         $eventManager = new EventManager();
         $eventItems = $eventManager->selectAll('title');
 
-        return $this->twig->render('Admin/Events/index.html.twig', ['eventItems' => $eventItems]);
+        return $this->twig->render(
+            'Admin/Events/index.html.twig',
+            [
+                'eventItems' => $eventItems,
+                'status' => $status,
+                'event' => $event
+            ]
+        );
     }
 
 
@@ -169,7 +176,7 @@ class AdminEventController extends AbstractController
                     $eventItems['image'] = $savedImage;
                 }
                 $eventManager->update($eventItems);
-                header('Location: /admin/events');
+                header('Location: /admin/events?status=modifié?event=' . $eventItems['title']);
             }
         }
         return $this->twig->render('Admin/Events/edit.html.twig', [
