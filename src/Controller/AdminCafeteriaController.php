@@ -42,7 +42,7 @@ class AdminCafeteriaController extends AbstractController
             $errors[] = 'Le nom est obligatoire';
         }
 
-        $nameMaxLength = 100;
+        $nameMaxLength = 20;
         if (strlen($cafeteria['name']) > $nameMaxLength) {
             $errors[] = 'Le nom ne doit pas dépasser ' . $nameMaxLength . ' caractères';
         }
@@ -52,6 +52,7 @@ class AdminCafeteriaController extends AbstractController
             (int)$cafeteria['price'] < 0 || (int)$cafeteria['price'] > 100
         ) {
             $errors[] = 'Le prix est obligatoire et doit être un nombre supérieur à 0 et inférieur à 100';
+
         }
 
         if (!array_key_exists($cafeteria['category'], self::ALLOWED_CATEGORIES)) {
