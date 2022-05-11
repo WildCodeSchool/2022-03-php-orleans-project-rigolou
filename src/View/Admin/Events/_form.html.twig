@@ -8,21 +8,21 @@
 		</div>
 	{% endif %}
 	<label for="title" class="form-label">Titre</label>
-	<input type="text" class="form-control" name="title" id="title" value="{% if eventItems is not empty %}{{eventItems.title}}{% endif %}" required>
+	<input type="text" class="form-control" name="title" id="title" value="{% if event is not empty %}{{event.title}}{% endif %}" required>
 	<label for="date" class="form-label">Date</label>
-	<input type="date" class="form-control" name="date" id="date" value="{% if eventItems is not empty %}{{eventItems.date}}{% endif %}" required>
+	<input type="date" class="form-control" name="date" id="date" value="{% if event is not empty %}{{event.date}}{% endif %}" required>
 	<label for="image" class="form-label mt-4">Image ({{ maxFileSize }}mo maximum | Type:
 		{{ authorizedMimes|join(',  ') }})</label>
 	<input type="file" class="form-control" name="image" id="image">
-	{%- if eventItems.image is not empty -%}
+	{%- if event.image is not empty -%}
 		<div class="mt-4">
-			<img class="w-50 h-25" src="/{{ constant('APP_UPLOAD_PATH') ~ eventItems.image }}" alt="">
+			<img class="w-50 h-25" src="/{{ constant('APP_UPLOAD_PATH') ~ event.image }}" alt="">
 		</div>
 	{%- endif -%}
 	<label for="description" class="form-label mt-4">Description</label>
 	<textarea class="form-control" name="description" id="description" rows="6" required>
-		{%- if eventItems is not empty -%}
-			{{eventItems.description}}
+		{%- if event is not empty -%}
+			{{event.description}}
 		{%- endif -%}
 	</textarea>
 	<div class="d-flex justify-content-between">
