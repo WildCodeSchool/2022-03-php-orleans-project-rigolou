@@ -7,6 +7,7 @@ use App\Model\AmusementManager;
 
 class HomeController extends AbstractController
 {
+    public const MAX_CARDS_AMUSEMENT = 4;
     /**
      * Display home page
      */
@@ -17,9 +18,17 @@ class HomeController extends AbstractController
 
         $amusementManager = new AmusementManager();
         $amusements = $amusementManager->selectAll();
-        $amusementsRandKey = array_rand($amusements, 4);
-        $amusementsFourRandom = array_intersect_key($amusements, array_flip($amusementsRandKey));
+        $amusementsFourRandom = [];
 
+        $amusementsNumber = count($amusements);
+        if ($amusementsNumber > 0) {
+            if ($amusementsNumber > self::MAX_CARDS_AMUSEMENT) {
+                $amusementsNumber = self::MAX_CARDS_AMUSEMENT;
+            }
+
+            $amusementsRandKey = array_rand($amusements, $amusementsNumber);
+            $amusementsFourRandom = array_intersect_key($amusements, array_flip($amusementsRandKey));
+        }
         return $this->twig->render('Home/index.html.twig', [
             'amusements' => $amusementsFourRandom,
             'rates' => $rates,
