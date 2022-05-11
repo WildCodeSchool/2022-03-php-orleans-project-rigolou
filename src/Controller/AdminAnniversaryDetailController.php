@@ -54,21 +54,24 @@ class AdminAnniversaryDetailController extends AbstractController
             return '';
         }
 
-        $detailsManager = new AnniversaryDetailsManager();
-        $detailsByRate = $detailsManager->selectAllByRateId($rate);
-        if (!empty($detailsByRate)) {
+        $rateManager = new RateManager();
+        $anniversaryRate = $rateManager->selectOneById($rate);
+        if (!empty($anniversaryRate)) {
             $error = '';
             $newDetail = [];
+            $detailsManager = new AnniversaryDetailsManager();
+            $detailsByRate = $detailsManager->selectAllByRateId($rate);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $newDetail['detail'] = trim($_POST['detail']);
                 $error = $this->validate($newDetail);
                 if ($error === '') {
-                    $newDetail['rate_id'] = $detailsByRate[0]['rate_id'];
+                    $newDetail['rate_id'] = $anniversaryRate['id'];
                     $detailsManager->insert($newDetail);
                     header('Location: /admin/anniversaire/ajouter?rate=' . $newDetail['rate_id']);
                 }
             }
             return $this->twig->render('Admin/AnniversaryDetail/add.html.twig', [
+                'anniversaryRate' => $anniversaryRate,
                 'detailsByRate' => $detailsByRate,
                 'detail' => $newDetail,
                 'error' => $error,
