@@ -20,7 +20,7 @@
                      <div class="col-lg-9 d-flex flex-column justify-content-between {% if loop.index is even %} order-lg-2 ps-lg-0 {% else %} pe-lg-0 {% endif %}">
                          <h2 class="text-center fs-1 pb-2 text-success border-bottom border-dark"> {{amusement.name}} </h2>
                          <div class="h-100 d-flex flex-column justify-content-center">
-                        <p class="text-center {% if loop.index is even %} text-lg-center {% else %} text-lg-center{% endif %} "> {{amusement.description}}
+                        <p class="text-center {% if loop.index is even %} text-lg-center {% else %} text-lg-center{% endif %} "> {{amusement.description |nl2br}}
                         </p>
                         </div>
                      </div>
