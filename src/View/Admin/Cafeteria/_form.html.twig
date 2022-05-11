@@ -15,7 +15,7 @@
 	<label class="form-label" for="title">Nom</label>
 	<input class="form-control" type="text" value="{% if cafeteria is not empty %}{{ cafeteria.name }}{% endif %}" name="name" id="name" required>
 	<label class="form-label" for="title">Prix(€)</label>
-	<input class="form-control" type="number" max="100" min="0" step="0.1" value="{% if cafeteria is not empty %}{{ cafeteria.price }}{% endif %}" name="price" id="price" required>
+	<input class="form-control" type="number" min="0" step="0.1" value="{% if cafeteria is not empty %}{{ cafeteria.price }}{% endif %}" name="price" id="price" required>
 	<label class="form-label" for="title">Category</label>
 	<select class="form-control" name="category" id="category">
 		{% for category, name in allowedCategories %}
